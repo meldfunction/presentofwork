@@ -4,31 +4,44 @@ layout: default
 title: Projects
 description: Our learning ecosystem, active spaces, and organizational support
 custom_js: >
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const layerTabs = document.querySelectorAll('.layer-tab');
-        const layerContents = document.querySelectorAll('.layer-content');
-        
-        layerTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const targetLayer = this.getAttribute('data-layer');
-                
-                layerTabs.forEach(t => t.classList.remove('active'));
-                layerContents.forEach(c => {
-                    c.classList.remove('active');
-                    c.style.display = 'none'; // Hide all contents
-                });
-                
-                this.classList.add('active');
-                const targetContent = document.getElementById(targetLayer + '-content');
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                    targetContent.style.display = 'block'; // Show the active content
-                }
-            });
-        });
+<script>
+window.addEventListener('load', function() {
+  const layerTabs = document.querySelectorAll('.layer-tab');
+  const layerContents = document.querySelectorAll('.layer-content');
+
+  layerTabs.forEach(tab => {
+    tab.addEventListener('click', function(e) {
+      const targetLayer = this.getAttribute('data-layer');
+
+      layerTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+
+      layerContents.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-hidden', 'true');
+        c.hidden = true;
+      });
+
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+
+      const targetContent = document.getElementById(targetLayer + '-content');
+      if (targetContent) {
+        targetContent.classList.add('active');
+        targetContent.setAttribute('aria-hidden', 'false');
+        targetContent.hidden = false;
+      }
     });
-    </script>
+    // keyboard support (optional but recommended)
+    tab.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+    });
+  });
+});
+</script>
+
 ---
 
 <!-- Hero Section -->
@@ -105,8 +118,7 @@ custom_js: >
             
             <div class="card">
                 <div style="width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; background: #fef3c7; color: #d97706;">⚖️</div>
-                <h3 style="font-size: 1.25rem
-; color: #1f2937; margin-bottom: 8px;">Conflict Kinship Dojo</h3>
+                <h3 style="font-size: 1.25rem; color: #1f2937; margin-bottom: 8px;">Conflict Kinship Dojo</h3>
                 <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 12px;">Restorative Justice & Council</p>
                 <p style="color: #4b5563; margin-bottom: 16px; font-size: 0.875rem;">Monthly gatherings exploring conflict as creative force using restorative justice circles.</p>
                 <a href="https://calendar.google.com" class="btn-secondary" style="font-size: 0.875rem; padding: 8px 16px;">Join Next Session</a>
