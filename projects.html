@@ -5,13 +5,48 @@ title: Projects
 description: Our learning ecosystem, active spaces, and organizational support
 custom_js: >
 <script>
-window.addEventListener('load', function() {
-  const layerTabs = document.querySelectorAll('.layer-tab');
-  const layerContents = document.querySelectorAll('.layer-content');
+(function() {
+  // Wait until DOM is ready
+  function init() {
+    const layerTabs = Array.from(document.querySelectorAll('.layer-tab'));
+    const layerContents = Array.from(document.querySelectorAll('.layer-content'));
 
-  layerTabs.forEach(tab => {
-    tab.addEventListener('click', function(e) {
-      const targetLayer = this.getAttribute('data-layer');
+    if (!layerTabs.length || !layerContents.length) return;
+
+    // Ensure tabs are actual buttons for accessibility (non-destructive fallback)
+    layerTabs.forEach(t => {
+      if (t.tagName.toLowerCase() !== 'button') {
+        t.setAttribute('role', 'tab');
+        t.setAttribute('tabindex', '0');
+      } else {
+        t.setAttribute('role', 'tab');
+      }
+    });
+
+    // Initial state: hide all panels except the one with .active
+    layerContents.forEach(c => {
+      if (c.classList.contains('active')) {
+        c.hidden = false;
+        c.setAttribute('aria-hidden', 'false');
+      } else {
+        c.hidden = true;
+        c.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Ensure exactly one tab is marked active/selected; if none, pick the first
+    const initiallyActiveTab = layerTabs.find(t => t.classList.contains('active')) || layerTabs[0];
+    layerTabs.forEach(t => t.classList.remove('active'));
+    layerTabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+    if (initiallyActiveTab) {
+      initiallyActiveTab.classList.add('active');
+      initiallyActiveTab.setAttribute('aria-selected', 'true');
+    }
+
+    // Click handler
+    function activateTab(tab) {
+      const targetLayer = tab.getAttribute('data-layer');
+      if (!targetLayer) return;
 
       layerTabs.forEach(t => {
         t.classList.remove('active');
@@ -20,27 +55,62 @@ window.addEventListener('load', function() {
 
       layerContents.forEach(c => {
         c.classList.remove('active');
-        c.setAttribute('aria-hidden', 'true');
         c.hidden = true;
+        c.setAttribute('aria-hidden', 'true');
       });
 
-      this.classList.add('active');
-      this.setAttribute('aria-selected', 'true');
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
 
       const targetContent = document.getElementById(targetLayer + '-content');
       if (targetContent) {
         targetContent.classList.add('active');
-        targetContent.setAttribute('aria-hidden', 'false');
         targetContent.hidden = false;
+        targetContent.setAttribute('aria-hidden', 'false');
+        // Move focus into the panel for screen reader users (optional)
+        // targetContent.focus();
       }
+    }
+
+    // Attach event listeners
+    layerTabs.forEach(tab => {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        activateTab(this);
+      });
+
+      tab.addEventListener('keydown', function(e) {
+        // Enter or Space activates
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activateTab(this);
+          return;
+        }
+        // Arrow navigation between tabs (left/right)
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          const idx = layerTabs.indexOf(this);
+          const next = layerTabs[(idx + 1) % layerTabs.length];
+          next.focus();
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const idx = layerTabs.indexOf(this);
+          const prev = layerTabs[(idx - 1 + layerTabs.length) % layerTabs.length];
+          prev.focus();
+        }
+      });
     });
-    // keyboard support (optional but recommended)
-    tab.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
-    });
-  });
-});
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
+
 
 ---
 
