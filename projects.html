@@ -1,3 +1,4 @@
+
 ---
 layout: default
 title: Projects
@@ -13,12 +14,16 @@ custom_js: >
                 const targetLayer = this.getAttribute('data-layer');
                 
                 layerTabs.forEach(t => t.classList.remove('active'));
-                layerContents.forEach(c => c.classList.remove('active'));
+                layerContents.forEach(c => {
+                    c.classList.remove('active');
+                    c.style.display = 'none'; // Hide all contents
+                });
                 
                 this.classList.add('active');
                 const targetContent = document.getElementById(targetLayer + '-content');
                 if (targetContent) {
                     targetContent.classList.add('active');
+                    targetContent.style.display = 'block'; // Show the active content
                 }
             });
         });
@@ -44,17 +49,18 @@ custom_js: >
             <p style="color: #4b5563;">Free resources, community calls, and open-source wisdom that feeds everything else. Like rich forest soil, this layer provides nutrients for all our learning.</p>
         </div>
         
-        <div class="layer-content" id="knots-content" style="display: none; background: white; border-radius: 12px; padding: 32px; margin-top: 24px; border: 1px solid #e5e7eb;">
+        <div class="layer-content" id="knots-content" style="background: white; border-radius: 12px; padding: 32px; margin-top: 24px; border: 1px solid #e5e7eb;">
             <h3 style="font-size: 1.5rem; color: #1f2937; margin-bottom: 16px;">🪢 Knots Layer</h3>
             <p style="color: #4b5563;">Monthly dojos and learning guilds where people develop specific skills while tending relationships. As Panikkar said, "A person is a knot in a net of relationships."</p>
         </div>
         
-        <div class="layer-content" id="social-web-content" style="display: none; background: white; border-radius: 12px; padding: 32px; margin-top: 24px; border: 1px solid #e5e7eb;">
+        <div class="layer-content" id="social-web-content" style="background: white; border-radius: 12px; padding: 32px; margin-top: 24px; border: 1px solid #e5e7eb;">
             <h3 style="font-size: 1.5rem; color: #1f2937; margin-bottom: 16px;">🕸️ Social Web Layer</h3>
             <p style="color: #4b5563;">Deep dive labs and organizational support where individual learning translates into collective action and systems transformation.</p>
         </div>
     </div>
 </section>
+
 
 <!-- Current Focus ATEM -->
 <section class="current-focus" style="padding: 80px 20px; background: white;">
@@ -99,7 +105,8 @@ custom_js: >
             
             <div class="card">
                 <div style="width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; background: #fef3c7; color: #d97706;">⚖️</div>
-                <h3 style="font-size: 1.25rem; color: #1f2937; margin-bottom: 8px;">Conflict Kinship Dojo</h3>
+                <h3 style="font-size: 1.25rem
+; color: #1f2937; margin-bottom: 8px;">Conflict Kinship Dojo</h3>
                 <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 12px;">Restorative Justice & Council</p>
                 <p style="color: #4b5563; margin-bottom: 16px; font-size: 0.875rem;">Monthly gatherings exploring conflict as creative force using restorative justice circles.</p>
                 <a href="https://calendar.google.com" class="btn-secondary" style="font-size: 0.875rem; padding: 8px 16px;">Join Next Session</a>
@@ -141,7 +148,8 @@ custom_js: >
                     <p style="color: #4b5563; font-size: 0.875rem;">Executive coaching that honors both practical results and deeper meaning-making.</p>
                 </div>
                 
-                <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 16px;">
+                <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 16px;
+margin-bottom: 16px;">
                     <h4 style="color: #1f2937; margin-bottom: 6px;">Skill Development</h4>
                     <p style="color: #4b5563; font-size: 0.875rem;">One-on-one mentoring in facilitation and conflict navigation.</p>
                 </div>
@@ -171,7 +179,7 @@ custom_js: >
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
-        <p>© 2025 Present of Work. Building commons for collective learning.</p>
+        <p>© 2024 Present of Work. Building commons for collective learning.</p>
         <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
     </div>
 </footer>
