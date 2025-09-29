@@ -1,0 +1,187 @@
+---
+layout: default
+title: Home
+description: A learning network exploring how work can serve life instead of drain it
+additional_css: <link rel="stylesheet" href="/TPOW/assets/css/home.css">
+---
+
+<!-- Hero Section -->
+<section id="home" class="hero" style="background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%);">
+    <div class="hero-container">
+        <!-- Entry Point Selector -->
+        <div class="entry-selector">
+            <div class="entry-dots">
+                <div class="dot" onclick="changeEntry(0)"></div>
+                <div class="dot active" onclick="changeEntry(1)"></div>
+                <div class="dot" onclick="changeEntry(2)"></div>
+                <div class="dot" onclick="changeEntry(3)"></div>
+                <div class="dot" onclick="changeEntry(4)"></div>
+            </div>
+            <p class="entry-hint">Different starting points for different people</p>
+        </div>
+
+        <h1 id="hero-headline">What if giving and receiving could deepen relationships instead of ending them?</h1>
+        <p id="hero-subtext">We're practicing gift economy principles where work becomes relational tending - both offering authentic gifts and receiving what we need to flourish.</p>
+        
+        <div class="hero-buttons">
+            <a href="#join" class="btn-primary">Find Your People</a>
+            <a href="#experiments" class="btn-secondary">See What's Possible</a>
+        </div>
+    </div>
+</section>
+
+<!-- Problems Section -->
+<section class="problems" style="padding: 80px 20px;">
+    <div class="problems-container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <h2>You might be recognizing...</h2>
+        <div class="problems-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 32px;">
+            <div class="problem-card" style="background: #f9fafb; padding: 24px; border-radius: 8px; text-align: left;">
+                <h3 style="font-weight: 600; color: #1f2937; margin-bottom: 12px;">Values Misalignment</h3>
+                <p style="color: #4b5563;">Your daily work activities feel disconnected from your deepest values and what you know needs healing in the world.</p>
+            </div>
+            <div class="problem-card" style="background: #f9fafb; padding: 24px; border-radius: 8px; text-align: left;">
+                <h3 style="font-weight: 600; color: #1f2937; margin-bottom: 12px;">Extractive Relationships</h3>
+                <p style="color: #4b5563;">Economic relationships that take from community and planet rather than contributing to regeneration and mutual flourishing.</p>
+            </div>
+            <div class="problem-card" style="background: #f9fafb; padding: 24px; border-radius: 8px; text-align: left;">
+                <h3 style="font-weight: 600; color: #1f2937; margin-bottom: 12px;">Change Fatigue</h3>
+                <p style="color: #4b5563;">Organizational transformation initiatives that create cynicism instead of hope, matching predetermined solutions to living situations.</p>
+            </div>
+        </div>
+        <p style="color: #6b7280; font-style: italic; font-size: 1.125rem; margin-top: 32px;">
+            Traditional solutions—wellness programs, productivity hacks, leadership training—treat symptoms while leaving extractive systems intact.
+        </p>
+    </div>
+</section>
+
+<!-- Community Stats -->
+<section class="stats" style="background: #16a34a; color: white; padding: 80px 20px; text-align: center;">
+    <div class="stats-container" style="max-width: 800px; margin: 0 auto;">
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 24px;">You're not alone in this</h2>
+        <p style="font-size: 1.25rem; color: #bbf7d0; margin-bottom: 32px; line-height: 1.5;">
+            Six years ago, we started as a small group asking "What if work could serve life instead of drain it?" 
+            Now we're a growing network of practitioners quietly transforming how work works through gift economy principles and emergence-based approaches.
+        </p>
+        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px;">
+            <div class="stat-item">
+                <div class="stat-number" style="font-size: 3rem; font-weight: bold; margin-bottom: 8px;">6</div>
+                <div class="stat-label" style="color: #bbf7d0;">Years of sustained practice</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" style="font-size: 3rem; font-weight: bold; margin-bottom: 8px;">Growing</div>
+                <div class="stat-label" style="color: #bbf7d0;">Network of practitioners</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" style="font-size: 3rem; font-weight: bold; margin-bottom: 8px;">Active</div>
+                <div class="stat-label" style="color: #bbf7d0;">Community learning spaces</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <h3>The Present of Work</h3>
+        <p>A learning network exploring how work can serve life instead of drain it.</p>
+        <p>
+            Educational work fiscally sponsored through Inquiring Systems Institute. 
+            Consulting services through CrowdWork cooperative.
+        </p>
+        <p>
+            Questions? Stories? Ideas?<br>
+            <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+// Entry point switching
+const entryPoints = [
+    {
+        headline: "What if work could serve life instead of drain it?",
+        subtext: "We're exploring how to transform our relationship with work itself - moving from industrial jobs to sacred practice that serves the web of life."
+    },
+    {
+        headline: "What if giving and receiving could deepen relationships instead of ending them?", 
+        subtext: "We're practicing gift economy principles where work becomes relational tending - both offering authentic gifts and receiving what we need to flourish."
+    },
+    {
+        headline: "Ready to explore alternatives to extractive methods?",
+        subtext: "Join practitioners exploring how to shift from taking from the world to participating in the ongoing creation of the world - from money to relationships to knowledge sharing."
+    },
+    {
+        headline: "Does your work feel disconnected from what matters?",
+        subtext: "You're not broken. We're a learning network finding ways to align daily activities with deeper purpose through emergence-based approaches and gift economy principles."
+    },
+    {
+        headline: "What if organizations could operate from wholeness instead of extraction?",
+        subtext: "We support leaders and teams in creating work cultures that honor both human flourishing and practical effectiveness through proven methodologies."
+    }
+];
+
+function changeEntry(index) {
+    document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+    
+    document.getElementById('hero-headline').textContent = entryPoints[index].headline;
+    document.getElementById('hero-subtext').textContent = entryPoints[index].subtext;
+}
+
+// Auto-cycle
+let currentEntry = 1;
+setInterval(() => {
+    currentEntry = (currentEntry + 1) % entryPoints.length;
+    changeEntry(currentEntry);
+}, 8000);
+</script>
+
+<style>
+.entry-selector {
+    margin-bottom: 40px;
+}
+
+.entry-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: #16a34a;
+}
+
+.dot:hover {
+    background: #9ca3af;
+}
+
+.entry-hint {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .hero-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+</style>

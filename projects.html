@@ -1,0 +1,216 @@
+---
+layout: default
+title: Projects
+description: Our learning ecosystem, active spaces, and organizational support
+custom_js: >
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const layerTabs = document.querySelectorAll('.layer-tab');
+        const layerContents = document.querySelectorAll('.layer-content');
+        
+        layerTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetLayer = this.getAttribute('data-layer');
+                
+                layerTabs.forEach(t => t.classList.remove('active'));
+                layerContents.forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                const targetContent = document.getElementById(targetLayer + '-content');
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+    });
+    </script>
+---
+
+<!-- Hero Section -->
+<section class="hero" style="padding: 120px 20px 60px; background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%); text-align: center;">
+    <div class="hero-container">
+        <h1>Our Learning Ecosystem</h1>
+        <p>Three interconnected layers where individual learning translates into collective impact</p>
+        
+        <!-- Interactive Layer Selector -->
+        <div class="layer-selector" style="display: flex; justify-content: center; gap: 16px; margin: 40px 0; flex-wrap: wrap;">
+            <div class="layer-tab active" data-layer="soil" style="padding: 12px 24px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; transition: all 0.3s; font-weight: 500; user-select: none;">Soil/Commons</div>
+            <div class="layer-tab" data-layer="knots" style="padding: 12px 24px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; transition: all 0.3s; font-weight: 500; user-select: none;">Knots</div>
+            <div class="layer-tab" data-layer="social-web" style="padding: 12px 24px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; transition: all 0.3s; font-weight: 500; user-select: none;">Social Web</div>
+        </div>
+        
+        <div class="layer-content active" id="soil-content" style="background: white; border-radius: 12px; padding: 32px; margin-top: 24px; border: 1px solid #e5e7eb;">
+            <h3 style="font-size: 1.5rem; color: #1f2937; margin-bottom: 16px;">🌱 Soil/Commons Layer</h3>
+            <p style="color: #4b5563;">Free resources, community calls, and open-source wisdom that feeds everything else. Like rich forest soil, this layer provides nutrients for all our learning.</p>
+        </div>
+        
+        <div class="layer-content" id="knots-content" style="display: none; background: white; border-radius: 12px; padding: 32px; margin-top: 24px; border: 1px solid #e5e7eb;">
+            <h3 style="font-size: 1.5rem; color: #1f2937; margin-bottom: 16px;">🪢 Knots Layer</h3>
+            <p style="color: #4b5563;">Monthly dojos and learning guilds where people develop specific skills while tending relationships. As Panikkar said, "A person is a knot in a net of relationships."</p>
+        </div>
+        
+        <div class="layer-content" id="social-web-content" style="display: none; background: white; border-radius: 12px; padding: 32px; margin-top: 24px; border: 1px solid #e5e7eb;">
+            <h3 style="font-size: 1.5rem; color: #1f2937; margin-bottom: 16px;">🕸️ Social Web Layer</h3>
+            <p style="color: #4b5563;">Deep dive labs and organizational support where individual learning translates into collective action and systems transformation.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Current Focus ATEM -->
+<section class="current-focus" style="padding: 80px 20px; background: white;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 48px;">
+            <h2 style="font-size: 2.5rem; color: #1f2937; margin-bottom: 16px;">Current Focus</h2>
+            <p style="color: #6b7280; font-size: 1.125rem;">Our signature 6-month exploration bringing diverse stakeholders together</p>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 16px; padding: 40px; border-left: 6px solid #9333ea;">
+            <h3 style="font-size: 2rem; color: #7c3aed; margin-bottom: 16px;">ATEM: Alternatives to Extractive Models</h3>
+            <h4 style="font-size: 1.25rem; color: #6b21a8; margin-bottom: 24px; font-weight: 500;">Reimagining Philanthropy Lab</h4>
+            <p style="color: #6b21a8; margin-bottom: 32px; font-size: 1.125rem;">
+                Bringing together funders, recipients, and intermediaries to explore gift economy approaches beyond traditional trust-based, impact, or effective altruism models.
+            </p>
+            
+            <div style="text-align: center; background: white; border: 2px solid #7c3aed; border-radius: 12px; padding: 24px; margin-top: 32px;">
+                <h4 style="color: #7c3aed; margin-bottom: 12px; font-size: 1.25rem;">Ready to explore alternatives to extractive philanthropy?</h4>
+                <p style="color: #6b21a8; margin-bottom: 20px;">Applications open for the next cohort starting in 2025</p>
+                <a href="mailto:{{ site.email }}?subject=ATEM%20Lab%20Application" class="btn-primary">Apply for ATEM Lab</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Learning Spaces -->
+<section class="learning-spaces" style="padding: 80px 20px; background: #f9fafb;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 48px;">
+            <h2 style="font-size: 2.5rem; color: #1f2937; margin-bottom: 16px;">Active Learning Spaces</h2>
+            <p style="color: #6b7280; font-size: 1.125rem;">Monthly practice communities using gift economy principles</p>
+        </div>
+        
+        <div class="card-grid">
+            <div class="card">
+                <div style="width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; background: #dcfce7; color: #16a34a;">💬</div>
+                <h3 style="font-size: 1.25rem; color: #1f2937; margin-bottom: 8px;">CommDojo</h3>
+                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 12px;">Authentic Communication Practice</p>
+                <p style="color: #4b5563; margin-bottom: 16px; font-size: 0.875rem;">Monthly practice using T-group and Bohm dialogue methods. Learn to speak and listen from deeper places.</p>
+                <a href="https://calendar.google.com" class="btn-secondary" style="font-size: 0.875rem; padding: 8px 16px;">Join Next Session</a>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; background: #fef3c7; color: #d97706;">⚖️</div>
+                <h3 style="font-size: 1.25rem; color: #1f2937; margin-bottom: 8px;">Conflict Kinship Dojo</h3>
+                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 12px;">Restorative Justice & Council</p>
+                <p style="color: #4b5563; margin-bottom: 16px; font-size: 0.875rem;">Monthly gatherings exploring conflict as creative force using restorative justice circles.</p>
+                <a href="https://calendar.google.com" class="btn-secondary" style="font-size: 0.875rem; padding: 8px 16px;">Join Next Session</a>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; background: #e0e7ff; color: #6366f1;">🧘</div>
+                <h3 style="font-size: 1.25rem; color: #1f2937; margin-bottom: 8px;">Soul Space</h3>
+                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 12px;">Embodied Fishbowl Practice</p>
+                <p style="color: #4b5563; margin-bottom: 16px; font-size: 0.875rem;">Exploring what emerges when we show up fully present to ourselves and each other.</p>
+                <a href="https://calendar.google.com" class="btn-secondary" style="font-size: 0.875rem; padding: 8px 16px;">Join Next Session</a>
+            </div>
+            
+            <div class="card">
+                <div style="width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; background: #fce7f3; color: #ec4899;">🎓</div>
+                <h3 style="font-size: 1.25rem; color: #1f2937; margin-bottom: 8px;">Learning Guilds</h3>
+                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 12px;">Intensive Skill Development</p>
+                <p style="color: #4b5563; margin-bottom: 16px; font-size: 0.875rem;">8-12 week programs with mentorship and peer coaching.</p>
+                <a href="mailto:{{ site.email }}?subject=Guild%20Application" class="btn-secondary" style="font-size: 0.875rem; padding: 8px 16px;">Apply for Guild</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="services" style="padding: 80px 20px; background: white;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 48px;">
+            <h2 style="font-size: 2.5rem; color: #1f2937; margin-bottom: 16px;">Professional Services</h2>
+            <p style="color: #6b7280; font-size: 1.125rem;">Individual and organizational support through our team and cooperative partners</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+            <div style="background: #f8fafc; border-radius: 12px; padding: 32px;">
+                <h3 style="color: #1f2937; margin-bottom: 20px; font-size: 1.5rem;">Individual Support</h3>
+                
+                <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 16px;">
+                    <h4 style="color: #1f2937; margin-bottom: 6px;">Journey Coaching</h4>
+                    <p style="color: #4b5563; font-size: 0.875rem;">Executive coaching that honors both practical results and deeper meaning-making.</p>
+                </div>
+                
+                <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 16px;">
+                    <h4 style="color: #1f2937; margin-bottom: 6px;">Skill Development</h4>
+                    <p style="color: #4b5563; font-size: 0.875rem;">One-on-one mentoring in facilitation and conflict navigation.</p>
+                </div>
+                
+                <a href="mailto:{{ site.email }}?subject=Individual%20Support" style="background: #16a34a; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 20px; width: 100%; text-align: center;">Schedule Discovery Call</a>
+            </div>
+            
+            <div style="background: #f8fafc; border-radius: 12px; padding: 32px;">
+                <h3 style="color: #1f2937; margin-bottom: 20px; font-size: 1.5rem;">Organizational Support</h3>
+                
+                <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 16px;">
+                    <h4 style="color: #1f2937; margin-bottom: 6px;">Work Tech/Power Design</h4>
+                    <p style="color: #4b5563; font-size: 0.875rem;">Human-AI relations using adaptive governance and power analysis.</p>
+                </div>
+                
+                <div style="border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 16px;">
+                    <h4 style="color: #1f2937; margin-bottom: 6px;">Transformation Consulting</h4>
+                    <p style="color: #4b5563; font-size: 0.875rem;">Art of Hosting, Open Space facilitation, and emergence-based change processes.</p>
+                </div>
+                
+                <a href="mailto:{{ site.email }}?subject=Organizational%20Support" style="background: #16a34a; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 20px; width: 100%; text-align: center;">Request Proposal</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <p>© 2024 Present of Work. Building commons for collective learning.</p>
+        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div>
+</footer>
+
+<style>
+.layer-tab.active {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    color: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+}
+
+.layer-tab:hover {
+    border-color: #16a34a;
+    transform: translateY(-1px);
+}
+
+.layer-content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .layer-selector {
+        gap: 8px;
+    }
+    
+    .layer-tab {
+        padding: 8px 16px;
+        font-size: 0.875rem;
+    }
+    
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+</style>

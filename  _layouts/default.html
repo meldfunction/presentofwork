@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+    {% if page.additional_css %}
+        {{ page.additional_css }}
+    {% endif %}
+</head>
+<body>
+    {% include header.html %}
+    
+    {{ content }}
+    
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.getElementById('navLinks');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            if (navLinks && navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                e.target !== mobileBtn) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+    
+    {% if page.custom_js %}
+        {{ page.custom_js }}
+    {% endif %}
+</body>
+</html>

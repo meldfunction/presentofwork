@@ -1,0 +1,19 @@
+<nav class="nav">
+    <div class="nav-container">
+        <a href="{{ site.baseurl }}/index.html" class="logo">presentofwork.org</a>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            ☰
+        </button>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="{{ site.baseurl }}/index.html" {% if page.url contains 'index.html' %}class="active"{% endif %}>Home</a>
+            <a href="{{ site.baseurl }}/about.html" {% if page.url contains 'about.html' %}class="active"{% endif %}>About</a>
+            <a href="{{ site.baseurl }}/open-letters.html" {% if page.url contains 'open-letters.html' %}class="active"{% endif %}>Open Letters</a>
+            <a href="{{ site.baseurl }}/how-we-work.html" {% if page.url contains 'how-we-work.html' %}class="active"{% endif %}>How We Work</a>
+            <a href="{{ site.baseurl }}/projects.html" {% if page.url contains 'projects.html' %}class="active"{% endif %}>Projects</a>
+            <a href="{{ site.baseurl }}/guild.html" {% if page.url contains 'guild.html' %}class="active"{% endif %}>Guild</a>
+            <a href="mailto:{{ site.email }}" class="cta-btn">Contact Us</a>
+        </div>
+    </div>
+</nav>

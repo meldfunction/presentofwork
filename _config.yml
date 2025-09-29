@@ -1,0 +1,31 @@
+# Site settings
+title: The Present of Work
+description: A learning network exploring how work can serve life instead of drain it
+email: contact@presentofwork.org
+baseurl: "/TPOW" # the subpath of your site
+url: "https://bk-spirit.github.io" # the base hostname & protocol
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - deployment_guide.txt
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
