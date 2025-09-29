@@ -5,109 +5,55 @@ title: Projects
 description: Our learning ecosystem, active spaces, and organizational support
 custom_js: >
 <script>
-(function() {
-  // Wait until DOM is ready
-  function init() {
-    const layerTabs = Array.from(document.querySelectorAll('.layer-tab'));
-    const layerContents = Array.from(document.querySelectorAll('.layer-content'));
+(function(){
+  function initTabs() {
+    const tabs = Array.from(document.querySelectorAll('.layer-tab'));
+    const panels = Array.from(document.querySelectorAll('.layer-content'));
+    if (!tabs.length || !panels.length) return;
 
-    if (!layerTabs.length || !layerContents.length) return;
+    // ensure single active tab/panel
+    let activeTab = tabs.find(t => t.classList.contains('active')) || tabs[0];
+    tabs.forEach(t => { t.setAttribute('role','tab'); t.setAttribute('aria-selected','false'); });
+    panels.forEach(p => { p.setAttribute('role','tabpanel'); });
 
-    // Ensure tabs are actual buttons for accessibility (non-destructive fallback)
-    layerTabs.forEach(t => {
-      if (t.tagName.toLowerCase() !== 'button') {
-        t.setAttribute('role', 'tab');
-        t.setAttribute('tabindex', '0');
+    tabs.forEach(t => t.classList.remove('active'));
+    if (activeTab) { activeTab.classList.add('active'); activeTab.setAttribute('aria-selected','true'); }
+
+    // initial hide/show
+    panels.forEach(p => {
+      const id = p.id || '';
+      const layer = id.replace('-content','');
+      if (activeTab && activeTab.getAttribute('data-layer') === layer) {
+        p.hidden = false; p.setAttribute('aria-hidden','false');
       } else {
-        t.setAttribute('role', 'tab');
+        p.hidden = true; p.setAttribute('aria-hidden','true');
       }
     });
 
-    // Initial state: hide all panels except the one with .active
-    layerContents.forEach(c => {
-      if (c.classList.contains('active')) {
-        c.hidden = false;
-        c.setAttribute('aria-hidden', 'false');
-      } else {
-        c.hidden = true;
-        c.setAttribute('aria-hidden', 'true');
-      }
-    });
+    function activate(tab) {
+      const target = tab.getAttribute('data-layer');
+      if (!target) return;
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      panels.forEach(p => { p.classList.remove('active'); p.hidden = true; p.setAttribute('aria-hidden','true'); });
 
-    // Ensure exactly one tab is marked active/selected; if none, pick the first
-    const initiallyActiveTab = layerTabs.find(t => t.classList.contains('active')) || layerTabs[0];
-    layerTabs.forEach(t => t.classList.remove('active'));
-    layerTabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-    if (initiallyActiveTab) {
-      initiallyActiveTab.classList.add('active');
-      initiallyActiveTab.setAttribute('aria-selected', 'true');
+      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      const panel = document.getElementById(target + '-content');
+      if (panel) { panel.classList.add('active'); panel.hidden = false; panel.setAttribute('aria-hidden','false'); }
     }
 
-    // Click handler
-    function activateTab(tab) {
-      const targetLayer = tab.getAttribute('data-layer');
-      if (!targetLayer) return;
-
-      layerTabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-
-      layerContents.forEach(c => {
-        c.classList.remove('active');
-        c.hidden = true;
-        c.setAttribute('aria-hidden', 'true');
-      });
-
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-
-      const targetContent = document.getElementById(targetLayer + '-content');
-      if (targetContent) {
-        targetContent.classList.add('active');
-        targetContent.hidden = false;
-        targetContent.setAttribute('aria-hidden', 'false');
-        // Move focus into the panel for screen reader users (optional)
-        // targetContent.focus();
-      }
-    }
-
-    // Attach event listeners
-    layerTabs.forEach(tab => {
-      tab.addEventListener('click', function(e) {
-        e.preventDefault();
-        activateTab(this);
-      });
-
-      tab.addEventListener('keydown', function(e) {
-        // Enter or Space activates
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          activateTab(this);
-          return;
-        }
-        // Arrow navigation between tabs (left/right)
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-          e.preventDefault();
-          const idx = layerTabs.indexOf(this);
-          const next = layerTabs[(idx + 1) % layerTabs.length];
-          next.focus();
-        }
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-          e.preventDefault();
-          const idx = layerTabs.indexOf(this);
-          const prev = layerTabs[(idx - 1 + layerTabs.length) % layerTabs.length];
-          prev.focus();
-        }
+    tabs.forEach(t => {
+      t.addEventListener('click', function(e){ e.preventDefault(); activate(this); });
+      t.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(this); }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); const i = tabs.indexOf(this); tabs[(i+1)%tabs.length].focus(); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); const i = tabs.indexOf(this); tabs[(i-1+tabs.length)%tabs.length].focus(); }
       });
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  // Jekyll might inline this via front matter; run at DOMContentLoaded or immediately if already ready
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTabs);
+  else initTabs();
 })();
 </script>
 
