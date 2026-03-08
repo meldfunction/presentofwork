@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Present of Work">
+<meta property="og:title" content="Podcast — The Present of Work">
+  <link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
+<meta property="og:description" content="Honest conversations about work — interviews, field dispatches, and topic deep dives. Produced by Field Notes.">
+<meta property="og:url" content="https://presentofwork.org/podcast.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Podcast — The Present of Work">
+<meta name="twitter:description" content="Honest conversations about work — interviews, field dispatches, and topic deep dives. Produced by Field Notes.">
+<title>Podcast — The Present of Work</title>
+<meta name="description" content="Conversations about work in its full range. Interviews, honest talk, field dispatches. Produced by Field Notes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--white:#FFFFFF;--off:#F6F2EB;--ink:#0D0D0D;--ink-mid:#444;--ink-lt:#888;--red:#C8341C;--red-dk:#A02912;--green:#1C4C24;--green-lt:#2D6E38;--mono:'Roboto Mono',monospace;--display:'Bebas Neue',sans-serif;--body:'Libre Baskerville',Georgia,serif;--nav-h:52px;--bg:var(--white);--surface:var(--off);--text:var(--ink);--text-mid:var(--ink-mid);--text-lt:var(--ink-lt);--border:#E0E0E0}
+[data-theme="dark"]{--bg:#0D0D0D;--surface:#141414;--text:#F0EDE8;--text-mid:#B0A898;--text-lt:#555;--border:#222;--off:#141414;--white:#0D0D0D;--ink:#F0EDE8;--ink-mid:#B0A898;--ink-lt:#555}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;transition:background .25s,color .25s}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;width:100%;height:var(--nav-h);background:var(--ink);z-index:1000;display:flex;align-items:stretch}
+[data-theme="dark"] nav{background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{font-family:var(--display);font-size:1.15rem;letter-spacing:.1em;color:#fff;padding:0 1.5rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.12);white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;align-items:stretch;list-style:none;flex:1}
+.nav-links li{display:flex;align-items:stretch}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:0 1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.08);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.06)}
+.nav-right{display:flex;align-items:center;margin-left:auto;padding:0 1rem;border-left:1px solid rgba(255,255,255,.12)}
+.ctoggle{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .55rem;cursor:pointer;font-size:.75rem;line-height:1;transition:all .15s;border-radius:2px}
+.ctoggle:hover{color:#fff;border-color:#fff}
+.hbtn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .6rem;cursor:pointer;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;transition:all .15s;display:none}
+.hbtn:hover{color:#fff;border-color:#fff}
+.mnav{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--ink);z-index:999;flex-direction:column;border-top:1px solid rgba(255,255,255,.1)}
+.mnav.open{display:flex}
+.mnav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s}
+.mnav a:hover{color:#fff}
+
+/* HEADER — dark with waveform texture */
+.ph{padding-top:var(--nav-h);background:var(--green);color:#fff;position:relative;overflow:hidden;min-height:55vh;display:flex;flex-direction:column;justify-content:flex-end}
+.ph::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:rgba(255,255,255,.3)}
+.ph-wave{position:absolute;bottom:0;left:8px;right:0;height:80px;opacity:.07}
+.ph-inner{padding:4rem 3rem 3.5rem 5rem;position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%}
+.ph-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem}
+.ph-h{font-family:var(--display);font-size:clamp(4rem,10vw,8rem);line-height:.88;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:1rem}
+.ph-sub{font-family:var(--body);font-size:clamp(.95rem,1.7vw,1.1rem);color:rgba(255,255,255,.55);line-height:1.8;max-width:560px;margin-bottom:1.5rem}
+.ph-links{display:flex;gap:.5rem;flex-wrap:wrap}
+.ph-link{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);transition:all .15s}
+.ph-link:hover{color:#fff;border-color:#fff}
+.ph-link.yt{border-color:rgba(255,80,60,.4);color:rgba(255,120,100,.8)}
+.ph-link.yt:hover{border-color:rgba(255,80,60,.9);color:rgba(255,100,80,1)}
+.ph-credit{font-family:var(--mono);font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:1.5rem}
+
+/* FORMATS */
+.sec{padding:5rem 3rem 5rem 5rem;max-width:1200px;margin:0 auto}
+.sec-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.sec-label::before{content:attr(data-n);border:1px solid currentColor;padding:.1rem .3rem;font-size:.48rem}
+h2.sec-h{font-family:var(--display);font-size:clamp(2.5rem,5vw,5rem);line-height:.9;letter-spacing:.03em;text-transform:uppercase;color:var(--text);margin-bottom:2rem}
+
+.fmt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--border);margin-top:1rem}
+.fmt{padding:2rem 1.5rem;border-right:2px solid var(--border)}
+.fmt:last-child{border-right:none}
+.fmt-icon{font-size:2rem;line-height:1;margin-bottom:.75rem}
+.fmt-name{font-family:var(--display);font-size:1.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text);margin-bottom:.35rem}
+.fmt-body{font-family:var(--body);font-size:.85rem;color:var(--text-mid);line-height:1.65}
+.fmt-eg{font-family:var(--mono);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-lt);margin-top:.6rem;font-style:italic}
+
+/* EPISODES PLACEHOLDER */
+.ep-placeholder{border:2px dashed var(--border);padding:3rem 2rem;text-align:center;margin-top:2rem}
+.ep-ph-h{font-family:var(--display);font-size:2.5rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.5rem}
+.ep-ph-b{font-family:var(--body);font-size:.9rem;color:var(--text-lt);line-height:1.7;max-width:400px;margin:0 auto}
+
+/* PITCH */
+.pitch{background:var(--green);color:#fff;padding:4rem 3rem 4rem 5rem;margin-top:0}
+.pitch-inner{max-width:1200px;margin:0 auto}
+.pitch h2{font-family:var(--display);font-size:clamp(2.5rem,5vw,5rem);line-height:.9;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:1.5rem}
+.pitch-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.pitch-body{font-family:var(--body);font-size:.95rem;color:rgba(255,255,255,.7);line-height:1.8}
+.pitch-body strong{color:#fff}
+.pitch-form{display:flex;flex-direction:column;gap:1rem}
+.pitch-type{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.25rem}
+.pitch-types{display:flex;flex-direction:column;gap:.5rem}
+.pt{padding:.6rem .9rem;border:1px solid rgba(255,255,255,.15);font-family:var(--body);font-size:.85rem;color:rgba(255,255,255,.6);cursor:pointer;transition:all .15s}
+.pt:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.pt.sel{border-color:#fff;color:#fff;background:rgba(255,255,255,.08)}
+.pitch-cta{margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap}
+
+.btn{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:.75rem 1.75rem;cursor:pointer;display:inline-block;transition:all .15s;text-decoration:none;border:2px solid transparent}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-red:hover{background:var(--red-dk);border-color:var(--red-dk)}
+.btn-outline-w{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-outline-w:hover{background:#fff;color:var(--ink)}
+
+footer{background:#0D0D0D;border-top:1px solid rgba(255,255,255,.1);padding:1.25rem 3rem 1.25rem 5rem;font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fi{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{color:rgba(255,255,255,.3);transition:color .15s}
+footer a:hover{color:rgba(255,255,255,.8)}
+.fl{display:flex;gap:1.5rem;flex-wrap:wrap}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}
+@media(max-width:1024px){.sec{padding:4rem 2rem 4rem 3rem}.ph-inner{padding:3rem 2rem 3rem 3rem}.pitch{padding:3rem 2rem 3rem 3rem}.fmt-grid{grid-template-columns:1fr 1fr}.pitch-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none}.hbtn{display:block}.fmt-grid{grid-template-columns:1fr}.fmt{border-right:none;border-bottom:2px solid var(--border)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Present of Work</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/publication.html">Publication</a></li>
+    <li><a href="/podcast.html" class="active">Podcast</a></li>
+    <li><a href="/concepts.html">Concepts</a></li>
+    <li><a href="/map.html">Map</a></li>
+    <li><a href="/ecosystem.html">The Web</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="ctoggle" id="cToggle">☀</button>
+    <button class="hbtn" id="hBtn">Menu</button>
+  </div>
+</nav>
+<div class="mnav" id="mNav">
+  <a href="/about.html">About</a><a href="/publication.html">Publication</a>
+  <a href="/podcast.html">Podcast</a><a href="/concepts.html">Concepts</a>
+  <a href="/map.html">Map</a><a href="/ecosystem.html">The Web</a>
+</div>
+
+<header class="ph">
+  <svg class="ph-wave" viewBox="0 0 1400 80" preserveAspectRatio="none">
+    <path d="M0,40 C100,10 200,70 300,40 C400,10 500,70 600,40 C700,10 800,70 900,40 C1000,10 1100,70 1200,40 C1300,10 1400,50 1400,40 L1400,80 L0,80 Z" fill="white"/>
+  </svg>
+  <div class="ph-inner">
+    <div class="ph-label">Podcast · Video · Conversation</div>
+    <h1 class="ph-h">Honest<br>conversations<br>about work.</h1>
+    <p class="ph-sub">Interviews with thinkers and practitioners. Dispatches from people navigating transitions. Deep dives into the ideas that explain what's actually happening.</p>
+    <div class="ph-links">
+      <a href="#" class="ph-link yt">▶ YouTube</a>
+      <a href="#" class="ph-link">Spotify</a>
+      <a href="#" class="ph-link">Apple Podcasts</a>
+      <a href="#" class="ph-link">RSS</a>
+    </div>
+    <div class="ph-credit">Produced by Field Notes · A Present of Work production</div>
+  </div>
+</header>
+
+<!-- WHAT WE MAKE -->
+<section class="sec">
+  <div class="sec-label rv" data-n="01">What we make</div>
+  <h2 class="sec-h rv">Three kinds<br>of conversation.</h2>
+  <div class="fmt-grid rv d1">
+    <div class="fmt">
+      <div class="fmt-icon">◎</div>
+      <div class="fmt-name">Thinker interviews</div>
+      <div class="fmt-body">Long-form conversations with researchers, writers, and practitioners. Ideas that take time to unfold. The kind of interview that assumes you can handle complexity.</div>
+      <div class="fmt-eg">eg. Nora Bateson on Warm Data · Kathi Weeks on refusal · a co-op founder on what governance actually costs</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-icon">◐</div>
+      <div class="fmt-name">Field dispatches</div>
+      <div class="fmt-body">Personal accounts of navigating work in transition. Layoffs, pivots, burnout, reinvention. Not advice. Just honest testimony from people who've been through it.</div>
+      <div class="fmt-eg">eg. What it actually felt like to be laid off at 47 · Building a worker co-op from scratch · Leaving consulting to grow food</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-icon">∿</div>
+      <div class="fmt-name">Topic deep dives</div>
+      <div class="fmt-body">A host-driven episode examining one idea in depth — like the Team Human format, with a car-guy's pleasure in taking things apart to see how they work.</div>
+      <div class="fmt-eg">eg. The full story of how tipping started · What Maslow actually stole from the Blackfoot · Why bullshit jobs exist</div>
+    </div>
+  </div>
+</section>
+
+<!-- EPISODES PLACEHOLDER -->
+<section style="padding:0 3rem 5rem 5rem;max-width:1200px;margin:0 auto">
+  <div class="ep-placeholder rv">
+    <div class="ep-ph-h">Episodes coming soon</div>
+    <p class="ep-ph-b">Field Notes is currently in production. Subscribe to be notified when the first episodes drop, or pitch yourself as a guest below.</p>
+    <div style="margin-top:1.5rem;display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn btn-red">Subscribe on YouTube →</a>
+      <a href="#pitch" class="btn" style="background:transparent;color:var(--text);border:2px solid var(--border)">Pitch as a guest ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- PITCH SECTION -->
+<section class="pitch" id="pitch">
+  <div class="pitch-inner">
+    <h2 class="rv">Want to be<br>on the show?</h2>
+    <div class="pitch-grid">
+      <div>
+        <div class="pitch-body rv d1">
+          <p>We're looking for people who've lived something interesting — not just people who've written about it. If you've navigated a significant work transition, built something unconventional, or have a body of research that belongs in this conversation, we want to hear from you.</p>
+          <p style="margin-top:1rem"><strong>We especially want:</strong> people with firsthand experience of cooperative structures, care workers, organizers, anyone who's been through a layoff and come out with a different frame, researchers doing work that doesn't fit standard disciplines, practitioners of indigenous or non-Western approaches to livelihood.</p>
+        </div>
+        <div class="pitch-cta rv d2">
+          <a href="mailto:hello@presentofwork.org" class="btn btn-outline-w">hello@presentofwork.org →</a>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="pitch-type">What kind of conversation?</div>
+        <div class="pitch-types">
+          <div class="pt sel">I've lived through something worth talking about</div>
+          <div class="pt">I have research that belongs here</div>
+          <div class="pt">I'm building something unconventional</div>
+          <div class="pt">I want to discuss a specific idea or argument</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <span>The Present of Work · presentofwork.org</span>
+    <div class="fl">
+      <a href="/about.html">About</a><a href="/publication.html">Publication</a>
+      <a href="/podcast.html" style="color:rgba(255,255,255,.8)">Podcast</a>
+      <a href="/concepts.html">Concepts</a><a href="/map.html">Map</a>
+      <a href="/ecosystem.html">The Web</a>
+    </div>
+    <span><a href="/donate.html">Made in the commons</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('cToggle').addEventListener('click',function(){
+  const d=document.documentElement;const dark=d.getAttribute('data-theme')==='dark';
+  d.setAttribute('data-theme',dark?'light':'dark');this.textContent=dark?'☀':'☾';
+});
+document.getElementById('hBtn').addEventListener('click',()=>document.getElementById('mNav').classList.toggle('open'));
+document.querySelectorAll('.pt').forEach(pt=>{
+  pt.addEventListener('click',()=>{
+    document.querySelectorAll('.pt').forEach(p=>p.classList.remove('sel'));
+    pt.classList.add('sel');
+  });
+});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

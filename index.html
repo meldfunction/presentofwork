@@ -1,186 +1,1045 @@
----
-layout: default
-title: Home
-description: A learning network exploring how work can serve life instead of drain it
----
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Present of Work">
+<meta property="og:title" content="The Present of Work">
+  <link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
+<meta property="og:description" content="A publication, podcast, map, and gathering place for all forms of work. Not about jobs. About being alive.">
+<meta property="og:url" content="https://presentofwork.org/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Present of Work">
+<meta name="twitter:description" content="A publication, podcast, map, and gathering place for all forms of work. Not about jobs. About being alive.">
+<title>The Present of Work</title>
+<meta name="description" content="A gathering of ideas, communities, and practices for all forms of work. Not about jobs. About being alive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ─────────────────────────────────────────────────── */
+:root{
+  --white:   #FFFFFF;
+  --off:     #F6F2EB;
+  --ink:     #0D0D0D;
+  --ink-mid: #444;
+  --ink-lt:  #888;
+  --red:     #C8341C;
+  --red-dk:  #A02912;
+  --green:   #1C4C24;
+  --green-lt:#2D6E38;
+  --mono:    'Roboto Mono',monospace;
+  --display: 'Bebas Neue',sans-serif;
+  --body:    'Libre Baskerville',Georgia,serif;
+  --nav-h:   52px;
+  --bg:      var(--white);
+  --surface: var(--off);
+  --text:    var(--ink);
+  --text-mid:var(--ink-mid);
+  --text-lt: var(--ink-lt);
+  --border:  #E0E0E0;
+}
+[data-theme="dark"]{
+  --bg:      #0D0D0D;
+  --surface: #171717;
+  --text:    #F0EDE8;
+  --text-mid:#B0A898;
+  --text-lt: #666;
+  --border:  #2A2A2A;
+  --off:     #171717;
+  --white:   #0D0D0D;
+  --ink:     #F0EDE8;
+  --ink-mid: #B0A898;
+  --ink-lt:  #666;
+}
 
-<!-- Hero Section -->
-<section id="home" class="hero" style="background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%);">
-    <div class="hero-container">
-        <!-- Entry Point Selector -->
-        <div class="entry-selector">
-            <div class="entry-dots">
-                <div class="dot" onclick="changeEntry(0)"></div>
-                <div class="dot active" onclick="changeEntry(1)"></div>
-                <div class="dot" onclick="changeEntry(2)"></div>
-                <div class="dot" onclick="changeEntry(3)"></div>
-                <div class="dot" onclick="changeEntry(4)"></div>
-            </div>
-            <p class="entry-hint">Different starting points for different people</p>
-        </div>
+/* ── RESET ──────────────────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.7;
+  transition:background .25s,color .25s;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 
-        <h1 id="hero-headline">What if giving and receiving could deepen relationships instead of ending them?</h1>
-        <p id="hero-subtext">We're practicing gift economy principles where work becomes relational tending - both offering authentic gifts and receiving what we need to flourish.</p>
-        
-        <div class="hero-buttons">
-            <a href="#join" class="btn-primary">Find Your People</a>
-            <a href="#experiments" class="btn-secondary">See What's Possible</a>
-        </div>
+/* ── NAV ────────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;width:100%;height:var(--nav-h);
+  background:var(--ink);
+  z-index:1000;
+  display:flex;align-items:stretch;
+}
+[data-theme="dark"] nav{background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{
+  font-family:var(--display);
+  font-size:1.15rem;letter-spacing:.1em;color:var(--white);
+  padding:0 1.5rem;display:flex;align-items:center;
+  border-right:1px solid rgba(255,255,255,.12);
+  white-space:nowrap;flex-shrink:0;
+}
+[data-theme="dark"] .nav-logo{color:#F0EDE8}
+.nav-links{
+  display:flex;align-items:stretch;list-style:none;flex:1;
+}
+.nav-links li{display:flex;align-items:stretch}
+.nav-links a{
+  font-family:var(--mono);font-size:.58rem;font-weight:400;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);padding:0 1rem;
+  display:flex;align-items:center;
+  border-right:1px solid rgba(255,255,255,.08);
+  transition:color .15s,background .15s;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-right{
+  display:flex;align-items:center;
+  margin-left:auto;padding:0 1rem;gap:.75rem;
+  border-left:1px solid rgba(255,255,255,.12);
+}
+/* contrast toggle */
+.ctoggle{
+  background:none;border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.5);padding:.3rem .55rem;
+  cursor:pointer;font-size:.75rem;line-height:1;
+  transition:all .15s;border-radius:2px;
+}
+.ctoggle:hover{color:#fff;border-color:#fff}
+.hbtn{
+  background:none;border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.5);padding:.3rem .6rem;
+  cursor:pointer;font-family:var(--mono);font-size:.55rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:all .15s;display:none;
+}
+.hbtn:hover{color:#fff;border-color:#fff}
+.mnav{
+  display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+  background:var(--ink);z-index:999;flex-direction:column;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.mnav.open{display:flex}
+.mnav a{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);padding:.9rem 1.5rem;
+  border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s;
+}
+.mnav a:hover{color:#fff}
+
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;
+  background:var(--bg);
+  padding-top:var(--nav-h);
+  display:grid;
+  grid-template-rows:1fr auto;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:8px;background:var(--red);
+}
+.hero-main{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 3rem 2rem 5rem;
+}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.6rem;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.hero-eyebrow::after{content:'';flex:1;max-width:40px;height:1px;background:var(--red)}
+h1.hero-h1{
+  font-family:var(--display);
+  font-size:clamp(5.5rem,17vw,18rem);
+  line-height:.88;letter-spacing:.02em;
+  color:var(--text);
+  text-transform:uppercase;
+}
+h1.hero-h1 span{display:block;color:var(--red)}
+h1.hero-h1 em{
+  display:block;font-style:normal;
+  color:var(--green);
+  font-size:.48em;line-height:1;margin-top:.06em;
+}
+[data-theme="dark"] h1.hero-h1 em{color:#4a9955}
+
+.hero-foot{
+  padding:0 3rem 4rem 5rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:end;
+  border-top:1px solid var(--border);
+  padding-top:2rem;
+  margin-left:8px;
+}
+.hero-tag{
+  font-family:var(--body);font-size:clamp(.95rem,1.7vw,1.15rem);
+  color:var(--text-mid);line-height:1.8;
+}
+.hero-tag strong{color:var(--text);font-style:italic}
+.hero-range{
+  font-family:var(--mono);font-size:.58rem;font-weight:400;
+  letter-spacing:.12em;color:var(--text-lt);
+  margin-top:.75rem;line-height:1.8;
+}
+.hero-range span{color:var(--text-mid)}
+.hero-ctas{display:flex;gap:.5rem;justify-content:flex-end;flex-wrap:wrap}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn{
+  font-family:var(--mono);font-size:.6rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;
+  padding:.75rem 1.75rem;cursor:pointer;
+  display:inline-block;transition:all .15s;
+  text-decoration:none;border:2px solid transparent;
+}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-red:hover{background:var(--red-dk);border-color:var(--red-dk)}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green)}
+.btn-green:hover{background:var(--green-lt);border-color:var(--green-lt)}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--text)}
+.btn-outline:hover{background:var(--text);color:var(--bg)}
+.btn-outline-w{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-outline-w:hover{background:#fff;color:var(--ink)}
+
+/* ── SECTION WRAPPERS ───────────────────────────────────────── */
+.sec{padding:5rem 5rem}
+.sec-w{padding:5rem 3rem 5rem 5rem;max-width:1440px;margin:0 auto}
+.sec.white{background:var(--bg)}
+.sec.off{background:var(--surface)}
+.sec.red{background:var(--red);color:#fff}
+.sec.green{background:var(--green);color:#fff}
+.sec.black{background:#0D0D0D;color:#fff}
+[data-theme="dark"] .sec.off{background:#111}
+
+.sec-label{
+  font-family:var(--mono);font-size:.55rem;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;
+}
+.white .sec-label,.off .sec-label{color:var(--text-lt)}
+.red .sec-label{color:rgba(255,255,255,.55)}
+.green .sec-label{color:rgba(255,255,255,.55)}
+.black .sec-label{color:rgba(255,255,255,.45)}
+.sec-label::before{
+  content:attr(data-n);font-family:var(--mono);font-size:.55rem;
+  font-weight:500;border:1px solid currentColor;
+  padding:.1rem .35rem;display:inline-block;
+}
+h2.sec-h{
+  font-family:var(--display);
+  font-size:clamp(2.8rem,6vw,6rem);
+  line-height:.9;letter-spacing:.03em;text-transform:uppercase;
+  margin-bottom:2.5rem;
+}
+.white h2.sec-h,.off h2.sec-h{color:var(--text)}
+.red h2.sec-h{color:#fff}
+.green h2.sec-h{color:#fff}
+.black h2.sec-h{color:#fff}
+
+/* ── §01 IDEA ───────────────────────────────────────────────── */
+.idea-grid{display:grid;grid-template-columns:3fr 2fr;gap:4rem;align-items:start}
+.idea-body p{
+  font-size:clamp(.95rem,1.6vw,1.05rem);
+  color:var(--text-mid);line-height:1.85;margin-bottom:1.2rem;
+}
+.idea-body p strong{color:var(--text)}
+.ni{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:2rem 0;
+  border:2px solid var(--text);}
+.ni-col{padding:1rem 1.25rem}
+.ni-col+.ni-col{border-left:2px solid var(--text)}
+.ni-label{
+  font-family:var(--mono);font-size:.5rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;margin-bottom:.6rem;
+}
+.ni-col:first-child .ni-label{color:var(--text-lt)}
+.ni-col.yes .ni-label{color:var(--red)}
+.ni-col.yes{background:rgba(200,52,28,.06)}
+.ni-body{font-size:.9rem;color:var(--text-mid);line-height:1.65}
+
+/* Pullquote */
+.pq{background:var(--red);padding:2.5rem 2rem;position:relative}
+.pq-mark{
+  font-family:var(--display);font-size:10rem;line-height:.7;
+  color:rgba(255,255,255,.12);
+  position:absolute;top:.5rem;left:1.5rem;
+  pointer-events:none;user-select:none;
+}
+.pq blockquote{
+  font-family:var(--body);font-style:italic;
+  font-size:clamp(1.1rem,1.9vw,1.45rem);
+  line-height:1.5;color:#fff;position:relative;z-index:1;
+}
+.pq cite{
+  display:block;margin-top:1rem;
+  font-family:var(--mono);font-size:.52rem;font-weight:400;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);font-style:normal;
+}
+
+/* ── §02 PUBLICATION ────────────────────────────────────────── */
+.series-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;border:2px solid var(--green);margin-top:1rem;
+}
+.s-card{
+  padding:2.5rem 2rem;border-right:2px solid var(--green);
+  display:flex;flex-direction:column;gap:.8rem;
+  text-decoration:none;color:inherit;
+  transition:background .15s;
+  background:var(--surface);
+}
+.s-card:last-child{border-right:none}
+.s-card:hover{background:var(--bg)}
+.s-num{font-family:var(--mono);font-size:.55rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase}
+.s1 .s-num{color:var(--red)}.s2 .s-num{color:var(--green)}.s3 .s-num{color:var(--text-lt)}
+.s-title{
+  font-family:var(--display);font-size:clamp(2rem,3.5vw,3rem);
+  line-height:.92;letter-spacing:.03em;text-transform:uppercase;color:var(--text);
+}
+.s-sub{
+  font-family:var(--mono);font-size:.5rem;font-weight:400;
+  letter-spacing:.1em;color:var(--text-lt);text-transform:uppercase;
+  margin-top:-.2rem;
+}
+.s-desc{font-family:var(--body);font-size:.88rem;color:var(--text-mid);line-height:1.7;flex:1}
+.s-q{
+  font-family:var(--body);font-style:italic;
+  font-size:.88rem;color:var(--text-mid);line-height:1.6;
+  flex:1;padding-top:.25rem;
+  border-top:1px solid var(--border);
+  margin-top:.25rem;padding-top:.75rem;
+}
+.s-link{
+  font-family:var(--mono);font-size:.55rem;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--red);margin-top:auto;transition:letter-spacing .15s;
+}
+.s-card:hover .s-link{letter-spacing:.22em}
+
+/* ── §03 THE WEB ────────────────────────────────────────────── */
+.web-intro{font-size:clamp(.95rem,1.6vw,1.05rem);color:rgba(255,255,255,.8);line-height:1.8;max-width:640px;margin-bottom:.5rem}
+.web-intro strong{color:#fff}
+.web-hint{font-family:var(--mono);font-size:.56rem;font-weight:400;letter-spacing:.12em;color:rgba(255,255,255,.4);margin-bottom:1.5rem}
+.leg{display:flex;flex-wrap:wrap;gap:.8rem 2rem;margin-bottom:1.5rem}
+.li{display:flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.54rem;font-weight:400;letter-spacing:.1em;color:rgba(255,255,255,.55)}
+.ld{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.ld.active{background:#fff}
+.ld.partner{background:rgba(255,255,255,.45)}
+.ld.soon{background:rgba(255,120,80,.8)}
+.ld.tbd{background:none;border:1.5px dashed rgba(255,255,255,.3)}
+.ld.add{background:none;border:1.5px solid rgba(255,200,80,.7)}
+.graph-outer{position:relative;width:100%;padding-bottom:56%;min-height:280px;margin-bottom:1.5rem}
+#wsv{position:absolute;inset:0;width:100%;height:100%;overflow:visible;cursor:default}
+.gnote{font-family:var(--body);font-size:.9rem;font-style:italic;color:rgba(255,255,255,.6)}
+.gnote a{color:rgba(255,200,80,.9);text-decoration:underline;text-underline-offset:3px}
+
+/* Modal */
+.moverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;padding:2rem}
+.moverlay.open{display:flex}
+.mbox{background:var(--bg);border:3px solid var(--text);max-width:400px;width:100%;padding:2rem;position:relative}
+.mclose{position:absolute;top:.75rem;right:.75rem;background:none;border:1px solid var(--border);font-family:var(--mono);font-size:.7rem;cursor:pointer;color:var(--text-lt);letter-spacing:.1em;padding:.15rem .4rem}
+.mclose:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+.mtype{font-family:var(--mono);font-size:.5rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.5rem}
+.mname{font-family:var(--display);font-size:2.2rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text);line-height:.9;margin-bottom:.8rem}
+.mstat{font-family:var(--mono);font-size:.54rem;font-weight:400;letter-spacing:.1em;color:var(--text-lt);margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
+.sd{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sd.active{background:var(--green)}.sd.partner{background:var(--green-lt)}
+.sd.soon{background:var(--red);opacity:.8}
+.sd.tbd{background:none;border:1px dashed var(--text-lt);width:8px;height:8px}
+.sd.add{background:none;border:1px solid goldenrod}
+.mdesc{font-family:var(--body);font-size:.92rem;color:var(--text-mid);line-height:1.7;margin-bottom:.85rem}
+.mlook{margin-top:.7rem;padding:.75rem 1rem;border-left:4px solid var(--green);font-family:var(--mono);font-size:.56rem;font-weight:400;letter-spacing:.05em;color:var(--text-mid);line-height:1.6}
+.mlinks{display:flex;flex-direction:column;gap:.35rem;margin-top:.5rem}
+.mlink{font-family:var(--mono);font-size:.58rem;font-weight:400;letter-spacing:.1em;color:var(--red);text-decoration:underline;text-underline-offset:3px;transition:color .15s}
+.mlink:hover{color:var(--text)}
+
+/* ── §04 ACTIVE PROJECTS ────────────────────────────────────── */
+.proj-group{margin-bottom:3rem}
+.pg-label{font-family:var(--mono);font-size:.55rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.75rem;display:flex;align-items:center;gap:.6rem}
+.pg-label::before{content:attr(data-cat);font-family:var(--mono);font-size:.5rem;font-weight:500;background:var(--text);color:var(--bg);padding:.1rem .4rem;letter-spacing:.1em}
+.p-list{display:flex;flex-direction:column;gap:0;border-top:2px solid var(--text)}
+.p-row{display:grid;grid-template-columns:1fr auto;align-items:start;border-bottom:1px solid var(--border);padding:1.5rem 0;gap:2rem;transition:background .15s}
+.p-row:hover{background:var(--surface)}
+.p-row-l{display:flex;flex-direction:column;gap:.4rem}
+.p-type{font-family:var(--mono);font-size:.5rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--text-lt)}
+.p-name{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:.04em;text-transform:uppercase;color:var(--text);line-height:.95}
+.p-desc{font-family:var(--body);font-size:.9rem;color:var(--text-mid);line-height:1.65;max-width:600px}
+.p-row-r{display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;flex-shrink:0;min-width:140px;padding-top:.25rem}
+.p-link{font-family:var(--mono);font-size:.56rem;font-weight:400;letter-spacing:.1em;color:var(--red);text-decoration:underline;text-underline-offset:3px;transition:color .15s;white-space:nowrap}
+.p-link:hover{color:var(--text)}
+.p-look{font-family:var(--mono);font-size:.5rem;font-weight:400;letter-spacing:.06em;color:var(--text-lt);line-height:1.5;text-align:right;font-style:italic;max-width:180px}
+
+/* Garden callout */
+.garden{border:3px solid var(--green);padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;margin-top:2rem}
+.garden h3{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,3rem);letter-spacing:.04em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+.garden p{font-family:var(--body);font-size:.92rem;color:var(--text-mid);line-height:1.6}
+
+/* ── §05 CTA ────────────────────────────────────────────────── */
+.cta-sec{background:#0D0D0D;color:#fff;padding:8rem 5rem;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.03) 39px,rgba(255,255,255,.03) 40px);pointer-events:none}
+.cta-inner{max-width:800px;margin:0 auto;position:relative;z-index:1}
+.cta-over{font-family:var(--mono);font-size:.58rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.5rem}
+.cta-h{font-family:var(--display);font-size:clamp(4rem,12vw,11rem);line-height:.88;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:2rem}
+.cta-h span{color:var(--red)}
+.cta-body{font-family:var(--body);font-size:clamp(.95rem,1.7vw,1.1rem);color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:3rem}
+.cta-body em{color:rgba(255,255,255,.9);font-style:italic}
+.cta-3{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem}
+.cta-garden{font-family:var(--mono);font-size:.56rem;font-weight:400;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-top:.75rem}
+.cta-garden a{color:rgba(200,180,80,.8);text-decoration:underline;text-underline-offset:3px}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer{background:#0D0D0D;border-top:1px solid rgba(255,255,255,.1);padding:1.25rem 3rem 1.25rem 5rem;font-family:var(--mono);font-size:.52rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fi{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{color:rgba(255,255,255,.3);transition:color .15s}
+footer a:hover{color:rgba(255,255,255,.8)}
+.fl{display:flex;gap:1.5rem;flex-wrap:wrap}
+
+/* ── SCROLL REVEAL ──────────────────────────────────────────── */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.32s}.d4{transition-delay:.45s}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:1024px){
+  .sec{padding:4rem 2rem 4rem 3rem}
+  .hero-main{padding:3rem 2rem 1.5rem 3rem}
+  .hero-foot{padding:1.5rem 2rem 3rem 3rem}
+  .cta-sec{padding:6rem 2rem}
+  footer{padding:1.25rem 2rem}
+  .series-grid{grid-template-columns:1fr}
+  .s-card{border-right:none;border-bottom:2px solid var(--green)}
+  .s-card:last-child{border-bottom:none}
+}
+@media(max-width:768px){
+  h1.hero-h1{font-size:clamp(4rem,18vw,8rem)}
+  .hero-foot{grid-template-columns:1fr}
+  .hero-ctas{justify-content:flex-start}
+  .idea-grid{grid-template-columns:1fr}
+  .ni{grid-template-columns:1fr}
+  .ni-col+.ni-col{border-left:none;border-top:2px solid var(--text)}
+  .nav-links{display:none}
+  .hbtn{display:block}
+  .p-row{grid-template-columns:1fr}
+  .p-row-r{align-items:flex-start}
+  .garden{grid-template-columns:1fr}
+  .cta-3{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">The Present of Work</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/publication.html">Publication</a></li>
+    <li><a href="/podcast.html">Podcast</a></li>
+    <li><a href="/concepts.html">Concepts</a></li>
+    <li><a href="/map.html">Map</a></li>
+    <li><a href="/ecosystem.html">The Web</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="ctoggle" id="cToggle" aria-label="Toggle contrast" title="Toggle light/dark">☀</button>
+    <button class="hbtn" id="hBtn">Menu</button>
+  </div>
+</nav>
+<div class="mnav" id="mNav">
+  <a href="/about.html">About</a>
+  <a href="/publication.html">Publication</a>
+  <a href="/podcast.html">Podcast</a>
+  <a href="/concepts.html">Concepts</a>
+  <a href="/map.html">Map</a>
+  <a href="/ecosystem.html">The Web</a>
+</div>
+
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-main">
+    <div class="hero-eyebrow">presentofwork.org</div>
+    <h1 class="hero-h1">
+      The<br>
+      <span>Present</span>
+      <em>of Work</em>
+    </h1>
+  </div>
+  <div class="hero-foot">
+    <div>
+      <p class="hero-tag">
+        <strong>"The economy is collapsing."</strong><br>
+        Economies don't collapse. People make choices that collapse them.<br>
+        <span style="color:var(--text-lt);font-size:.9em">A publication about reclaiming language — and through it, agency.</span>
+      </p>
+      <p class="hero-range" style="margin-top:1rem">
+        Essays · Interviews · Honest conversations —<br>
+        <span>from layoffs to philosophy to what it means to do work that matters.</span>
+      </p>
     </div>
+    <div class="hero-ctas">
+      <a href="/publication.html" class="btn btn-red">Read the Publication</a>
+      <a href="#idea" class="btn btn-outline">Keep reading ↓</a>
+    </div>
+  </div>
 </section>
 
-<!-- Problems Section -->
-<section class="problems" style="padding: 80px 20px;">
-    <div class="problems-container" style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <h2>You might be recognizing...</h2>
-        <div class="problems-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 32px;">
-            <div class="problem-card" style="background: #f9fafb; padding: 24px; border-radius: 8px; text-align: left;">
-                <h3 style="font-weight: 600; color: #1f2937; margin-bottom: 12px;">Values Misalignment</h3>
-                <p style="color: #4b5563;">Your daily work activities feel disconnected from your deepest values and what you know needs healing in the world.</p>
-            </div>
-            <div class="problem-card" style="background: #f9fafb; padding: 24px; border-radius: 8px; text-align: left;">
-                <h3 style="font-weight: 600; color: #1f2937; margin-bottom: 12px;">Extractive Relationships</h3>
-                <p style="color: #4b5563;">Economic relationships that take from community and planet rather than contributing to regeneration and mutual flourishing.</p>
-            </div>
-            <div class="problem-card" style="background: #f9fafb; padding: 24px; border-radius: 8px; text-align: left;">
-                <h3 style="font-weight: 600; color: #1f2937; margin-bottom: 12px;">Change Fatigue</h3>
-                <p style="color: #4b5563;">Organizational transformation initiatives that create cynicism instead of hope, matching predetermined solutions to living situations.</p>
-            </div>
-        </div>
-        <p style="color: #6b7280; font-style: italic; font-size: 1.125rem; margin-top: 32px;">
-            Traditional solutions—wellness programs, productivity hacks, leadership training—treat symptoms while leaving extractive systems intact.
-        </p>
-    </div>
-</section>
-
-<!-- Community Stats -->
-<section class="stats" style="background: #16a34a; color: white; padding: 80px 20px; text-align: center;">
-    <div class="stats-container" style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 24px;">You're not alone in this</h2>
-        <p style="font-size: 1.25rem; color: #bbf7d0; margin-bottom: 32px; line-height: 1.5;">
-            Six years ago, we started as a small group asking "What if work could serve life instead of drain it?" 
-            Now we're a growing network of practitioners quietly transforming how work works through gift economy principles and emergence-based approaches.
-        </p>
-        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px;">
-            <div class="stat-item">
-                <div class="stat-number" style="font-size: 3rem; font-weight: bold; margin-bottom: 8px;">6</div>
-                <div class="stat-label" style="color: #bbf7d0;">Years of sustained practice</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" style="font-size: 3rem; font-weight: bold; margin-bottom: 8px;">Growing</div>
-                <div class="stat-label" style="color: #bbf7d0;">Network of practitioners</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" style="font-size: 3rem; font-weight: bold; margin-bottom: 8px;">Active</div>
-                <div class="stat-label" style="color: #bbf7d0;">Community learning spaces</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-container">
-        <h3>The Present of Work</h3>
-        <p>A learning network exploring how work can serve life instead of drain it.</p>
+<!-- ── §01 THE IDEA ───────────────────────────────────────────── -->
+<section class="sec white" id="idea">
+  <div class="sec-w rv">
+    <div class="sec-label" data-n="01">The Idea</div>
+    <h2 class="sec-h">We gave work<br>to nouns.<br>We want it back.</h2>
+    <div class="idea-grid">
+      <div class="idea-body">
         <p>
-            Educational work fiscally sponsored through Inquiring Systems Institute. 
-            Consulting services through CrowdWork cooperative.
+          We talk about "the economy," "work," "the market" as if they have wills of their own.
+          They don't. <strong>People do. Nature does.</strong>
+          Treating abstractions as agents — as things that act upon us — is how we stopped noticing who actually makes the decisions.
         </p>
         <p>
-            Questions? Stories? Ideas?<br>
-            <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+          This is not a site about jobs. It is about recovering the full range of what human beings do when they contribute to the world — and the language to name it.
         </p>
+        <div class="ni rv d1">
+          <div class="ni-col">
+            <div class="ni-label">This is not</div>
+            <div class="ni-body">Career advice · productivity culture · futures forecasting · hustle</div>
+          </div>
+          <div class="ni-col yes">
+            <div class="ni-label">This is</div>
+            <div class="ni-body">An excavation · a gathering of communities practicing differently · language for what you've already sensed</div>
+          </div>
+        </div>
+        <a href="/about.html" class="btn btn-outline">Read more →</a>
+      </div>
+      <div class="pq rv d2">
+        <div class="pq-mark">"</div>
+        <blockquote>
+          Not only what men do but also what men want is designated by a noun.
+          "Housing" designates a commodity rather than an activity.
+        </blockquote>
+        <cite>— Ivan Illich, <em>Tools for Conviviality</em>, 1973</cite>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ── §02 THE PUBLICATION ────────────────────────────────────── -->
+<section class="sec off">
+  <div class="sec-w">
+    <div class="sec-label rv" data-n="02">The Publication</div>
+    <h2 class="sec-h rv">Three series.<br>One question.</h2>
+    <p class="rv" style="font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;color:var(--text-lt);margin-bottom:2rem">
+      Produced by Field Notes · Published on Substack · Read in any order
+    </p>
+
+    <div class="series-grid">
+      <a href="publication.html#history" class="s-card s1 rv">
+        <div class="s-num">Series I</div>
+        <div class="s-title">The History<br>of the<br>Present</div>
+        <div class="s-q">How did selling your time become the definition of a good life?</div>
+        <div class="s-link">Read →</div>
+      </a>
+      <a href="publication.html#future" class="s-card s2 rv d1">
+        <div class="s-num">Series II</div>
+        <div class="s-title">The Future<br>of the<br>Present</div>
+        <div class="s-q">Why do all our promised futures still need you to earn your place in them?</div>
+        <div class="s-link">Read →</div>
+      </a>
+      <a href="publication.html#present" class="s-card s3 rv d2">
+        <div class="s-num">Series III ∞</div>
+        <div class="s-title">The<br>Present</div>
+        <div class="s-q">What if your worth was never up for negotiation?</div>
+        <div class="s-link">Read →</div>
+      </a>
+    </div>
+
+    <div style="margin-top:2rem" class="rv d3">
+      <a href="https://presentofwork.substack.com" target="_blank" rel="noopener" class="btn btn-red">Read on Substack</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── §03 THE WEB ────────────────────────────────────────────── -->
+<section class="sec green">
+  <div class="sec-w">
+    <div class="sec-label rv" data-n="03">The Web</div>
+    <h2 class="sec-h rv">Not one<br>organization.<br>A relational web.</h2>
+    <p class="rv" style="font-family:var(--body);font-size:clamp(.9rem,1.5vw,1rem);color:rgba(255,255,255,.7);line-height:1.8;max-width:580px;margin-bottom:1.5rem">
+      These are not subsidiaries. They are organisms in the same ecology — different functions, different scales, different relationships to light. No center. No hierarchy.
+    </p>
+    <p class="web-hint rv">Click any node to learn more · <a href="/ecosystem.html" style="color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:3px">See the full directory →</a></p>
+
+    <div class="leg rv d2">
+      <div class="li"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#fff;flex-shrink:0"></span>Canopy</div>
+      <div class="li"><span style="display:inline-block;width:10px;height:10px;background:none;border:1.5px solid rgba(255,255,255,.85);clip-path:polygon(50% 0%,75% 25%,100% 50%,75% 75%,50% 100%,25% 75%,0% 50%,25% 25%);flex-shrink:0"></span>Edge</div>
+      <div class="li"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);outline:1px solid rgba(255,255,255,.25);outline-offset:2px;flex-shrink:0"></span>Understory</div>
+      <div class="li"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:1.5px dashed rgba(255,120,80,.8);flex-shrink:0"></span>Germinating</div>
+      <div class="li"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:1.5px dashed rgba(255,215,80,.7);flex-shrink:0"></span>Open invitation</div>
+    </div>
+
+    <div class="graph-outer rv d2">
+      <svg id="wsv" viewBox="0 0 920 510" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+    <p class="gnote rv d3">
+      Building something that belongs here? <a href="mailto:add@presentofwork.org">add@presentofwork.org</a>
+    </p>
+  </div>
+</section>
+
+<!-- Graph modal -->
+<div class="moverlay" id="gmo" role="dialog" aria-modal="true">
+  <div class="mbox">
+    <button class="mclose" id="gmc">[ close ]</button>
+    <div class="mtype" id="mt"></div>
+    <div class="mname" id="mn"></div>
+    <div class="mstat"><div class="sd" id="msd"></div><span id="ms"></span></div>
+    <div class="mdesc" id="md"></div>
+    <div id="ml" class="mlook" style="display:none"></div>
+    <div class="mlinks" id="mls"></div>
+  </div>
+</div>
+
+<!-- ── §04 ACTIVE PROJECTS ────────────────────────────────────── -->
+<section class="sec white">
+  <div class="sec-w">
+    <div class="sec-label rv" data-n="04">Active Projects</div>
+    <h2 class="sec-h rv">Who's<br>building this.</h2>
+
+    <div class="proj-group rv">
+      <div class="pg-label" data-cat="●">Active</div>
+      <div class="p-list">
+        <div class="p-row">
+          <div class="p-row-l">
+            <div class="p-type">Post-conventional consultancy</div>
+            <div class="p-name">Limicelia</div>
+          </div>
+          <div class="p-row-r">
+            <a href="https://limicelia.org" target="_blank" rel="noopener" class="p-link">limicelia.org ↗</a>
+          </div>
+        </div>
+        <div class="p-row">
+          <div class="p-row-l">
+            <div class="p-type">Media · Podcast · Publication</div>
+            <div class="p-name">Field Notes</div>
+          </div>
+          <div class="p-row-r">
+            <div class="p-look">Looking for producers &amp; editors</div>
+            <a href="mailto:hello@presentofwork.org" class="p-link">hello@presentofwork.org ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-group rv d1">
+      <div class="pg-label" data-cat="◐">Coming Soon</div>
+      <div class="p-list">
+        <div class="p-row">
+          <div class="p-row-l">
+            <div class="p-type">Contemplative practice community</div>
+            <div class="p-name">The Still</div>
+          </div>
+          <div class="p-row-r">
+            <div class="p-look">Looking for venue partners &amp; hosts</div>
+            <a href="mailto:hello@presentofwork.org" class="p-link">hello@presentofwork.org ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-group rv d2">
+      <div class="pg-label" data-cat="◆">Partners &amp; Playgrounds</div>
+      <div class="p-list">
+        <div class="p-row">
+          <div class="p-row-l">
+            <div class="p-type">Incubation commons</div>
+            <div class="p-name">Starter Cultures</div>
+          </div>
+          <div class="p-row-r"></div>
+        </div>
+        <div class="p-row">
+          <div class="p-row-l">
+            <div class="p-type">Practice community</div>
+            <div class="p-name">Intentional Society</div>
+          </div>
+          <div class="p-row-r">
+            <a href="https://www.intentionalsociety.org" target="_blank" rel="noopener" class="p-link">intentionalsociety.org ↗</a>
+          </div>
+        </div>
+        <div class="p-row">
+          <div class="p-row-l">
+            <div class="p-type">Research &amp; practice · Warm Data</div>
+            <div class="p-name">Warm Data Labs</div>
+          </div>
+          <div class="p-row-r">
+            <a href="https://warmdata.life" target="_blank" rel="noopener" class="p-link">warmdata.life ↗</a>
+            <a href="https://www.eventbrite.com/o/the-international-bateson-institute-ibi-67905251533" target="_blank" rel="noopener" class="p-link">IBI events ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="garden rv">
+      <div>
+        <h3>Add your project to the garden</h3>
+        <p>Building something aligned with these values? We want to know.</p>
+      </div>
+      <a href="mailto:add@presentofwork.org" class="btn btn-green">add@presentofwork.org</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── §05 CTA ─────────────────────────────────────────────────── -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div class="cta-over rv">Begin anywhere</div>
+    <h2 class="cta-h rv d1">What is<br>work —<br><span>really?</span></h2>
+    <p class="cta-body rv d2">
+      No prerequisites. No membership. <em>Just come in.</em>
+    </p>
+    <div class="cta-3 rv d3">
+      <a href="/publication.html" class="btn btn-red">Read the Publication</a>
+      <a href="/podcast.html" class="btn btn-outline-w">Listen to the Podcast</a>
+      <a href="/concepts.html" class="btn btn-outline-w">Explore Concepts</a>
+    </div>
+    <p class="cta-garden rv d4">
+      Have a project? <a href="mailto:add@presentofwork.org">Add it to the garden →</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <span>The Present of Work · presentofwork.org</span>
+    <div class="fl">
+      <a href="/about.html">About</a>
+      <a href="/publication.html">Publication</a>
+      <a href="/podcast.html">Podcast</a>
+      <a href="/concepts.html">Concepts</a>
+      <a href="/map.html">Map</a>
+      <a href="/ecosystem.html">The Web</a>
+    </div>
+    <span><a href="/donate.html">Made in the commons</a></span>
+  </div>
 </footer>
 
 <script>
-// Entry point switching
-const entryPoints = [
-    {
-        headline: "What if work could serve life instead of drain it?",
-        subtext: "We're exploring how to transform our relationship with work itself - moving from industrial jobs to sacred practice that serves the web of life."
-    },
-    {
-        headline: "What if giving and receiving could deepen relationships instead of ending them?", 
-        subtext: "We're practicing gift economy principles where work becomes relational tending - both offering authentic gifts and receiving what we need to flourish."
-    },
-    {
-        headline: "Ready to explore alternatives to extractive methods?",
-        subtext: "Join practitioners exploring how to shift from taking from the world to participating in the ongoing creation of the world - from money to relationships to knowledge sharing."
-    },
-    {
-        headline: "Does your work feel disconnected from what matters?",
-        subtext: "You're not broken. We're a learning network finding ways to align daily activities with deeper purpose through emergence-based approaches and gift economy principles."
-    },
-    {
-        headline: "What if organizations could operate from wholeness instead of extraction?",
-        subtext: "We support leaders and teams in creating work cultures that honor both human flourishing and practical effectiveness through proven methodologies."
-    }
+/* CONTRAST TOGGLE */
+const cToggle=document.getElementById('cToggle');
+const root=document.documentElement;
+cToggle.addEventListener('click',()=>{
+  const isDark=root.getAttribute('data-theme')==='dark';
+  root.setAttribute('data-theme',isDark?'light':'dark');
+  cToggle.textContent=isDark?'☀':'☾';
+});
+
+/* HAMBURGER */
+document.getElementById('hBtn').addEventListener('click',()=>
+  document.getElementById('mNav').classList.toggle('open'));
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
+}),{threshold:.07,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ── WEB GRAPH ──────────────────────────────────────────────── */
+// DORMANT — reactivate when relationships are active:
+// {id:'ensp', ...}, {id:'pgi', ...}, {id:'tt', ...}
+
+// ecotype: 'canopy'|'edge'|'recorder'|'nursery'|'understory'|'mycelial'|'germinating'|'invitation'
+const NODES=[
+  {id:'pow',  ecotype:'canopy',     x:460,y:248,r:40, label:'THE PRESENT\nOF WORK',
+   type:'Movement hub',name:'The Present of Work',
+   desc:'A publication, a podcast, a map, and a gathering place for all forms of work. Not about jobs. About being alive.',
+   url:'https://presentofwork.org',urlLabel:'presentofwork.org'},
+  {id:'lim',  ecotype:'edge',       x:195,y:115,r:24, label:'LIMICELIA',
+   type:'Post-conventional consultancy',name:'Limicelia',
+   desc:'Lives at the boundary between systems. Transforms terrain for what comes after — accompanies organizations through structural passages with rigorous presence.',
+   url:'https://limicelia.org',urlLabel:'limicelia.org'},
+  {id:'fn',   ecotype:'recorder',   x:695,y:108,r:23, label:'FIELD\nNOTES',
+   type:'Media · Podcast · Publication',name:'Field Notes',
+   desc:'Documents the territory as it forms. Produces the Present of Work podcast, publication, and knowledge tools.',
+   looking:'Looking for: producers, editors, visual collaborators → hello@presentofwork.org'},
+  {id:'sc',   ecotype:'nursery',    x:175,y:385,r:20, label:'STARTER\nCULTURES',
+   type:'Incubation commons',name:'Starter Cultures',
+   desc:'The growth medium. Commons-based nursery for emerging practice communities — where new projects develop before graduating to their own structures.'},
+  {id:'is',   ecotype:'understory', x:365,y:448,r:19, label:'INTENTIONAL\nSOCIETY',
+   type:'Practice community',name:'Intentional Society',
+   desc:'Thrives in filtered light. A relational dojo creating containers for presence, honest reflection, and mutual support.',
+   url:'https://www.intentionalsociety.org',urlLabel:'intentionalsociety.org'},
+  {id:'wdl',  ecotype:'mycelial',   x:730,y:385,r:22, label:'WARM\nDATA LABS',
+   type:'Research · Practice',name:'Warm Data Labs',
+   desc:'The invisible connective intelligence. Nora Bateson\'s methodology for understanding complex living systems through relational, multi-contextual inquiry.',
+   url:'https://warmdata.life',urlLabel:'warmdata.life',
+   url2:'https://www.eventbrite.com/o/the-international-bateson-institute-ibi-67905251533',url2label:'IBI events'},
+  {id:'still',ecotype:'germinating',x:825,y:228,r:21, label:'THE\nSTILL',
+   type:'Contemplative practice community',name:'The Still',
+   desc:'Taking form beneath the surface. Contemplative practice woven into livelihood — ceremonies, retreats, residencies.',
+   looking:'Looking for: venue partners, practitioner hosts → hello@presentofwork.org'},
+  {id:'add',  ecotype:'invitation', x:845,y:438,r:17, label:'+ ADD',
+   type:'Open invitation',name:'Add your project',
+   desc:'Building something aligned with these values? We want to know.',
+   url:'mailto:add@presentofwork.org',urlLabel:'add@presentofwork.org'},
 ];
 
-function changeEntry(index) {
-    document.querySelectorAll('.dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
+const EDGES=[
+  {a:'pow',b:'lim',w:2.5},{a:'pow',b:'fn',w:2.5},
+  {a:'pow',b:'sc',w:1.8},{a:'pow',b:'is',w:1.8},{a:'pow',b:'wdl',w:1.8},
+  {a:'pow',b:'still',w:1.2,d:true},
+  {a:'lim',b:'sc',w:1.2},{a:'sc',b:'is',w:1.2},{a:'fn',b:'wdl',w:1},
+  {a:'wdl',b:'still',w:1},
+];
+
+const SL={active:'● Active',partner:'◆ Partner',soon:'◐ Coming soon',add:'+ Open invitation'};
+const NS=document.createElementNS.bind(document,'http://www.w3.org/2000/svg');
+const svg=document.getElementById('wsv');
+
+// SVG defs for canopy glow
+const defs=NS('defs');
+const glow=NS('radialGradient');
+glow.id='powGlow';glow.setAttribute('cx','50%');glow.setAttribute('cy','50%');glow.setAttribute('r','50%');
+['0%:rgba(255,255,255,0.15)','60%:rgba(255,255,255,0.04)','100%:rgba(255,255,255,0)'].forEach(s=>{
+  const[o,c]=s.split(':');const stop=NS('stop');
+  stop.setAttribute('offset',o);stop.setAttribute('stop-color',c);glow.appendChild(stop);
+});
+defs.appendChild(glow);svg.appendChild(defs);
+
+// polygon points helper
+function polyPts(cx,cy,r,n,rot=0){
+  return Array.from({length:n},(_,i)=>{
+    const a=2*Math.PI*i/n+rot;
+    return `${(cx+r*Math.cos(a)).toFixed(1)},${(cy+r*Math.sin(a)).toFixed(1)}`;
+  }).join(' ');
+}
+
+EDGES.forEach(({a,b,w=1,d=false})=>{
+  const n1=NODES.find(n=>n.id===a),n2=NODES.find(n=>n.id===b);
+  if(!n1||!n2) return;
+  const l=NS('line');
+  l.setAttribute('x1',n1.x);l.setAttribute('y1',n1.y);
+  l.setAttribute('x2',n2.x);l.setAttribute('y2',n2.y);
+  l.setAttribute('stroke',d?'rgba(255,255,255,0.08)':'rgba(255,255,255,0.18)');
+  l.setAttribute('stroke-width',w);
+  if(d) l.setAttribute('stroke-dasharray','6,5');
+  svg.appendChild(l);
+});
+
+const nodeGroups=[];
+NODES.forEach(node=>{
+  const g=NS('g');g.style.cursor='pointer';
+  const {x,y,r,ecotype}=node;
+
+  if(ecotype==='canopy'){
+    // Radiant halo rings
+    [r+28,r+16].forEach((hr,i)=>{
+      const h=NS('circle');
+      h.setAttribute('cx',x);h.setAttribute('cy',y);h.setAttribute('r',hr);
+      h.setAttribute('fill','none');h.setAttribute('stroke','rgba(255,255,255,0.06)');
+      h.setAttribute('stroke-width','1');
+      g.appendChild(h);
     });
-    
-    document.getElementById('hero-headline').textContent = entryPoints[index].headline;
-    document.getElementById('hero-subtext').textContent = entryPoints[index].subtext;
-}
+    const gloCirc=NS('circle');
+    gloCirc.setAttribute('cx',x);gloCirc.setAttribute('cy',y);gloCirc.setAttribute('r',r+40);
+    gloCirc.setAttribute('fill','url(#powGlow)');g.appendChild(gloCirc);
+    const c=NS('circle');
+    c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);
+    c.setAttribute('fill','#ffffff');c.setAttribute('stroke','none');
+    g.appendChild(c);
 
-// Auto-cycle
-let currentEntry = 1;
-setInterval(() => {
-    currentEntry = (currentEntry + 1) % entryPoints.length;
-    changeEntry(currentEntry);
-}, 8000);
-</script>
+  } else if(ecotype==='edge'){
+    // 12-sided polygon — edge organism, lives at boundaries
+    const poly=NS('polygon');
+    poly.setAttribute('points',polyPts(x,y,r,12,Math.PI/12));
+    poly.setAttribute('fill','rgba(28,76,36,0.9)');
+    poly.setAttribute('stroke','rgba(255,255,255,0.85)');
+    poly.setAttribute('stroke-width','2');
+    g.appendChild(poly);
+    g._shape=poly;
 
-<style>
-.entry-selector {
-    margin-bottom: 40px;
-}
+  } else if(ecotype==='recorder'){
+    // Double concentric circle — layered documentation
+    const outer=NS('circle');
+    outer.setAttribute('cx',x);outer.setAttribute('cy',y);outer.setAttribute('r',r);
+    outer.setAttribute('fill','none');outer.setAttribute('stroke','rgba(255,255,255,0.5)');
+    outer.setAttribute('stroke-width','1.5');
+    const inner=NS('circle');
+    inner.setAttribute('cx',x);inner.setAttribute('cy',y);inner.setAttribute('r',r-6);
+    inner.setAttribute('fill','rgba(28,76,36,0.85)');
+    inner.setAttribute('stroke','rgba(255,255,255,0.85)');
+    inner.setAttribute('stroke-width','2');
+    g.appendChild(outer);g.appendChild(inner);
+    g._shape=inner;
 
-.entry-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 24px;
-}
+  } else if(ecotype==='nursery'){
+    // Circle with 3 small satellite dots — propagation medium
+    const c=NS('circle');
+    c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);
+    c.setAttribute('fill','rgba(28,76,36,0.8)');
+    c.setAttribute('stroke','rgba(255,255,255,0.6)');c.setAttribute('stroke-width','1.5');
+    g.appendChild(c);g._shape=c;
+    [0,1,2].forEach(i=>{
+      const a=2*Math.PI*i/3-Math.PI/6;
+      const dot=NS('circle');
+      dot.setAttribute('cx',x+Math.cos(a)*(r+9));dot.setAttribute('cy',y+Math.sin(a)*(r+9));
+      dot.setAttribute('r','3');dot.setAttribute('fill','rgba(255,255,255,0.4)');
+      g.appendChild(dot);
+    });
 
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #d1d5db;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+  } else if(ecotype==='understory'){
+    // Double-ring circle — community container, filtered light
+    [r+5,r].forEach((rad,i)=>{
+      const c=NS('circle');
+      c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',rad);
+      c.setAttribute('fill',i===1?'rgba(28,76,36,0.75)':'none');
+      c.setAttribute('stroke',i===0?'rgba(255,255,255,0.25)':'rgba(255,255,255,0.65)');
+      c.setAttribute('stroke-width',i===0?'1':'1.5');
+      g.appendChild(c);
+      if(i===1) g._shape=c;
+    });
 
-.dot.active {
-    background: #16a34a;
-}
+  } else if(ecotype==='mycelial'){
+    // Circle with radial network lines — invisible connecting intelligence
+    const c=NS('circle');
+    c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);
+    c.setAttribute('fill','rgba(28,76,36,0.8)');
+    c.setAttribute('stroke','rgba(255,255,255,0.7)');c.setAttribute('stroke-width','1.5');
+    g.appendChild(c);g._shape=c;
+    [0,45,90,135].forEach(deg=>{
+      const a=deg*Math.PI/180;
+      [-1,1].forEach(dir=>{
+        const ln=NS('line');
+        ln.setAttribute('x1',x+Math.cos(a)*dir*4);ln.setAttribute('y1',y+Math.sin(a)*dir*4);
+        ln.setAttribute('x2',x+Math.cos(a)*dir*(r-3));ln.setAttribute('y2',y+Math.sin(a)*dir*(r-3));
+        ln.setAttribute('stroke','rgba(255,255,255,0.3)');ln.setAttribute('stroke-width','0.8');
+        g.appendChild(ln);
+      });
+    });
 
-.dot:hover {
-    background: #9ca3af;
-}
+  } else if(ecotype==='germinating'){
+    // Dashed irregular circle — not yet fully emerged
+    const c=NS('circle');
+    c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);
+    c.setAttribute('fill','rgba(28,76,36,0.5)');
+    c.setAttribute('stroke','rgba(255,120,80,0.8)');c.setAttribute('stroke-width','1.5');
+    c.setAttribute('stroke-dasharray','4,3');
+    g.appendChild(c);g._shape=c;
+    // small sprout dot at top
+    const sprout=NS('circle');
+    sprout.setAttribute('cx',x);sprout.setAttribute('cy',y-r-5);
+    sprout.setAttribute('r','3');sprout.setAttribute('fill','rgba(255,120,80,0.6)');
+    g.appendChild(sprout);
 
-.entry-hint {
-    font-size: 0.875rem;
-    color: #6b7280;
-}
+  } else if(ecotype==='invitation'){
+    // Crosshair circle — open, empty, waiting
+    const c=NS('circle');
+    c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);
+    c.setAttribute('fill','rgba(28,76,36,0.3)');
+    c.setAttribute('stroke','rgba(255,215,80,0.7)');c.setAttribute('stroke-width','1.5');
+    c.setAttribute('stroke-dasharray','3,3');
+    g.appendChild(c);
+    [0,90].forEach(deg=>{
+      const a=deg*Math.PI/180;
+      const ln=NS('line');
+      ln.setAttribute('x1',x+Math.cos(a)*(r*0.35));ln.setAttribute('y1',y+Math.sin(a)*(r*0.35));
+      ln.setAttribute('x2',x+Math.cos(a)*(r*0.75));ln.setAttribute('y2',y+Math.sin(a)*(r*0.75));
+      ln.setAttribute('stroke','rgba(255,215,80,0.6)');ln.setAttribute('stroke-width','1.2');
+      g.appendChild(ln);
+      const ln2=NS('line');
+      ln2.setAttribute('x1',x-Math.cos(a)*(r*0.35));ln2.setAttribute('y1',y-Math.sin(a)*(r*0.35));
+      ln2.setAttribute('x2',x-Math.cos(a)*(r*0.75));ln2.setAttribute('y2',y-Math.sin(a)*(r*0.75));
+      ln2.setAttribute('stroke','rgba(255,215,80,0.6)');ln2.setAttribute('stroke-width','1.2');
+      g.appendChild(ln2);
+    });
+    g._shape=c;
+  }
 
-.hero-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-}
+  // Label text
+  const isCanopy=ecotype==='canopy';
+  const lines=node.label.split('\n'),lh=10.5,fs=isCanopy?8.5:7.2;
+  const totalH=lines.length*lh;
+  lines.forEach((ln,i)=>{
+    const t=NS('text');
+    t.setAttribute('x',x);t.setAttribute('y',y-totalH/2+i*lh+lh*.82);
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('fill',isCanopy?'#1C4C24':ecotype==='germinating'?'rgba(255,255,255,0.5)':'rgba(255,255,255,0.9)');
+    t.setAttribute('font-size',fs);t.setAttribute('font-family','Roboto Mono, monospace');
+    t.setAttribute('font-weight',isCanopy?'500':'400');t.setAttribute('letter-spacing','.06em');
+    t.textContent=ln;g.appendChild(t);
+  });
 
-@media (min-width: 640px) {
-    .hero-buttons {
-        flex-direction: row;
-        justify-content: center;
+  // Hover
+  g.addEventListener('mouseenter',()=>{
+    if(g._shape){
+      g._shape.setAttribute('fill',ecotype==='invitation'?'rgba(255,215,80,0.15)':'rgba(255,255,255,0.15)');
     }
-}
-</style>
+  });
+  g.addEventListener('mouseleave',()=>{
+    const fills={canopy:'#ffffff',edge:'rgba(28,76,36,0.9)',recorder:'rgba(28,76,36,0.85)',
+      nursery:'rgba(28,76,36,0.8)',understory:'rgba(28,76,36,0.75)',mycelial:'rgba(28,76,36,0.8)',
+      germinating:'rgba(28,76,36,0.5)',invitation:'rgba(28,76,36,0.3)'};
+    if(g._shape) g._shape.setAttribute('fill',fills[ecotype]||'rgba(28,76,36,0.8)');
+  });
+  g.addEventListener('click',()=>openModal(node));
+  svg.appendChild(g);
+  nodeGroups.push({g,node});
+});
+
+// Float canopy node
+let ft=0;
+const canopyG=nodeGroups.find(n=>n.node.ecotype==='canopy')?.g;
+function floatHub(){ft+=.013;if(canopyG)canopyG.setAttribute('transform',`translate(0,${Math.sin(ft)*2.5})`);requestAnimationFrame(floatHub);}
+floatHub();
+
+function openModal(node){
+  document.getElementById('mt').textContent=node.type||'';
+  document.getElementById('mn').textContent=node.name;
+  document.getElementById('ms').textContent=SL[node.status]||'';
+  document.getElementById('msd').className='sd '+node.status;
+  document.getElementById('md').textContent=node.desc;
+  const ml=document.getElementById('ml');
+  if(node.looking){ml.style.display='block';ml.textContent=node.looking;}else ml.style.display='none';
+  const mls=document.getElementById('mls');mls.innerHTML='';
+  [['url','urlLabel'],['url2','url2label']].forEach(([uk,lk])=>{
+    if(!node[uk]) return;
+    const isE=node[uk].startsWith('mailto:');    const a=document.createElement('a');
+      a.href=node[uk];a.textContent=node[lk]||node[uk];
+      a.className='ml-link';
+      if(!isE){a.target='_blank';a.rel='noopener';}
+      mls.appendChild(a);
+    });
+    modal.classList.add('open');
+  });
+};
+
+// Click handlers on graph nodes
+nodeGroups.forEach(({g,node})=>{
+  g.addEventListener('click',()=>openModal(node));
+  g.style.cursor='pointer';
+});
+
+// Close modal
+const mClose=document.getElementById('mClose');
+if(mClose) mClose.addEventListener('click',()=>document.getElementById('ncModal').classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('ncModal').classList.remove('open');});
+
+// Dark mode toggle
+document.getElementById('cToggle').addEventListener('click',function(){
+  const d=document.documentElement;const dark=d.getAttribute('data-theme')==='dark';
+  d.setAttribute('data-theme',dark?'light':'dark');this.textContent=dark?'☀':'☾';
+});
+document.getElementById('hBtn').addEventListener('click',()=>document.getElementById('mNav').classList.toggle('open'));
+
+// Scroll reveal
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

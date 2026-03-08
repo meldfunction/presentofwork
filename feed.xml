@@ -1,0 +1,63 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>{{ site.podcast.title }}</title>
+    <link>{{ site.url }}</link>
+    <description>{{ site.podcast.description }}</description>
+    <language>{{ site.podcast.language }}</language>
+    <atom:link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/rss+xml"/>
+    <itunes:author>{{ site.podcast.author }}</itunes:author>
+    <itunes:subtitle>{{ site.podcast.subtitle }}</itunes:subtitle>
+    <itunes:summary>{{ site.podcast.description }}</itunes:summary>
+    <itunes:owner>
+      <itunes:name>{{ site.podcast.owner_name }}</itunes:name>
+      <itunes:email>{{ site.podcast.owner_email }}</itunes:email>
+    </itunes:owner>
+    <itunes:image href="{{ site.podcast.image }}"/>
+    <itunes:category text="{{ site.podcast.category }}">
+      <itunes:category text="{{ site.podcast.subcategory }}"/>
+    </itunes:category>
+    <itunes:explicit>{{ site.podcast.explicit }}</itunes:explicit>
+    <itunes:type>{{ site.podcast.type }}</itunes:type>
+    <managingEditor>{{ site.podcast.email }}</managingEditor>
+    <image>
+      <url>{{ site.podcast.image }}</url>
+      <title>{{ site.podcast.title }}</title>
+      <link>{{ site.url }}</link>
+    </image>
+
+    {% assign episodes = site.episodes | sort: 'date' | reverse %}
+    {% for ep in episodes %}
+    <item>
+      <title>{{ ep.title | xml_escape }}</title>
+      <link>{{ ep.url | absolute_url }}</link>
+      <guid isPermaLink="true">{{ ep.url | absolute_url }}</guid>
+      <pubDate>{{ ep.date | date_to_rfc822 }}</pubDate>
+      <description>{{ ep.excerpt | strip_html | xml_escape }}</description>
+      <content:encoded><![CDATA[{{ ep.content }}]]></content:encoded>
+      {% if ep.audio %}
+      <enclosure
+        url="{{ ep.audio | absolute_url }}"
+        type="audio/mpeg"
+        length="{{ ep.audio_size | default: 0 }}"/>
+      {% endif %}
+      <itunes:author>{{ site.podcast.author }}</itunes:author>
+      <itunes:subtitle>{{ ep.subtitle | default: ep.excerpt | strip_html | xml_escape | truncate: 120 }}</itunes:subtitle>
+      <itunes:summary>{{ ep.excerpt | strip_html | xml_escape }}</itunes:summary>
+      {% if ep.duration %}<itunes:duration>{{ ep.duration }}</itunes:duration>{% endif %}
+      {% if ep.episode %}<itunes:episode>{{ ep.episode }}</itunes:episode>{% endif %}
+      {% if ep.season %}<itunes:season>{{ ep.season }}</itunes:season>{% endif %}
+      <itunes:episodeType>{{ ep.episode_type | default: 'full' }}</itunes:episodeType>
+      <itunes:explicit>{{ ep.explicit | default: 'false' }}</itunes:explicit>
+      {% if ep.image %}<itunes:image href="{{ ep.image | absolute_url }}"/>{% endif %}
+    </item>
+    {% endfor %}
+
+  </channel>
+</rss>

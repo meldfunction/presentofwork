@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Present of Work">
+<meta property="og:title" content="Publication — The Present of Work">
+  <link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
+<meta property="og:description" content="Three series on the history, futures, and present of work. Forty essays. Read in any order.">
+<meta property="og:url" content="https://presentofwork.org/publication.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Publication — The Present of Work">
+<meta name="twitter:description" content="Three series on the history, futures, and present of work. Forty essays. Read in any order.">
+<title>Publication — The Present of Work</title>
+<meta name="description" content="Three series on the history, futures, and present of work. Published on Substack by Field Notes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--white:#FFFFFF;--off:#F6F2EB;--ink:#0D0D0D;--ink-mid:#444;--ink-lt:#888;--red:#C8341C;--red-dk:#A02912;--green:#1C4C24;--green-lt:#2D6E38;--mono:'Roboto Mono',monospace;--display:'Bebas Neue',sans-serif;--body:'Libre Baskerville',Georgia,serif;--nav-h:52px;--bg:var(--white);--surface:var(--off);--text:var(--ink);--text-mid:var(--ink-mid);--text-lt:var(--ink-lt);--border:#E0E0E0}
+[data-theme="dark"]{--bg:#0D0D0D;--surface:#141414;--text:#F0EDE8;--text-mid:#B0A898;--text-lt:#555;--border:#222;--off:#141414;--white:#0D0D0D;--ink:#F0EDE8;--ink-mid:#B0A898;--ink-lt:#555}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;transition:background .25s,color .25s}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;width:100%;height:var(--nav-h);background:var(--ink);z-index:1000;display:flex;align-items:stretch}
+[data-theme="dark"] nav{background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{font-family:var(--display);font-size:1.15rem;letter-spacing:.1em;color:#fff;padding:0 1.5rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.12);white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;align-items:stretch;list-style:none;flex:1}
+.nav-links li{display:flex;align-items:stretch}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:0 1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.08);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.06)}
+.nav-right{display:flex;align-items:center;margin-left:auto;padding:0 1rem;border-left:1px solid rgba(255,255,255,.12)}
+.ctoggle{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .55rem;cursor:pointer;font-size:.75rem;line-height:1;transition:all .15s;border-radius:2px}
+.ctoggle:hover{color:#fff;border-color:#fff}
+.hbtn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .6rem;cursor:pointer;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;transition:all .15s;display:none}
+.hbtn:hover{color:#fff;border-color:#fff}
+.mnav{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--ink);z-index:999;flex-direction:column;border-top:1px solid rgba(255,255,255,.1)}
+.mnav.open{display:flex}
+.mnav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s}
+.mnav a:hover{color:#fff}
+
+/* HEADER */
+.ph{padding-top:var(--nav-h);background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--green)}
+.ph-inner{padding:5rem 3rem 4rem 5rem;max-width:1200px;margin:0 auto;margin-left:8px}
+.ph-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem}
+.ph-h{font-family:var(--display);font-size:clamp(4rem,10vw,8rem);line-height:.88;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:1.5rem}
+.ph-sub{font-family:var(--body);font-size:clamp(.95rem,1.7vw,1.1rem);color:rgba(255,255,255,.55);line-height:1.8;max-width:560px}
+.ph-credit{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:1.5rem}
+
+/* SERIES NAV */
+.series-nav{position:sticky;top:var(--nav-h);z-index:100;background:var(--bg);border-bottom:2px solid var(--border);display:flex;transition:background .25s}
+.sn-item{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-lt);padding:.75rem 1.5rem;cursor:pointer;border-right:1px solid var(--border);transition:color .15s,background .15s;white-space:nowrap}
+.sn-item:hover{color:var(--text);background:var(--surface)}
+.sn-item.s1.active{color:var(--red);border-bottom:2px solid var(--red);margin-bottom:-2px}
+.sn-item.s2.active{color:#2A6A9E;border-bottom:2px solid #2A6A9E;margin-bottom:-2px}
+.sn-item.s3.active{color:var(--green);border-bottom:2px solid var(--green);margin-bottom:-2px}
+
+/* SERIES BLOCK */
+.series-block{padding:5rem 3rem 5rem 5rem;max-width:1200px;margin:0 auto;border-bottom:1px solid var(--border)}
+.series-block:last-child{border-bottom:none}
+.sb-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3rem}
+.sb-meta{display:flex;flex-direction:column;gap:.5rem}
+.sb-num{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase}
+.s1 .sb-num{color:var(--red)}.s2 .sb-num{color:#2A6A9E}.s3 .sb-num{color:var(--green)}
+.sb-title{font-family:var(--display);font-size:clamp(3rem,6vw,6rem);line-height:.88;letter-spacing:.03em;text-transform:uppercase;color:var(--text)}
+.sb-q{font-family:var(--body);font-style:italic;font-size:clamp(.95rem,1.6vw,1.05rem);color:var(--text-lt);line-height:1.7;border-left:3px solid var(--border);padding-left:1rem;margin-top:.75rem}
+.s1 .sb-q{border-color:var(--red)}.s2 .sb-q{border-color:#2A6A9E}.s3 .sb-q{border-color:var(--green)}
+.sb-body{font-family:var(--body);font-size:.95rem;color:var(--text-mid);line-height:1.8}
+.sb-cta{margin-top:1.5rem}
+
+/* POST LIST */
+.post-list{display:flex;flex-direction:column;border-top:2px solid var(--text)}
+.post-row{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:start;padding:1.25rem 0;border-bottom:1px solid var(--border);transition:background .15s;cursor:pointer;text-decoration:none;color:inherit}
+.post-row:hover{background:var(--surface);padding-left:.5rem}
+.post-num{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;color:var(--text-lt);padding-top:.25rem;min-width:2.5rem}
+.post-name{font-family:var(--display);font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:.04em;text-transform:uppercase;color:var(--text);line-height:.95;margin-bottom:.3rem}
+.post-desc{font-family:var(--body);font-size:.85rem;color:var(--text-mid);line-height:1.6}
+.post-arrow{font-family:var(--mono);font-size:.55rem;color:var(--text-lt);padding-top:.25rem;transition:color .15s}
+.post-row:hover .post-arrow{color:var(--red)}
+.post-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.4rem}
+.ptag{font-family:var(--mono);font-size:.42rem;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .4rem;border:1px solid var(--border);color:var(--text-lt)}
+
+/* BTN */
+.btn{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:.75rem 1.75rem;cursor:pointer;display:inline-block;transition:all .15s;text-decoration:none;border:2px solid transparent}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-red:hover{background:var(--red-dk);border-color:var(--red-dk)}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--text)}
+.btn-outline:hover{background:var(--text);color:var(--bg)}
+
+/* FOOTER */
+footer{background:#0D0D0D;border-top:1px solid rgba(255,255,255,.1);padding:1.25rem 3rem 1.25rem 5rem;font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fi{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{color:rgba(255,255,255,.3);transition:color .15s}
+footer a:hover{color:rgba(255,255,255,.8)}
+.fl{display:flex;gap:1.5rem;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}
+
+@media(max-width:1024px){.series-block{padding:4rem 2rem 4rem 3rem}.ph-inner{padding:4rem 2rem 3rem 3rem}.sb-header{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none}.hbtn{display:block}.post-row{grid-template-columns:auto 1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Present of Work</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/publication.html" class="active">Publication</a></li>
+    <li><a href="/podcast.html">Podcast</a></li>
+    <li><a href="/concepts.html">Concepts</a></li>
+    <li><a href="/map.html">Map</a></li>
+    <li><a href="/ecosystem.html">The Web</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="ctoggle" id="cToggle" aria-label="Toggle contrast">☀</button>
+    <button class="hbtn" id="hBtn">Menu</button>
+  </div>
+</nav>
+<div class="mnav" id="mNav">
+  <a href="/about.html">About</a><a href="/publication.html">Publication</a>
+  <a href="/podcast.html">Podcast</a><a href="/concepts.html">Concepts</a>
+  <a href="/map.html">Map</a><a href="/ecosystem.html">The Web</a>
+</div>
+
+<header class="ph">
+  <div class="ph-inner">
+    <div class="ph-label">Publication</div>
+    <h1 class="ph-h">Three<br>series.<br>One<br>question.</h1>
+    <p class="ph-sub">Read in any order. Start anywhere. Come back often.</p>
+    <div class="ph-credit">Produced by Field Notes · Published on Substack</div>
+  </div>
+</header>
+
+<nav class="series-nav" aria-label="Series navigation">
+  <div class="sn-item s1 active" data-target="history">Series I · History</div>
+  <div class="sn-item s2" data-target="future">Series II · Futures</div>
+  <div class="sn-item s3" data-target="present">Series III ∞ · Present</div>
+  <div style="margin-left:auto;display:flex;align-items:center;padding:0 1.5rem">
+    <a href="https://presentofwork.substack.com" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)">Subscribe on Substack →</a>
+  </div>
+</nav>
+
+<!-- SERIES I -->
+<section id="history">
+  <div class="series-block">
+    <div class="sb-header">
+      <div class="sb-meta">
+        <div class="sb-num s1">Series I</div>
+        <div class="sb-title s1">The History<br>of the<br>Present</div>
+        <div class="sb-q s1">How did selling your time become the definition of a good life?</div>
+      </div>
+      <div>
+        <div class="sb-body">Not history for its own sake — genealogy. Each post traces how something we take for granted was constructed, and therefore could be constructed differently. From pre-wage economies through the Industrial Revolution to the 20th century office, this series asks what choices were made at each turn, and who made them.</div>
+        <div class="sb-cta"><a href="https://presentofwork.substack.com" target="_blank" rel="noopener" class="btn btn-red">Read on Substack →</a></div>
+      </div>
+    </div>
+    <div class="post-list rv">
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">0.1</div>
+        <div><div class="post-name">The Present of Work</div><div class="post-desc">Five meanings of present. Nine meanings of work. The opening argument.</div><div class="post-tags"><span class="ptag">language</span><span class="ptag">Illich</span><span class="ptag">framing</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.1</div>
+        <div><div class="post-name">Before the Clock Punched In</div><div class="post-desc">Work before wages — ancient civilizations, obligation, craft, and community.</div><div class="post-tags"><span class="ptag">ancient</span><span class="ptag">llankay</span><span class="ptag">subsistence</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.2</div>
+        <div><div class="post-name">The Guild and the Gift</div><div class="post-desc">Medieval trades, apprenticeships, and the original knowledge economy.</div><div class="post-tags"><span class="ptag">craft</span><span class="ptag">Werk</span><span class="ptag">Polanyi</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.3</div>
+        <div><div class="post-name">The Dark Satanic Mills</div><div class="post-desc">How the Industrial Revolution severed expertise from dignity.</div><div class="post-tags"><span class="ptag">industrial</span><span class="ptag">Arendt</span><span class="ptag">Franklin</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.4</div>
+        <div><div class="post-name">The Invention of the Worker</div><div class="post-desc">How "the employee" became an identity — and selling your time became virtuous.</div><div class="post-tags"><span class="ptag">labor movement</span><span class="ptag">Weeks</span><span class="ptag">Federici</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.5</div>
+        <div><div class="post-name">The Reformation's Wages</div><div class="post-desc">Weber's Protestant ethic: the spiritual root of hustle culture.</div><div class="post-tags"><span class="ptag">Weber</span><span class="ptag">Beruf</span><span class="ptag">vocation</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.6</div>
+        <div><div class="post-name">The Office as a Way of Life</div><div class="post-desc">From the typing pool to the cubicle: how the 20th century built an entire culture around showing up.</div><div class="post-tags"><span class="ptag">white collar</span><span class="ptag">Sennett</span><span class="ptag">Hochschild</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.7</div>
+        <div><div class="post-name">The Gig Before the Gig Economy</div><div class="post-desc">Precarious, piecework, contingent labour aren't new. A history of "flexible" work — and who it was always flexible for.</div><div class="post-tags"><span class="ptag">precarity</span><span class="ptag">Federici</span><span class="ptag">race</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.8</div>
+        <div><div class="post-name">The Financial Architecture of Slavery</div><div class="post-desc">Lloyd's of London, the VOC, Wall Street's literal origins on a slave market. The plantation as proto-factory.</div><div class="post-tags"><span class="ptag">slavery</span><span class="ptag">Robinson</span><span class="ptag">capitalism</span><span class="ptag">Hartman</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">1.9</div>
+        <div><div class="post-name">Many Words for Work</div><div class="post-desc">Ayni, kammathāna, avodah, karma, gelassenheit — a survey of what English collapsed into a single noun.</div><div class="post-tags"><span class="ptag">language</span><span class="ptag">Quechua</span><span class="ptag">Sanskrit</span><span class="ptag">Hebrew</span><span class="ptag">taxonomy</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES II -->
+<section id="future">
+  <div class="series-block">
+    <div class="sb-header">
+      <div class="sb-meta">
+        <div class="sb-num s2">Series II</div>
+        <div class="sb-title s2">The Future<br>of the<br>Present</div>
+        <div class="sb-q s2">Why do all our promised futures still need you to earn your place in them?</div>
+      </div>
+      <div>
+        <div class="sb-body">A reckoning with every technological utopia from the Jetsons to AGI — and what each one reveals about what we actually believe. The Jetsons, cyberspace, VR, the sharing economy, artificial general intelligence: each wave promised liberation. Each one reconfigured who captures the gains. This series asks what that pattern means.</div>
+        <div class="sb-cta"><a href="https://presentofwork.substack.com" target="_blank" rel="noopener" class="btn btn-outline">Read on Substack →</a></div>
+      </div>
+    </div>
+    <div class="post-list rv">
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.1</div>
+        <div><div class="post-name">The Jetsons Lied to Us</div><div class="post-desc">How mid-century optimism pictured a leisure society that never arrived.</div><div class="post-tags"><span class="ptag">automation</span><span class="ptag">leisure</span><span class="ptag">Gorz</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.2</div>
+        <div><div class="post-name">Cyberspace Was Going to Save Us</div><div class="post-desc">The 80s and 90s promised networked technology would flatten hierarchies. What happened instead.</div><div class="post-tags"><span class="ptag">platform</span><span class="ptag">Haraway</span><span class="ptag">Zuboff</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.3</div>
+        <div><div class="post-name">The Managed Heart</div><div class="post-desc">Hochschild's emotional labor: managing your feelings as a condition of employment.</div><div class="post-tags"><span class="ptag">Hochschild</span><span class="ptag">care</span><span class="ptag">service</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.4</div>
+        <div><div class="post-name">The Tip's Racial Architecture</div><div class="post-desc">How tipping was introduced in America to avoid paying formerly enslaved workers — and became a permanent feature of service economy exploitation.</div><div class="post-tags"><span class="ptag">race</span><span class="ptag">service work</span><span class="ptag">Federici</span><span class="ptag">Hartman</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.5</div>
+        <div><div class="post-name">The Sharing Economy's Broken Promise</div><div class="post-desc">Uber, Airbnb, TaskRabbit: sold as liberation. How platform capitalism repackaged precarity as entrepreneurship.</div><div class="post-tags"><span class="ptag">platform</span><span class="ptag">Zuboff</span><span class="ptag">Gorz</span><span class="ptag">gig</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.6</div>
+        <div><div class="post-name">AGI and the Last Job</div><div class="post-desc">The current wave of trillion-dollar bets on machines that can do anything. How AGI rhetoric recycles every prior techno-utopian script with higher stakes.</div><div class="post-tags"><span class="ptag">AI</span><span class="ptag">automation</span><span class="ptag">Haraway</span><span class="ptag">Franklin</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.7</div>
+        <div><div class="post-name">When Efficiency Became the Only Value</div><div class="post-desc">Tracing how "productivity" colonized the imagination and crowded out every other question worth asking about what work is for.</div><div class="post-tags"><span class="ptag">productivity</span><span class="ptag">Illich</span><span class="ptag">Gorz</span><span class="ptag">Weeks</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.8</div>
+        <div><div class="post-name">The Commodification of the Human</div><div class="post-desc">When care, creativity, relationship, and judgment — the things that made us irreplaceable — became the next frontier to automate and monetize.</div><div class="post-tags"><span class="ptag">emotional labor</span><span class="ptag">Zuboff</span><span class="ptag">Hochschild</span><span class="ptag">attention</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">2.9</div>
+        <div><div class="post-name">Dystopia as Policy Document</div><div class="post-desc"><em>In Time</em>, <em>Elysium</em>, <em>Horizon Zero Dawn</em>: speculative fiction doing the policy work that economists won't.</div><div class="post-tags"><span class="ptag">fiction</span><span class="ptag">Le Guin</span><span class="ptag">futures</span><span class="ptag">Haraway</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES III -->
+<section id="present">
+  <div class="series-block">
+    <div class="sb-header">
+      <div class="sb-meta">
+        <div class="sb-num s3">Series III ∞</div>
+        <div class="sb-title s3">The<br>Present</div>
+        <div class="sb-q s3">What if your worth was never up for negotiation?</div>
+      </div>
+      <div>
+        <div class="sb-body">Not what work will be. What we decide it should be — right now. This series is ever-growing: plural economies, practices of resistance, new structures, and what it means to act before the patterns lock in. No grand theory. Many experiments, honestly reported.</div>
+        <div class="sb-cta"><a href="https://presentofwork.substack.com" target="_blank" rel="noopener" class="btn btn-outline">Read on Substack →</a></div>
+      </div>
+    </div>
+    <div class="post-list rv">
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.1</div>
+        <div><div class="post-name">The Postmodern Workplace</div><div class="post-desc">After grand narratives collapse, what do we actually have?</div><div class="post-tags"><span class="ptag">plurality</span><span class="ptag">Arendt</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.2</div>
+        <div><div class="post-name">The Ideology of Work</div><div class="post-desc">Kathi Weeks: work as moral obligation enforced by culture, policy, and identity.</div><div class="post-tags"><span class="ptag">Weeks</span><span class="ptag">ideology</span><span class="ptag">refusal</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.3</div>
+        <div><div class="post-name">Plural Futures</div><div class="post-desc">No single vision wins. What happens when you hold post-growth, degrowth, care economics, and commons governance in the same frame?</div><div class="post-tags"><span class="ptag">futures</span><span class="ptag">Gorz</span><span class="ptag">commons</span><span class="ptag">plurality</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.4</div>
+        <div><div class="post-name">The Cooperative Difference</div><div class="post-desc">What worker ownership actually does to people — to governance, to pace, to how decisions get made when everyone's accountable.</div><div class="post-tags"><span class="ptag">cooperatives</span><span class="ptag">Sennett</span><span class="ptag">ownership</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.5</div>
+        <div><div class="post-name">Anti-Technofeudalism</div><div class="post-desc">Yanis Varoufakis's cloud-fiefdoms — and what it would mean to actually govern the platforms that govern us.</div><div class="post-tags"><span class="ptag">platform</span><span class="ptag">Varoufakis</span><span class="ptag">Zuboff</span><span class="ptag">commons</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.6</div>
+        <div><div class="post-name">Care Is Not a Bug</div><div class="post-desc">The feminist economic case that reproductive and care work aren't leftovers from the real economy — they're the foundation of it.</div><div class="post-tags"><span class="ptag">care</span><span class="ptag">Federici</span><span class="ptag">Weeks</span><span class="ptag">seva</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.7</div>
+        <div><div class="post-name">What We Owe Each Other</div><div class="post-desc">T.M. Scanlon's moral philosophy meets the mutual aid network. What obligations survive the end of waged work?</div><div class="post-tags"><span class="ptag">Scanlon</span><span class="ptag">mutual aid</span><span class="ptag">Arendt</span><span class="ptag">ethics</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.8</div>
+        <div><div class="post-name">Small Cooperativism</div><div class="post-desc">Not every answer is a movement. The case for local, legible, small-scale collective structures that don't need to scale.</div><div class="post-tags"><span class="ptag">cooperatives</span><span class="ptag">Illich</span><span class="ptag">scale</span><span class="ptag">conviviality</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.9</div>
+        <div><div class="post-name">What You Can Do Now</div><div class="post-desc">Not a listicle. A genuine attempt to name the practices, communities, and structures that exist right now and are worth your time.</div><div class="post-tags"><span class="ptag">practice</span><span class="ptag">Freire</span><span class="ptag">action</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+      <a class="post-row" href="https://presentofwork.substack.com" target="_blank" rel="noopener">
+        <div class="post-num">3.10</div>
+        <div><div class="post-name">The Present of Work Is a Choice</div><div class="post-desc">The closing argument. Not optimism, not despair. A clear-eyed account of what deciding otherwise actually involves.</div><div class="post-tags"><span class="ptag">Arendt</span><span class="ptag">Gilmore</span><span class="ptag">futures</span><span class="ptag">agency</span></div></div>
+        <div class="post-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <span>The Present of Work · presentofwork.org</span>
+    <div class="fl">
+      <a href="/about.html">About</a>
+      <a href="/publication.html" style="color:rgba(255,255,255,.8)">Publication</a>
+      <a href="/podcast.html">Podcast</a><a href="/concepts.html">Concepts</a>
+      <a href="/map.html">Map</a><a href="/ecosystem.html">The Web</a>
+    </div>
+    <span><a href="/donate.html">Made in the commons</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('cToggle').addEventListener('click',function(){
+  const d=document.documentElement;const dark=d.getAttribute('data-theme')==='dark';
+  d.setAttribute('data-theme',dark?'light':'dark');this.textContent=dark?'☀':'☾';
+});
+document.getElementById('hBtn').addEventListener('click',()=>document.getElementById('mNav').classList.toggle('open'));
+document.querySelectorAll('.sn-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    document.querySelectorAll('.sn-item').forEach(i=>i.classList.remove('active'));
+    item.classList.add('active');
+    const t=document.getElementById(item.dataset.target);
+    if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'});
+  });
+});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

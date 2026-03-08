@@ -1,0 +1,169 @@
+---
+layout: default
+---
+{% capture content_for_head %}
+<style>
+/* ── EPISODE PAGE ───────────────────────────────────────────── */
+.eph{
+  padding-top:calc(var(--nav-h) + 5rem);
+  padding-bottom:4rem;
+  padding-left:5rem;padding-right:5rem;
+  background:var(--green);color:#fff;
+  position:relative;overflow:hidden;
+}
+.eph::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:8px;background:rgba(255,255,255,.3);
+}
+.eph-over{
+  font-family:var(--mono);font-size:.55rem;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.eph-over::after{content:'';flex:0 0 40px;height:1px;background:rgba(255,255,255,.2)}
+.eph h1{
+  font-family:var(--display);
+  font-size:clamp(2.8rem,6vw,6.5rem);
+  line-height:.9;letter-spacing:.03em;text-transform:uppercase;
+  color:#fff;max-width:900px;margin-bottom:2rem;
+}
+.eph-meta{
+  font-family:var(--mono);font-size:.55rem;font-weight:400;
+  letter-spacing:.12em;color:rgba(255,255,255,.45);
+  display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
+}
+
+/* ── PLAYER ─────────────────────────────────────────────────── */
+.player-wrap{
+  background:var(--surface);
+  border-bottom:2px solid var(--border);
+  padding:2.5rem 5rem;
+}
+.player-inner{max-width:720px;margin:0 auto}
+audio{
+  width:100%;
+  accent-color:var(--green);
+  margin-bottom:1.2rem;
+}
+.player-links{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.55rem;font-weight:400;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.player-links a{
+  color:var(--text-lt);
+  text-decoration:underline;text-underline-offset:3px;
+  transition:color .15s;
+}
+.player-links a:hover{color:var(--text)}
+
+/* ── PROSE (shared with post) ───────────────────────────────── */
+.prose-wrap{
+  max-width:720px;
+  margin:0 auto;
+  padding:5rem 2rem 6rem;
+}
+.prose-wrap p{
+  font-size:clamp(1rem,1.7vw,1.1rem);
+  line-height:1.85;
+  color:var(--text-mid);
+  margin-bottom:1.5rem;
+}
+.prose-wrap p:first-child{
+  font-size:clamp(1.05rem,1.8vw,1.2rem);
+  color:var(--text);
+}
+.prose-wrap h2{
+  font-family:var(--display);
+  font-size:clamp(1.8rem,3vw,2.8rem);
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--text);margin:3rem 0 1rem;
+}
+.prose-wrap h3{
+  font-family:var(--mono);font-size:.65rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text-lt);margin:2.5rem 0 .75rem;
+}
+.prose-wrap strong{color:var(--text);font-weight:700}
+.prose-wrap em{font-style:italic}
+.prose-wrap hr{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.prose-wrap blockquote{
+  border-left:4px solid var(--green);
+  padding:.75rem 0 .75rem 1.5rem;
+  margin:2rem 0;font-style:italic;color:var(--text-mid);
+}
+.prose-wrap a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.prose-wrap a:hover{color:var(--text)}
+
+/* ── EPISODE FOOTER ─────────────────────────────────────────── */
+.ep-foot{
+  background:var(--surface);
+  border-top:2px solid var(--border);
+  padding:3rem 5rem;
+}
+.ep-foot-inner{
+  max-width:720px;margin:0 auto;
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:1.5rem;
+}
+.ef-label{font-family:var(--mono);font-size:.55rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.4rem}
+.ef-cta{font-family:var(--body);font-size:.95rem;color:var(--text-mid)}
+.ef-cta a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+
+@media(max-width:768px){
+  .eph{padding-left:1.5rem;padding-right:1.5rem;padding-top:calc(var(--nav-h) + 3rem)}
+  .player-wrap{padding:2rem 1.5rem}
+  .prose-wrap{padding:3rem 1.5rem 4rem}
+  .ep-foot{padding:2.5rem 1.5rem}
+}
+</style>
+{% endcapture %}
+
+<!-- Episode header -->
+<header class="eph">
+  <div class="eph-over">Field Notes · Podcast{% if page.episode %} · Ep. {{ page.episode }}{% endif %}</div>
+  <h1>{{ page.title }}</h1>
+  <div class="eph-meta">
+    {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% endif %}
+    {% if page.duration %}<span>{{ page.duration }}</span>{% endif %}
+    {% if page.guest %}<span>with {{ page.guest }}</span>{% endif %}
+  </div>
+</header>
+
+<!-- Audio player -->
+{% if page.audio %}
+<div class="player-wrap">
+  <div class="player-inner">
+    <audio controls preload="metadata">
+      <source src="{{ page.audio }}" type="audio/mpeg">
+      Your browser does not support audio playback.
+    </audio>
+    <div class="player-links">
+      <a href="{{ page.audio }}" download>↓ Download MP3</a>
+      {% if page.apple_url %}<a href="{{ page.apple_url }}" target="_blank" rel="noopener">Apple Podcasts ↗</a>{% endif %}
+      {% if page.spotify_url %}<a href="{{ page.spotify_url }}" target="_blank" rel="noopener">Spotify ↗</a>{% endif %}
+      <a href="/feed.xml">RSS Feed ↗</a>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Shownotes / transcript -->
+<div class="prose-wrap rv">
+  {{ content }}
+</div>
+
+<!-- Footer -->
+<div class="ep-foot">
+  <div class="ep-foot-inner">
+    <div>
+      <div class="ef-label">Field Notes — The Present of Work Podcast</div>
+      <p class="ef-cta">Subscribe on <a href="/feed.xml">RSS</a>{% if page.apple_url %}, <a href="{{ page.apple_url }}">Apple Podcasts</a>{% endif %}{% if page.spotify_url %}, or <a href="{{ page.spotify_url }}">Spotify</a>{% endif %}.</p>
+    </div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <a href="/podcast.html" class="btn btn-green">All Episodes</a>
+      <a href="/feed.xml" class="btn btn-outline">RSS Feed</a>
+    </div>
+  </div>
+</div>

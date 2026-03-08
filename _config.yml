@@ -1,31 +1,30 @@
-# Site settings
-title: The Present of Work
-description: A learning network exploring how work can serve life instead of drain it
-email: contact@presentofwork.org
-baseurl: "/presentofwork" # the subpath of your site
-url: "https://meldfunction.github.io" # the base hostname & protocol
+title: "The Present of Work"
+url: "https://presentofwork.org"
+baseurl: ""
+description: >-
+  A publication, podcast, map, and gathering place exploring all forms
+  of work — not occupational employment, but the full range of human
+  contribution. Produced in the commons.
 
-# Build settings
 markdown: kramdown
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
+highlighter: rouge
 
-# Exclude from build
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - README.md
-  - deployment_guide.txt
+collections:
+  essays:
+    output: true
+    permalink: /essays/:name/
 
-# Default values
 defaults:
   - scope:
       path: ""
+      type: essays
     values:
-      layout: "default"
+      layout: post
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+plugins:
+  - jekyll-seo-tag

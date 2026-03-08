@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Present of Work">
+<meta property="og:title" content="Concepts — The Present of Work">
+  <link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
+<meta property="og:description" content="Ten kinds of work. A glossary of twelve languages. A knowledge map of thinkers and themes.">
+<meta property="og:url" content="https://presentofwork.org/concepts.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Concepts — The Present of Work">
+<meta name="twitter:description" content="Ten kinds of work. A glossary of twelve languages. A knowledge map of thinkers and themes.">
+<title>Concepts — The Present of Work</title>
+<meta name="description" content="Key ideas, frameworks, and language for understanding work in its full range. A living reference for the publication.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#FFFFFF;--off:#F6F2EB;--ink:#0D0D0D;--ink-mid:#444;--ink-lt:#888;
+  --red:#C8341C;--red-dk:#A02912;--green:#1C4C24;--green-lt:#2D6E38;
+  --mono:'Roboto Mono',monospace;--display:'Bebas Neue',sans-serif;
+  --body:'Libre Baskerville',Georgia,serif;--nav-h:52px;
+  --bg:var(--white);--surface:var(--off);--text:var(--ink);
+  --text-mid:var(--ink-mid);--text-lt:var(--ink-lt);--border:#E0E0E0;
+}
+[data-theme="dark"]{
+  --bg:#0D0D0D;--surface:#171717;--text:#F0EDE8;
+  --text-mid:#B0A898;--text-lt:#555;--border:#222;
+  --off:#171717;--white:#0D0D0D;--ink:#F0EDE8;--ink-mid:#B0A898;--ink-lt:#555;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;transition:background .25s,color .25s}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;height:var(--nav-h);background:var(--ink);z-index:1000;display:flex;align-items:stretch}
+[data-theme="dark"] nav{background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{font-family:var(--display);font-size:1.15rem;letter-spacing:.1em;color:#fff;padding:0 1.5rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.12);white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;align-items:stretch;list-style:none;flex:1}
+.nav-links li{display:flex;align-items:stretch}
+.nav-links a{font-family:var(--mono);font-size:.58rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:0 1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.08);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.06)}
+.nav-right{display:flex;align-items:center;margin-left:auto;padding:0 1rem;gap:.75rem;border-left:1px solid rgba(255,255,255,.12)}
+.ctoggle{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .55rem;cursor:pointer;font-size:.75rem;line-height:1;transition:all .15s;border-radius:2px}
+.ctoggle:hover{color:#fff;border-color:#fff}
+.hbtn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .6rem;cursor:pointer;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;transition:all .15s;display:none}
+.hbtn:hover{color:#fff;border-color:#fff}
+.mnav{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--ink);z-index:999;flex-direction:column;border-top:1px solid rgba(255,255,255,.1)}
+.mnav.open{display:flex}
+.mnav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s}
+.mnav a:hover{color:#fff}
+
+/* PAGE HEADER */
+.page-header{
+  padding-top:var(--nav-h);
+  background:var(--ink);color:#fff;
+  padding-bottom:0;position:relative;overflow:hidden;
+}
+.page-header::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--red)}
+.ph-inner{padding:4rem 3rem 0 5rem;max-width:1440px;margin:0 auto}
+.ph-label{font-family:var(--mono);font-size:.55rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.ph-h{font-family:var(--display);font-size:clamp(4rem,10vw,9rem);line-height:.88;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:1.5rem}
+.ph-body{font-family:var(--body);font-size:clamp(.95rem,1.6vw,1.1rem);color:rgba(255,255,255,.65);line-height:1.8;max-width:620px;padding-bottom:3rem;margin-left:8px}
+
+/* TAX NAV — sticky inside page */
+.tax-nav{
+  position:sticky;top:var(--nav-h);z-index:100;
+  background:var(--bg);border-bottom:2px solid var(--border);
+  display:flex;align-items:stretch;overflow-x:auto;
+  transition:background .25s;
+}
+.tax-nav::-webkit-scrollbar{display:none}
+.tn-item{
+  font-family:var(--mono);font-size:.5rem;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-lt);padding:.75rem 1rem;
+  white-space:nowrap;cursor:pointer;border-right:1px solid var(--border);
+  transition:color .15s,background .15s;flex-shrink:0;
+  display:flex;align-items:center;gap:.4rem;
+}
+.tn-item:hover{color:var(--text);background:var(--surface)}
+.tn-item.active{color:var(--red);border-bottom:2px solid var(--red);margin-bottom:-2px}
+.tn-num{font-size:.42rem;opacity:.5}
+
+/* MAIN LAYOUT */
+.concepts-body{display:grid;grid-template-columns:1fr 320px;gap:0;max-width:1440px;margin:0 auto}
+.concepts-main{padding:4rem 3rem 6rem 5rem;border-right:1px solid var(--border)}
+.concepts-side{padding:2rem 2rem 6rem;position:sticky;top:calc(var(--nav-h) + 44px);height:fit-content;max-height:calc(100vh - var(--nav-h) - 44px);overflow-y:auto}
+.concepts-side::-webkit-scrollbar{width:3px}
+.concepts-side::-webkit-scrollbar-thumb{background:var(--border)}
+
+/* TYPE CARD */
+.type-card{
+  margin-bottom:4rem;padding-bottom:4rem;
+  border-bottom:1px solid var(--border);
+}
+.type-card:last-child{border-bottom:none}
+.tc-header{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem}
+.tc-num{
+  font-family:var(--display);font-size:5rem;line-height:1;
+  color:var(--border);flex-shrink:0;
+  transition:color .2s;
+}
+.type-card:hover .tc-num{color:var(--red)}
+.tc-meta{display:flex;flex-direction:column;gap:.2rem}
+.tc-type{
+  font-family:var(--mono);font-size:.5rem;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--text-lt);
+}
+.tc-name{
+  font-family:var(--display);font-size:clamp(2.2rem,4vw,3.5rem);
+  line-height:.9;letter-spacing:.04em;text-transform:uppercase;color:var(--text);
+}
+.tc-body{
+  font-family:var(--body);font-size:clamp(.95rem,1.5vw,1rem);
+  color:var(--text-mid);line-height:1.85;margin-bottom:1.5rem;
+}
+.tc-body strong{color:var(--text)}
+.tc-body em{color:var(--red);font-style:italic}
+
+/* Non-English term */
+.term-block{
+  display:flex;flex-direction:column;gap:.15rem;
+  padding:.9rem 1.25rem;
+  border-left:3px solid var(--green);
+  margin-bottom:.75rem;background:var(--surface);
+}
+.term-word{
+  font-family:var(--display);font-size:1.8rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--green);line-height:1;
+}
+[data-theme="dark"] .term-word{color:#4a9955}
+.term-origin{font-family:var(--mono);font-size:.46rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--text-lt)}
+.term-def{font-family:var(--body);font-size:.88rem;color:var(--text-mid);line-height:1.65;margin-top:.15rem}
+
+/* Thinker chips */
+.thinkers{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.t-chip{
+  font-family:var(--mono);font-size:.5rem;font-weight:400;
+  letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--border);padding:.25rem .6rem;
+  color:var(--text-lt);background:var(--surface);
+  cursor:default;transition:all .15s;
+}
+.t-chip:hover{border-color:var(--text-lt);color:var(--text)}
+.t-chip.primary{border-color:var(--red);color:var(--red)}
+
+/* KNOWLEDGE MAP */
+.kmap-sec{
+  background:var(--ink);padding:5rem 5rem;
+  position:relative;overflow:hidden;
+}
+.kmap-sec::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--red)}
+.kmap-inner{max-width:1440px;margin:0 auto;padding-left:8px}
+.kmap-label{font-family:var(--mono);font-size:.55rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.kmap-h{font-family:var(--display);font-size:clamp(2.5rem,5vw,5rem);line-height:.9;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:.75rem}
+.kmap-sub{font-family:var(--body);font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:2rem;max-width:500px}
+.kmap-outer{position:relative;width:100%;padding-bottom:52%;min-height:300px}
+#kmap{position:absolute;inset:0;width:100%;height:100%}
+.kmap-note{font-family:var(--mono);font-size:.52rem;font-weight:400;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-top:1rem}
+.kmap-note a{color:rgba(255,200,80,.7);text-decoration:underline;text-underline-offset:3px}
+
+/* SIDEBAR */
+.side-label{font-family:var(--mono);font-size:.48rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.75rem;margin-top:1.5rem}
+.side-label:first-child{margin-top:0}
+.side-index{list-style:none;margin-bottom:1.5rem}
+.side-index li{border-bottom:1px solid var(--border)}
+.side-index a{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:var(--mono);font-size:.5rem;font-weight:400;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-lt);padding:.55rem 0;
+  transition:color .15s;
+}
+.side-index a:hover{color:var(--text)}
+.side-index a.active{color:var(--red)}
+.si-n{font-size:.42rem;opacity:.5}
+.side-terms{display:flex;flex-direction:column;gap:.3rem;margin-bottom:1.5rem}
+.st-item{
+  font-family:var(--mono);font-size:.5rem;font-weight:400;
+  letter-spacing:.08em;color:var(--text-lt);
+  padding:.3rem 0;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:baseline;
+}
+.st-word{color:var(--green);font-size:.54rem}
+[data-theme="dark"] .st-word{color:#4a9955}
+.st-src{font-size:.42rem;opacity:.6}
+
+/* SCROLL REVEAL */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .concepts-body{grid-template-columns:1fr}
+  .concepts-side{display:none}
+  .concepts-main{padding:3rem 2rem 4rem 3rem}
+  .ph-inner{padding:3rem 2rem 0 3rem}
+  .kmap-sec{padding:4rem 2rem}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hbtn{display:block}
+  .ph-h{font-size:clamp(3rem,15vw,5rem)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">The Present of Work</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/publication.html">Publication</a></li>
+    <li><a href="/podcast.html">Podcast</a></li>
+    <li><a href="/concepts.html" class="active">Concepts</a></li>
+    <li><a href="/map.html">Map</a></li>
+    <li><a href="/ecosystem.html">The Web</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="ctoggle" id="cToggle" aria-label="Toggle contrast">☀</button>
+    <button class="hbtn" id="hBtn">Menu</button>
+  </div>
+</nav>
+<div class="mnav" id="mNav">
+  <a href="/about.html">About</a>
+  <a href="/publication.html">Publication</a>
+  <a href="/podcast.html">Podcast</a>
+  <a href="/concepts.html">Concepts</a>
+  <a href="/map.html">Map</a>
+  <a href="/ecosystem.html">The Web</a>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="ph-inner">
+    <div class="ph-label">Reference · Living document</div>
+    <h1 class="ph-h">Ten<br>kinds<br>of work.</h1>
+    <p class="ph-body">
+      Occupational employment is one form of work. Not the default — one form.
+      This is a map of the rest: the ten types every community has always performed,
+      the words other languages use that English collapsed into a single noun,
+      and the thinkers who named what was happening.
+    </p>
+  </div>
+</header>
+
+<!-- TAXONOMY NAV -->
+<nav class="tax-nav" id="taxNav" aria-label="Work types">
+  <div class="tn-item active" data-target="t1"><span class="tn-num">01</span>Subsistence</div>
+  <div class="tn-item" data-target="t2"><span class="tn-num">02</span>Craft</div>
+  <div class="tn-item" data-target="t3"><span class="tn-num">03</span>Care</div>
+  <div class="tn-item" data-target="t4"><span class="tn-num">04</span>Communal</div>
+  <div class="tn-item" data-target="t5"><span class="tn-num">05</span>Sacred</div>
+  <div class="tn-item" data-target="t6"><span class="tn-num">06</span>Interior</div>
+  <div class="tn-item" data-target="t7"><span class="tn-num">07</span>Political</div>
+  <div class="tn-item" data-target="t8"><span class="tn-num">08</span>Creative</div>
+  <div class="tn-item" data-target="t9"><span class="tn-num">09</span>Administrative</div>
+  <div class="tn-item" data-target="t10"><span class="tn-num">10</span>Attention</div>
+</nav>
+
+<!-- BODY -->
+<div class="concepts-body">
+  <main class="concepts-main">
+
+    <!-- 01 SUBSISTENCE -->
+    <div class="type-card rv" id="t1">
+      <div class="tc-header">
+        <div class="tc-num">01</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Subsistence</div>
+        </div>
+      </div>
+      <div class="term-block">
+        <div class="term-word">Llankay</div>
+        <div class="term-origin">Quechua — Andean civilizations</div>
+        <div class="term-def">Physical work done in service of life: cultivating food, tending animals, building shelter. Not toil — an expression of relationship with the land.</div>
+      </div>
+      <p class="tc-body">
+        Producing food, shelter, and warmth. The biological floor.
+        Hunting, gathering, farming, foraging — <strong>still the primary work of most people on earth</strong>,
+        yet largely invisible in the GDP of wealthy nations.
+        When economists talk about the future of work, they almost never mean this work.
+        They should.
+      </p>
+      <p class="tc-body">
+        The Quechua concept of <em>llankay</em> refuses the separation between labor and relationship
+        with the land. Work is not extraction — it is participation.
+        The agricultural worker in a Central Valley greenhouse and the subsistence farmer
+        in highland Bolivia are both doing this work. One of them is counted. One is not.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Silvia Federici</div>
+        <div class="t-chip">Jason Hickel</div>
+        <div class="t-chip">Robin Wall Kimmerer</div>
+        <div class="t-chip">La Via Campesina</div>
+      </div>
+    </div>
+
+    <!-- 02 CRAFT -->
+    <div class="type-card rv" id="t2">
+      <div class="tc-header">
+        <div class="tc-num">02</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Craft</div>
+        </div>
+      </div>
+      <div class="term-block">
+        <div class="term-word">Werk</div>
+        <div class="term-origin">German</div>
+        <div class="term-def">The made thing — craft, production, the artifact that outlasts the maker. Distinct from <em>Arbeit</em> (toil) and <em>Beruf</em> (vocation/calling). English collapses all three into "work."</div>
+      </div>
+      <div class="term-block">
+        <div class="term-word">Shokunin</div>
+        <div class="term-origin">Japanese</div>
+        <div class="term-def">The artisan who pursues mastery as spiritual practice. Not an occupation — a relationship to excellence that gives life its structure.</div>
+      </div>
+      <p class="tc-body">
+        Making things with skill and care. The guild tradition, the apprenticeship,
+        the object that carries the maker's intelligence.
+        <strong>Hannah Arendt called this "work" proper</strong> — distinct from labor (which leaves no trace)
+        and action (which changes the political world). Craft is what builds the durable world.
+      </p>
+      <p class="tc-body">
+        Richard Sennett spent a career arguing that modern capitalism corrodes craft
+        by eliminating the long-term commitment mastery requires.
+        You cannot become a <em>shokunin</em> in a gig economy.
+        You cannot build a guild when the contract ends in ninety days.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Hannah Arendt</div>
+        <div class="t-chip primary">Richard Sennett</div>
+        <div class="t-chip">Ursula Franklin</div>
+        <div class="t-chip">Ivan Illich</div>
+      </div>
+    </div>
+
+    <!-- 03 CARE -->
+    <div class="type-card rv" id="t3">
+      <div class="tc-header">
+        <div class="tc-num">03</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Care</div>
+        </div>
+      </div>
+      <div class="term-block">
+        <div class="term-word">Seva</div>
+        <div class="term-origin">Sanskrit / Hindu, Sikh traditions</div>
+        <div class="term-def">Selfless service — care given without expectation of return. The opposite of the productivity mindset: pure contribution, unmeasured.</div>
+      </div>
+      <p class="tc-body">
+        Tending the sick, raising children, supporting the vulnerable.
+        Silvia Federici named it <em>reproductive labor</em> — the work that reproduces life itself
+        and makes all other work possible.
+        <strong>It has always been done primarily by women. It has never been fully paid.</strong>
+        This is not an accident. It is a structure.
+      </p>
+      <p class="tc-body">
+        Arlie Hochschild's concept of <em>emotional labor</em> extended this further:
+        care work requires managing your own feelings to produce the right feelings in others.
+        The flight attendant, the nurse, the customer service worker, the teacher —
+        all perform emotional labor as an invisible condition of the job.
+        That labor is real. It costs something. The market has never found a way to count it.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Silvia Federici</div>
+        <div class="t-chip primary">Arlie Hochschild</div>
+        <div class="t-chip">Kathi Weeks</div>
+        <div class="t-chip">Virginia Held</div>
+        <div class="t-chip">Tricia Hersey</div>
+      </div>
+    </div>
+
+    <!-- 04 COMMUNAL -->
+    <div class="type-card rv" id="t4">
+      <div class="tc-header">
+        <div class="tc-num">04</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Communal</div>
+        </div>
+      </div>
+      <div class="term-block">
+        <div class="term-word">Ayni</div>
+        <div class="term-origin">Quechua — Andean civilizations</div>
+        <div class="term-def">Reciprocal labor: I help you build your house, you help me harvest. Neither a transaction nor a gift — a relationship of mutual obligation across time.</div>
+      </div>
+      <div class="term-block">
+        <div class="term-word">Minka</div>
+        <div class="term-origin">Quechua</div>
+        <div class="term-def">Communal labor toward a shared good. The collective and the individual are not in tension — they are the same action seen from different scales.</div>
+      </div>
+      <p class="tc-body">
+        Labor freely given to and received from community. Not transactional.
+        The Amish barn raising is the most legible Western example:
+        <strong>what it produces is not just a barn — it is social cohesion, demonstrated mutual obligation,
+        renewed commitment to collective life.</strong>
+      </p>
+      <p class="tc-body">
+        <em>Gelassenheit</em> — the Amish concept of yielding to community will —
+        also contains their technology philosophy: a technology is accepted only if it
+        strengthens community bonds. Rejected if it creates hierarchy or isolation.
+        This is not primitivism. It is a design principle.
+        Contemporary parallels: COVID mutual aid networks, repair cafes, community land trusts, timebanks, Wikipedia.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">David Graeber</div>
+        <div class="t-chip primary">David Wengrow</div>
+        <div class="t-chip">Karl Polanyi</div>
+        <div class="t-chip">Elinor Ostrom</div>
+      </div>
+    </div>
+
+    <!-- 05 SACRED -->
+    <div class="type-card rv" id="t5">
+      <div class="tc-header">
+        <div class="tc-num">05</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Sacred</div>
+        </div>
+      </div>
+      <div class="term-block">
+        <div class="term-word">Avodah</div>
+        <div class="term-origin">Hebrew</div>
+        <div class="term-def">A single word meaning work, service, and worship simultaneously. The splitting apart of these three is a specifically modern, secular wound — not a universal human condition.</div>
+      </div>
+      <p class="tc-body">
+        Maintaining the community's relationship with meaning, the cosmos, the ancestors.
+        Ceremony, liturgy, ritual, prayer.
+        In most of human history, this work was not separate from other work —
+        <strong>it was the frame within which all other work made sense.</strong>
+      </p>
+      <p class="tc-body">
+        The Hebrew <em>avodah</em> holds the collapse point in a single word:
+        before modernity, labor and devotion were not distinct categories.
+        Their separation is what we inherited, not what humans have always known.
+        The Still — the contemplative practice community forming in this ecosystem —
+        is one attempt to work with that gap directly.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Max Weber</div>
+        <div class="t-chip">Mircea Eliade</div>
+        <div class="t-chip">Ivan Illich</div>
+      </div>
+    </div>
+
+    <!-- 06 INTERIOR -->
+    <div class="type-card rv" id="t6">
+      <div class="tc-header">
+        <div class="tc-num">06</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Interior</div>
+        </div>
+      </div>
+      <div class="term-block">
+        <div class="term-word">Kammathāna</div>
+        <div class="term-origin">Pali / Buddhist tradition</div>
+        <div class="term-def">Literally "basis of work" — refers to meditation objects, the ground of interior practice. The highest work is interior. Not escape from the world, but the cultivation of the mind that acts in it.</div>
+      </div>
+      <p class="tc-body">
+        The work done on and within the self. Contemplation, meditation, therapy, the examined life.
+        Buddhist <em>sammā-ājīva</em> — Right Livelihood — is one of the oldest frameworks
+        for ethical labor: work shouldn't cause harm, shouldn't involve deception,
+        shouldn't be purely extractive. This predates CSR by two millennia.
+      </p>
+      <p class="tc-body">
+        <strong>The Blackfoot model of the self begins here</strong> — not with hierarchy but with
+        the assumption that self-actualization is the given, not the peak.
+        Everyone arrives with inherent worth and creative capacity.
+        Maslow inverted this when he abstracted it into a pyramid where self-actualization
+        is rare and earned. That inversion became modern HR theory.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Gregory Bateson</div>
+        <div class="t-chip">Abraham Maslow</div>
+        <div class="t-chip">Cindy Blackstock</div>
+        <div class="t-chip">Ryan Heavy Head</div>
+        <div class="t-chip">Mary Catherine Bateson</div>
+      </div>
+    </div>
+
+    <!-- 07 POLITICAL -->
+    <div class="type-card rv" id="t7">
+      <div class="tc-header">
+        <div class="tc-num">07</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Political</div>
+        </div>
+      </div>
+      <p class="tc-body">
+        The labor of maintaining, contesting, and transforming collective structures.
+        Hannah Arendt called this <em>action</em> — the genuinely human and irreplaceable category,
+        the one that cannot be automated because it is constitutively relational.
+        <strong>You cannot action alone. It requires others, and it changes things.</strong>
+      </p>
+      <p class="tc-body">
+        Organizing, advocacy, mutual aid, governance, the work of care for the commons —
+        none of it appears in productivity statistics. All of it is what holds societies together.
+        The labor movement built the forty-hour week. Amazon workers organized in Staten Island.
+        Starbucks workers went union city by city. This work is not separate from economic work.
+        It is the work that sets the conditions for all other work.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Hannah Arendt</div>
+        <div class="t-chip primary">Kathi Weeks</div>
+        <div class="t-chip">Paulo Freire</div>
+        <div class="t-chip">Ruth Wilson Gilmore</div>
+        <div class="t-chip">Angela Davis</div>
+        <div class="t-chip">Frantz Fanon</div>
+      </div>
+    </div>
+
+    <!-- 08 CREATIVE -->
+    <div class="type-card rv" id="t8">
+      <div class="tc-header">
+        <div class="tc-num">08</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Creative</div>
+        </div>
+      </div>
+      <p class="tc-body">
+        Making culture, meaning, beauty. Distinct from craft in that it is not primarily functional —
+        its function is to expand what is thinkable, sayable, feelable.
+        <strong>Ursula K. Le Guin argued that creative work is where we rehearse different worlds</strong>
+        before we build them. Speculative fiction as policy work.
+      </p>
+      <p class="tc-body">
+        The creative economy has a specific pathology: passion as substitute for pay,
+        winner-take-all markets, the <em>exposure economy</em> where artists are grateful to work for free.
+        Angela McRobbie named this the paradox of creative labor —
+        the more you love it, the more exploitable you are.
+        AI generative tools are the newest pressure point in this dynamic.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Ursula K. Le Guin</div>
+        <div class="t-chip">Angela McRobbie</div>
+        <div class="t-chip">Donna Haraway</div>
+        <div class="t-chip">Walter Benjamin</div>
+      </div>
+    </div>
+
+    <!-- 09 ADMINISTRATIVE -->
+    <div class="type-card rv" id="t9">
+      <div class="tc-header">
+        <div class="tc-num">09</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Administrative</div>
+        </div>
+      </div>
+      <p class="tc-body">
+        Coordinating collective activity. Necessary in any complex community.
+        Also the category that <em>expands to fill available time</em> (Parkinson's Law)
+        and generates what David Graeber called <em>bullshit jobs</em> —
+        positions whose holders are secretly convinced they serve no purpose,
+        and would not be missed if they disappeared.
+      </p>
+      <p class="tc-body">
+        <strong>Ivan Illich named the deeper mechanism: shadow work.</strong>
+        The unpaid labor that institutions generate for users — filling forms, navigating bureaucracies,
+        managing your own data, doing your own check-in.
+        Every productivity app that promises to save you time
+        generates shadow work in its administration.
+        The net gain is often negative.
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Ivan Illich</div>
+        <div class="t-chip primary">David Graeber</div>
+        <div class="t-chip">André Gorz</div>
+        <div class="t-chip">C. Northcote Parkinson</div>
+      </div>
+    </div>
+
+    <!-- 10 ATTENTION -->
+    <div class="type-card rv" id="t10">
+      <div class="tc-header">
+        <div class="tc-num">10</div>
+        <div class="tc-meta">
+          <div class="tc-type">Type of work</div>
+          <div class="tc-name">Attention</div>
+        </div>
+      </div>
+      <p class="tc-body">
+        The newest category. When you scroll, you are working —
+        generating data, training models, producing behavioral signals,
+        building the advertising inventory that platforms sell.
+        <strong>You are not the customer. You are the labor.</strong>
+      </p>
+      <p class="tc-body">
+        Shoshana Zuboff named this <em>surveillance capitalism</em>:
+        the economic logic that harvests human behavioral data as raw material
+        for prediction products sold to advertisers.
+        The attention economy is an uncompensated labor system
+        at a scale no previous economic form has achieved.
+        One billion people working for free, every day, building someone else's asset.
+      </p>
+      <p class="tc-body">
+        The question this type of work raises for Series II and III:
+        if machines eventually do most occupational work,
+        <em>and</em> human attention becomes the primary resource platforms extract,
+        what does liberation actually look like?
+        Leisure — or a new form of enclosure?
+      </p>
+      <div class="thinkers">
+        <div class="t-chip primary">Shoshana Zuboff</div>
+        <div class="t-chip">Nick Srnicek</div>
+        <div class="t-chip">Ursula Franklin</div>
+        <div class="t-chip">Kathi Weeks</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="concepts-side">
+    <div class="side-label">Jump to type</div>
+    <ul class="side-index" id="sideIndex">
+      <li><a href="#t1" class="active"><span class="si-n">01</span> Subsistence</a></li>
+      <li><a href="#t2"><span class="si-n">02</span> Craft</a></li>
+      <li><a href="#t3"><span class="si-n">03</span> Care</a></li>
+      <li><a href="#t4"><span class="si-n">04</span> Communal</a></li>
+      <li><a href="#t5"><span class="si-n">05</span> Sacred</a></li>
+      <li><a href="#t6"><span class="si-n">06</span> Interior</a></li>
+      <li><a href="#t7"><span class="si-n">07</span> Political</a></li>
+      <li><a href="#t8"><span class="si-n">08</span> Creative</a></li>
+      <li><a href="#t9"><span class="si-n">09</span> Administrative</a></li>
+      <li><a href="#t10"><span class="si-n">10</span> Attention</a></li>
+    </ul>
+
+    <div class="side-label">Other words for work</div>
+    <div class="side-terms">
+      <div class="st-item"><span class="st-word">Ayni</span><span class="st-src">Quechua</span></div>
+      <div class="st-item"><span class="st-word">Minka</span><span class="st-src">Quechua</span></div>
+      <div class="st-item"><span class="st-word">Llankay</span><span class="st-src">Quechua</span></div>
+      <div class="st-item"><span class="st-word">Avodah</span><span class="st-src">Hebrew</span></div>
+      <div class="st-item"><span class="st-word">Seva</span><span class="st-src">Sanskrit</span></div>
+      <div class="st-item"><span class="st-word">Karma</span><span class="st-src">Sanskrit</span></div>
+      <div class="st-item"><span class="st-word">Dharma</span><span class="st-src">Sanskrit</span></div>
+      <div class="st-item"><span class="st-word">Kammathāna</span><span class="st-src">Pali</span></div>
+      <div class="st-item"><span class="st-word">Werk</span><span class="st-src">German</span></div>
+      <div class="st-item"><span class="st-word">Arbeit</span><span class="st-src">German</span></div>
+      <div class="st-item"><span class="st-word">Beruf</span><span class="st-src">German</span></div>
+      <div class="st-item"><span class="st-word">Gelassenheit</span><span class="st-src">Amish/German</span></div>
+      <div class="st-item"><span class="st-word">Ikigai</span><span class="st-src">Japanese</span></div>
+      <div class="st-item"><span class="st-word">Shokunin</span><span class="st-src">Japanese</span></div>
+      <div class="st-item"><span class="st-word">Ubuntu</span><span class="st-src">Nguni Bantu</span></div>
+      <div class="st-item"><span class="st-word">Sumak Kawsay</span><span class="st-src">Quechua</span></div>
+    </div>
+
+    <div class="side-label">Key thinkers</div>
+    <div class="side-terms">
+      <div class="st-item" style="flex-direction:column;gap:.1rem;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:.52rem;color:var(--text)">Hannah Arendt</span>
+        <span class="st-src" style="font-size:.44rem;color:var(--text-lt)">Labor / Work / Action</span>
+      </div>
+      <div class="st-item" style="flex-direction:column;gap:.1rem;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:.52rem;color:var(--text)">Silvia Federici</span>
+        <span class="st-src" style="font-size:.44rem;color:var(--text-lt)">Reproductive labor</span>
+      </div>
+      <div class="st-item" style="flex-direction:column;gap:.1rem;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:.52rem;color:var(--text)">Kathi Weeks</span>
+        <span class="st-src" style="font-size:.44rem;color:var(--text-lt)">Work as ideology</span>
+      </div>
+      <div class="st-item" style="flex-direction:column;gap:.1rem;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:.52rem;color:var(--text)">Gregory Bateson</span>
+        <span class="st-src" style="font-size:.44rem;color:var(--text-lt)">Ecology of mind</span>
+      </div>
+      <div class="st-item" style="flex-direction:column;gap:.1rem;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:.52rem;color:var(--text)">Ivan Illich</span>
+        <span class="st-src" style="font-size:.44rem;color:var(--text-lt)">Shadow work / conviviality</span>
+      </div>
+      <div class="st-item" style="flex-direction:column;gap:.1rem;align-items:flex-start">
+        <span style="font-family:var(--mono);font-size:.52rem;color:var(--text)">David Graeber</span>
+        <span class="st-src" style="font-size:.44rem;color:var(--text-lt)">Bullshit jobs / debt</span>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- KNOWLEDGE MAP -->
+<section class="kmap-sec">
+  <div class="kmap-inner">
+    <div class="kmap-label">Knowledge map · Ideas and their connections</div>
+    <h2 class="kmap-h">How the<br>ideas connect.</h2>
+    <p class="kmap-sub">Not a table of contents — a web of influences, tensions, and resonances. Hover to explore connections.</p>
+    <div class="kmap-outer">
+      <svg id="kmap" viewBox="0 0 900 468" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <p class="kmap-note">A fuller version lives in the <a href="/map.html">interactive map →</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0D0D0D;border-top:1px solid rgba(255,255,255,.1);padding:1.25rem 3rem 1.25rem 5rem;font-family:'Roboto Mono',monospace;font-size:.52rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+    <span>The Present of Work · presentofwork.org</span>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+      <a href="/about.html" style="color:rgba(255,255,255,.3);transition:color .15s">About</a>
+      <a href="/publication.html" style="color:rgba(255,255,255,.3);transition:color .15s">Publication</a>
+      <a href="/podcast.html" style="color:rgba(255,255,255,.3);transition:color .15s">Podcast</a>
+      <a href="/concepts.html" style="color:rgba(255,255,255,.8)">Concepts</a>
+      <a href="/map.html" style="color:rgba(255,255,255,.3);transition:color .15s">Map</a>
+      <a href="/ecosystem.html" style="color:rgba(255,255,255,.3);transition:color .15s">The Web</a>
+    </div>
+    <span><a href="/donate.html" style="color:rgba(255,255,255,.3);transition:color .15s">Made in the commons</a></span>
+  </div>
+</footer>
+
+<script>
+/* CONTRAST TOGGLE */
+const cToggle=document.getElementById('cToggle');
+document.getElementById('cToggle').addEventListener('click',()=>{
+  const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme',isDark?'light':'dark');
+  cToggle.textContent=isDark?'☀':'☾';
+});
+
+/* HAMBURGER */
+document.getElementById('hBtn').addEventListener('click',()=>
+  document.getElementById('mNav').classList.toggle('open'));
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
+}),{threshold:.06});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* TAXONOMY NAV — active state */
+const cards=document.querySelectorAll('.type-card');
+const tnItems=document.querySelectorAll('.tn-item');
+const sideLinks=document.querySelectorAll('#sideIndex a');
+const navH=52+44; // nav + tax-nav
+
+tnItems.forEach(item=>{
+  item.addEventListener('click',()=>{
+    const target=document.getElementById(item.dataset.target);
+    if(target) window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-navH-16,behavior:'smooth'});
+  });
+});
+
+const scrollObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      tnItems.forEach(i=>i.classList.toggle('active',i.dataset.target===id));
+      sideLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+    }
+  });
+},{threshold:.3,rootMargin:`-${navH}px 0px -40% 0px`});
+cards.forEach(c=>scrollObs.observe(c));
+
+/* ── KNOWLEDGE MAP ──────────────────────────────────────────── */
+const KNODES=[
+  // Core frames
+  {id:'arendt',  x:450,y:234,r:28,label:'ARENDT',    color:'#C8341C', group:'thinker',
+   tip:'Labor / Work / Action — the three forms of human activity. Only Action (political) is irreducibly human.'},
+  {id:'federici',x:200,y:130,r:22,label:'FEDERICI',  color:'#C8341C', group:'thinker',
+   tip:'Reproductive labor as the hidden foundation of capitalism. Caliban and the Witch.'},
+  {id:'weeks',   x:680,y:130,r:22,label:'WEEKS',     color:'#C8341C', group:'thinker',
+   tip:'Work as ideology, not just economy. The Problem with Work.'},
+  {id:'illich',  x:160,y:320,r:20,label:'ILLICH',    color:'#C8341C', group:'thinker',
+   tip:'Shadow work, conviviality, tools for human scale. Counter-productivity.'},
+  {id:'bateson', x:750,y:310,r:20,label:'BATESON',   color:'#C8341C', group:'thinker',
+   tip:'Ecology of mind. The pattern that connects. Deutero-learning.'},
+  {id:'graeber', x:450,y:390,r:20,label:'GRAEBER',   color:'#C8341C', group:'thinker',
+   tip:'Bullshit jobs. Debt. The Dawn of Everything. Communal labor.'},
+  // Concepts
+  {id:'care',    x:300,y:220,r:18,label:'CARE\nLABOR', color:'#1C4C24', group:'concept',
+   tip:'Reproductive, emotional, domestic labor — the substrate capitalism runs on.'},
+  {id:'enclosure',x:580,y:200,r:18,label:'ENCLOSURE',  color:'#1C4C24', group:'concept',
+   tip:'The privatization of common land — and its contemporary digital equivalent.'},
+  {id:'shadow',  x:180,y:420,r:16,label:'SHADOW\nWORK',color:'#1C4C24', group:'concept',
+   tip:'Illich: the unpaid labor institutions generate for their users.'},
+  {id:'protestant',x:700,y:210,r:16,label:'PROTESTANT\nETHIC',color:'#1C4C24', group:'concept',
+   tip:'Weber: capitalism was spiritually enabled by Calvinist work-as-election. Root of hustle culture.'},
+  {id:'attention',x:600,y:400,r:16,label:'ATTENTION\nWORK',color:'#1C4C24', group:'concept',
+   tip:'Scrolling is labor. Behavioral data as raw material for prediction products.'},
+  {id:'ayni',    x:310,y:380,r:14,label:'AYNI',       color:'#2D6E38', group:'term',
+   tip:'Quechua: reciprocal labor. Neither transaction nor gift — mutual obligation across time.'},
+  {id:'avodah',  x:100,y:210,r:14,label:'AVODAH',     color:'#2D6E38', group:'term',
+   tip:'Hebrew: work, service, and worship in one word. Their separation is modern.'},
+  {id:'karma',   x:780,y:420,r:14,label:'KAMMATHĀNA', color:'#2D6E38', group:'term',
+   tip:'Pali: basis of work — meditation objects. Interior work as the highest form.'},
+];
+
+const KEDGES=[
+  {a:'arendt',b:'federici',label:'reproductive labor'},{a:'arendt',b:'weeks',label:'work as ideology'},
+  {a:'federici',b:'care',},{a:'federici',b:'enclosure'},{a:'weeks',b:'protestant'},
+  {a:'illich',b:'shadow'},{a:'illich',b:'graeber'},{a:'bateson',b:'attention'},
+  {a:'graeber',b:'ayni'},{a:'graeber',b:'enclosure'},{a:'care',b:'ayni'},
+  {a:'protestant',b:'enclosure'},{a:'attention',b:'karma'},{a:'avodah',b:'care'},
+  {a:'arendt',b:'graeber'},{a:'bateson',b:'weeks'},
+];
+
+const ksvg=document.getElementById('kmap');
+let hoveredNode=null;
+
+// Draw edges first
+KEDGES.forEach(({a,b})=>{
+  const n1=KNODES.find(n=>n.id===a),n2=KNODES.find(n=>n.id===b);
+  if(!n1||!n2) return;
+  const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+  l.setAttribute('x1',n1.x);l.setAttribute('y1',n1.y);
+  l.setAttribute('x2',n2.x);l.setAttribute('y2',n2.y);
+  l.setAttribute('stroke','rgba(255,255,255,0.08)');
+  l.setAttribute('stroke-width','1');
+  l.setAttribute('data-a',a);l.setAttribute('data-b',b);
+  l.id=`ke-${a}-${b}`;
+  ksvg.appendChild(l);
+});
+
+// Tooltip element
+const tooltip=document.createElementNS('http://www.w3.org/2000/svg','g');
+tooltip.setAttribute('id','ktooltip');tooltip.style.display='none';
+const tRect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+tRect.setAttribute('rx','3');tRect.setAttribute('fill','#0D0D0D');tRect.setAttribute('stroke','rgba(255,255,255,0.2)');tRect.setAttribute('stroke-width','1');
+const tText=document.createElementNS('http://www.w3.org/2000/svg','text');
+tText.setAttribute('fill','rgba(255,255,255,0.75)');tText.setAttribute('font-family','Libre Baskerville, serif');tText.setAttribute('font-size','9');tText.setAttribute('font-style','italic');
+tooltip.appendChild(tRect);tooltip.appendChild(tText);
+ksvg.appendChild(tooltip);
+
+KNODES.forEach(node=>{
+  const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.style.cursor='default';
+
+  const circ=document.createElementNS('http://www.w3.org/2000/svg','circle');
+  circ.setAttribute('cx',node.x);circ.setAttribute('cy',node.y);circ.setAttribute('r',node.r);
+  circ.setAttribute('fill',node.group==='thinker'?'rgba(200,52,28,0.15)':node.group==='concept'?'rgba(28,76,36,0.2)':'rgba(45,110,56,0.15)');
+  circ.setAttribute('stroke',node.color);
+  circ.setAttribute('stroke-width',node.group==='thinker'?'2':'1.5');
+  circ.setAttribute('opacity',node.group==='thinker'?'1':'.8');
+  g.appendChild(circ);
+
+  const lines=node.label.split('\n'),fs=node.group==='thinker'?7:5.5,lh=8;
+  const totalH=lines.length*lh;
+  lines.forEach((ln,i)=>{
+    const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',node.x);t.setAttribute('y',node.y-totalH/2+i*lh+lh*.75);
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('fill',node.group==='thinker'?'rgba(255,255,255,0.9)':'rgba(255,255,255,0.65)');
+    t.setAttribute('font-size',fs);t.setAttribute('font-family','Roboto Mono, monospace');
+    t.setAttribute('font-weight',node.group==='thinker'?'500':'400');
+    t.setAttribute('letter-spacing','.06em');
+    t.textContent=ln;g.appendChild(t);
+  });
+
+  g.addEventListener('mouseenter',()=>{
+    hoveredNode=node.id;
+    circ.setAttribute('opacity','1');
+    circ.setAttribute('stroke-width',node.group==='thinker'?'3':'2.5');
+    // highlight connected edges
+    KEDGES.forEach(({a,b})=>{
+      if(a===node.id||b===node.id){
+        const el=document.getElementById(`ke-${a}-${b}`);
+        if(el){el.setAttribute('stroke','rgba(255,255,255,0.4)');el.setAttribute('stroke-width','1.5');}
+      }
+    });
+    // show tooltip
+    const tipWords=node.tip.split(' ');
+    const lines=[];let line='';
+    tipWords.forEach(w=>{if((line+' '+w).trim().length>42){lines.push(line.trim());line=w;}else{line+=' '+w;}});
+    if(line.trim()) lines.push(line.trim());
+    tText.innerHTML='';
+    lines.forEach((ln,i)=>{
+      const ts=document.createElementNS('http://www.w3.org/2000/svg','tspan');
+      ts.setAttribute('x',node.x+node.r+8);ts.setAttribute('dy',i===0?0:11);
+      ts.setAttribute('y',node.y-((lines.length-1)*11)/2);
+      ts.textContent=ln;tText.appendChild(ts);
+    });
+    const tw=Math.max(...lines.map(l=>l.length))*5.2;
+    const th=lines.length*11+8;
+    const tx=node.x+node.r+6;
+    const ty=node.y-th/2;
+    tRect.setAttribute('x',tx-2);tRect.setAttribute('y',ty-2);
+    tRect.setAttribute('width',tw+8);tRect.setAttribute('height',th+4);
+    tooltip.style.display='block';
+  });
+  g.addEventListener('mouseleave',()=>{
+    hoveredNode=null;
+    circ.setAttribute('opacity',node.group==='thinker'?'1':'.8');
+    circ.setAttribute('stroke-width',node.group==='thinker'?'2':'1.5');
+    KEDGES.forEach(({a,b})=>{
+      const el=document.getElementById(`ke-${a}-${b}`);
+      if(el){el.setAttribute('stroke','rgba(255,255,255,0.08)');el.setAttribute('stroke-width','1');}
+    });
+    tooltip.style.display='none';
+  });
+
+  ksvg.appendChild(g);
+});
+
+// Bring tooltip to front
+ksvg.appendChild(tooltip);
+</script>
+</body>
+</html>

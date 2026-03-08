@@ -1,0 +1,61 @@
+---
+layout: default
+---
+<style>
+.ph{padding-top:calc(var(--nav-h) + 5rem);padding-bottom:4rem;padding-left:5rem;padding-right:5rem;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--red)}
+.ph-series{font-family:var(--mono);font-size:.55rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.2rem;display:flex;align-items:center;gap:.75rem}
+.ph-series::after{content:'';flex:0 0 40px;height:1px;background:rgba(255,255,255,.2)}
+.ph h1{font-family:var(--display);font-size:clamp(3rem,7vw,7rem);line-height:.9;letter-spacing:.03em;text-transform:uppercase;color:#fff;max-width:900px;margin-bottom:2rem}
+.ph-meta{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+
+.prose-wrap{max-width:720px;margin:0 auto;padding:5rem 2rem 6rem}
+.prose-wrap p{font-size:clamp(1rem,1.7vw,1.1rem);line-height:1.85;color:var(--text-mid);margin-bottom:1.5rem}
+.prose-wrap > p:first-child{font-size:clamp(1.05rem,1.8vw,1.2rem);color:var(--text)}
+.prose-wrap h2{font-family:var(--display);font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin:3rem 0 1rem}
+.prose-wrap h3{font-family:var(--mono);font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--text-lt);margin:2.5rem 0 .75rem}
+.prose-wrap strong{color:var(--text)}
+.prose-wrap em{font-style:italic}
+.prose-wrap hr{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.prose-wrap blockquote{border-left:4px solid var(--red);padding:.75rem 0 .75rem 1.5rem;margin:2rem 0;font-style:italic;color:var(--text-mid)}
+.prose-wrap a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.prose-wrap a:hover{color:var(--text)}
+
+.post-foot{background:var(--surface);border-top:2px solid var(--border);padding:3rem 5rem}
+.post-foot-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.pf-series{font-family:var(--mono);font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.4rem}
+.pf-cta{font-family:var(--body);font-size:.95rem;color:var(--text-mid)}
+.pf-cta a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+
+@media(max-width:768px){
+  .ph{padding:calc(var(--nav-h) + 3rem) 1.5rem 3rem}
+  .prose-wrap{padding:3rem 1.5rem 4rem}
+  .post-foot{padding:2.5rem 1.5rem}
+}
+</style>
+
+<header class="ph">
+  {% if page.series %}<div class="ph-series">{{ page.series }}</div>{% endif %}
+  <h1>{{ page.title }}</h1>
+  <div class="ph-meta">
+    {% if page.series_num %}<span>{{ page.series_num }}</span>{% endif %}
+    <a href="https://presentofwork.substack.com" style="color:rgba(255,255,255,.4);text-decoration:underline;text-underline-offset:3px">Read on Substack ↗</a>
+  </div>
+</header>
+
+<div class="prose-wrap rv">
+  {{ content }}
+</div>
+
+<div class="post-foot">
+  <div class="post-foot-inner">
+    <div>
+      <div class="pf-series">The Present of Work</div>
+      <p class="pf-cta">Essays publish on <a href="https://presentofwork.substack.com">Substack</a>. Subscribe to receive them.</p>
+    </div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <a href="https://presentofwork.substack.com" class="btn btn-red">Subscribe</a>
+      <a href="/essays/" class="btn btn-outline">All Essays</a>
+    </div>
+  </div>
+</div>

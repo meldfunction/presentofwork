@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="An interactive map of 47 nodes: three series, ten themes, eleven thinkers, and the connections between them.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Present of Work">
+<meta property="og:title" content="Knowledge Map — The Present of Work">
+  <link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
+<meta property="og:description" content="An interactive map of 47 nodes: three series, ten themes, eleven thinkers, and the connections between them.">
+<meta property="og:url" content="https://presentofwork.org/map.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Knowledge Map — The Present of Work">
+<meta name="twitter:description" content="An interactive map of 47 nodes: three series, ten themes, eleven thinkers, and the connections between them.">
+<title>Knowledge Map — The Present of Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:'Libre Baskerville',Georgia,serif}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;height:48px;
+  background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:1000;display:flex;align-items:stretch;
+}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.1em;color:#fff;padding:0 1.25rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.1);white-space:nowrap}
+.nav-links{display:flex;align-items:stretch;list-style:none}
+.nav-links li{display:flex;align-items:stretch}
+.nav-links a{font-family:'Roboto Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:0 .85rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.06);transition:color .15s}
+.nav-links a:hover{color:#fff}
+.nav-links a.active{color:rgba(255,255,255,.85)}
+.nav-right{margin-left:auto;display:flex;align-items:center;padding:0 1rem;gap:.6rem;border-left:1px solid rgba(255,255,255,.08)}
+.nav-hint{font-family:'Roboto Mono',monospace;font-size:.46rem;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase}
+
+/* FILTERS */
+.filters{
+  position:fixed;top:48px;left:0;right:0;height:40px;
+  background:#0d0d0d;border-bottom:1px solid rgba(255,255,255,.07);
+  z-index:999;display:flex;align-items:stretch;overflow-x:auto;
+}
+.filters::-webkit-scrollbar{display:none}
+.fb{
+  font-family:'Roboto Mono',monospace;font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);padding:0 1rem;cursor:pointer;
+  border-right:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;gap:.4rem;white-space:nowrap;
+  transition:color .15s,background .15s;flex-shrink:0;
+}
+.fb:hover{color:rgba(255,255,255,.7)}
+.fb.active{color:#fff;border-bottom:2px solid #C8341C;margin-bottom:-1px}
+.fb .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* CANVAS */
+#canvas{
+  position:fixed;top:88px;left:0;right:0;bottom:0;
+  overflow:hidden;cursor:grab;
+}
+#canvas.dragging{cursor:grabbing}
+#scene{transform-origin:0 0}
+
+/* DETAIL PANEL */
+.panel{
+  position:fixed;top:88px;right:0;bottom:0;
+  width:320px;background:#0d0d0d;
+  border-left:1px solid rgba(255,255,255,.08);
+  transform:translateX(100%);transition:transform .3s cubic-bezier(.22,1,.36,1);
+  overflow-y:auto;z-index:900;
+}
+.panel.open{transform:none}
+.panel::-webkit-scrollbar{width:3px}
+.panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1)}
+.panel-close{
+  position:absolute;top:.75rem;right:.75rem;
+  background:none;border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.4);padding:.2rem .45rem;
+  cursor:pointer;font-family:'Roboto Mono',monospace;font-size:.6rem;
+  letter-spacing:.1em;transition:all .15s;
+}
+.panel-close:hover{color:#fff;border-color:#fff}
+.panel-inner{padding:2rem 1.5rem 3rem}
+.p-series{font-family:'Roboto Mono',monospace;font-size:.46rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.4rem}
+.p-num{font-family:'Roboto Mono',monospace;font-size:.5rem;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:.3rem}
+.p-name{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:.04em;text-transform:uppercase;line-height:.9;margin-bottom:1rem}
+.p-type{font-family:'Roboto Mono',monospace;font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.p-body{font-family:'Libre Baskerville',serif;font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:1rem}
+.p-key{font-family:'Roboto Mono',monospace;font-size:.5rem;letter-spacing:.1em;color:rgba(255,255,255,.25);margin-bottom:.5rem;text-transform:uppercase}
+.p-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.75rem}
+.p-tag{font-family:'Roboto Mono',monospace;font-size:.45rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .5rem;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4)}
+
+/* LEGEND */
+.legend{
+  position:fixed;bottom:1.5rem;left:1.5rem;
+  background:rgba(13,13,13,.92);border:1px solid rgba(255,255,255,.08);
+  padding:.75rem 1rem;z-index:800;
+}
+.leg-title{font-family:'Roboto Mono',monospace;font-size:.42rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.5rem}
+.leg-items{display:flex;flex-direction:column;gap:.3rem}
+.leg-item{display:flex;align-items:center;gap:.5rem;font-family:'Roboto Mono',monospace;font-size:.46rem;letter-spacing:.1em;color:rgba(255,255,255,.35)}
+.leg-s1{width:9px;height:9px;border-radius:50%;background:#C8341C;flex-shrink:0}
+.leg-s2{width:9px;height:9px;border-radius:50%;background:#2A6A9E;flex-shrink:0}
+.leg-s3{width:9px;height:9px;border-radius:50%;background:#1C4C24;flex-shrink:0}
+.leg-th{width:9px;height:9px;background:none;border:1.5px solid #8B6914;transform:rotate(45deg);flex-shrink:0}
+.leg-tm{width:9px;height:9px;clip-path:polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%);background:rgba(80,60,20,.8);border:1px solid #6B5512;flex-shrink:0}
+
+/* ZOOM CONTROLS */
+.zoom-ctrls{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  display:flex;flex-direction:column;gap:.3rem;z-index:800;
+}
+.zb{
+  width:32px;height:32px;background:rgba(13,13,13,.92);
+  border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);
+  cursor:pointer;font-size:1rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;font-family:'Roboto Mono',monospace;
+}
+.zb:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+
+/* NODE COUNT */
+.map-info{
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  font-family:'Roboto Mono',monospace;font-size:.46rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.2);
+  pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Present of Work</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/publication.html">Publication</a></li>
+    <li><a href="/podcast.html">Podcast</a></li>
+    <li><a href="/concepts.html">Concepts</a></li>
+    <li><a href="/map.html" class="active">Map</a></li>
+    <li><a href="/ecosystem.html">The Web</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-hint" id="mapHint">Scroll to zoom · Drag to pan · Click to explore</span>
+    <button id="hBtn" style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .6rem;cursor:pointer;font-family:var(--mono,monospace);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;display:none;margin-left:.5rem" onclick="document.getElementById('mNav').classList.toggle('open')">Menu</button>
+  </div>
+</nav>
+<div id="mNav" style="display:none;position:fixed;top:48px;left:0;right:0;background:#0a0a0a;z-index:999;flex-direction:column;border-top:1px solid rgba(255,255,255,.1)">
+  <a href="/about.html" style="font-family:monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block">About</a>
+  <a href="/publication.html" style="font-family:monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block">Publication</a>
+  <a href="/podcast.html" style="font-family:monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block">Podcast</a>
+  <a href="/concepts.html" style="font-family:monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block">Concepts</a>
+  <a href="/map.html" style="font-family:monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block">Map</a>
+  <a href="/ecosystem.html" style="font-family:monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block">The Web</a>
+</div>
+<style>
+@media(max-width:768px){
+  #mapHint{display:none}
+  #hBtn{display:block!important}
+  #mNav.open{display:flex!important}
+  .filters{overflow-x:auto}
+  .fb{font-size:.42rem;padding:0 .6rem}
+}
+</style>
+
+<div class="filters" id="filters">
+  <div class="fb active" data-filter="all">All nodes</div>
+  <div class="fb" data-filter="s1"><span class="dot" style="background:#C8341C"></span>History of the Present</div>
+  <div class="fb" data-filter="s2"><span class="dot" style="background:#2A6A9E"></span>Future of the Present</div>
+  <div class="fb" data-filter="s3"><span class="dot" style="background:#1C4C24"></span>The Present</div>
+  <div class="fb" data-filter="themes"><span class="dot" style="background:#8B6914"></span>Themes</div>
+  <div class="fb" data-filter="thinkers"><span class="dot" style="background:#5C3D11"></span>Thinkers</div>
+</div>
+
+<div id="canvas">
+  <svg id="scene" xmlns="http://www.w3.org/2000/svg" width="2400" height="1400"></svg>
+</div>
+
+<div class="panel" id="panel">
+  <button class="panel-close" id="panelClose">[ close ]</button>
+  <div class="panel-inner" id="panelInner"></div>
+</div>
+
+<div class="legend">
+  <div class="leg-title">Node types</div>
+  <div class="leg-items">
+    <div class="leg-item"><span class="leg-s1"></span>Series I — History</div>
+    <div class="leg-item"><span class="leg-s2"></span>Series II — Futures</div>
+    <div class="leg-item"><span class="leg-s3"></span>Series III — Present</div>
+    <div class="leg-item"><span class="leg-th"></span>Key thinker</div>
+    <div class="leg-item"><span class="leg-tm"></span>Theme / thread</div>
+  </div>
+</div>
+
+<div class="zoom-ctrls">
+  <button class="zb" id="zIn">+</button>
+  <button class="zb" id="zOut">−</button>
+  <button class="zb" id="zReset" style="font-size:.55rem;letter-spacing:.05em">fit</button>
+</div>
+
+<div class="map-info" id="mapInfo">47 nodes · 3 series · 10 themes · 11 thinkers</div>
+
+<script>
+const SVG_W=2400,SVG_H=1400;
+const NS=(tag)=>document.createElementNS('http://www.w3.org/2000/svg',tag);
+const scene=document.getElementById('scene');
+
+/* ── DATA ─────────────────────────────────────────────────────── */
+const S1='#C8341C',S2='#2A6A9E',S3='#1C4C24';
+const TH='#8B6914',TK='#7A5520';
+
+// node: {id, x, y, r, label, kind:'hub'|'post'|'theme'|'thinker', series:'s1'|'s2'|'s3'|null, color, name, num, desc, tags}
+const NODES=[
+  // ── SERIES HUBS ─────────────────────────────────────────────
+  {id:'h1',x:340,y:700,r:48,kind:'hub',series:'s1',color:S1,
+   label:'THE HISTORY\nOF THE\nPRESENT',name:'Series I: The History of the Present',
+   desc:'How did we get here? Tracing the making of work as we know it — from pre-wage economies to the industrial present. Each post is a genealogy: not how things are, but how they were constructed.',
+   question:'"How did selling your time become the definition of a good life?"'},
+
+  {id:'h2',x:1200,y:280,r:48,kind:'hub',series:'s2',color:S2,
+   label:'THE FUTURE\nOF THE\nPRESENT',name:'Series II: The Future of the Present',
+   desc:'What have we been promised? A reckoning with every technological utopia from the Jetsons to AGI — and what each one reveals about what we actually believe.',
+   question:'"Why do all our promised futures still need you to earn your place in them?"'},
+
+  {id:'h3',x:1980,y:700,r:48,kind:'hub',series:'s3',color:S3,
+   label:'THE\nPRESENT',name:'Series III: The Present',
+   desc:'Not what work will be. What we decide it should be — right now. An ever-growing series on plural economies, practices of resistance, and what it means to act before the patterns lock in.',
+   question:'"What if your worth was never up for negotiation?"'},
+
+  // ── SERIES I POSTS ──────────────────────────────────────────
+  {id:'s1p0',x:120,y:540,r:16,kind:'post',series:'s1',color:S1,
+   num:'0.1',label:'MANIFESTO',name:'The Present of Work',
+   desc:'Five meanings of present. Nine meanings of work. Occupational employment is one form, not the default. The opening argument for the whole project.',
+   tags:['language','framing','Illich']},
+  {id:'s1p1',x:155,y:400,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.1',label:'BEFORE THE\nCLOCK',name:'Before the Clock Punched In',
+   desc:'Work before wages: how ancient civilizations organized labor through obligation, craft, and community long before anyone sold their time by the hour.',
+   tags:['ancient','llankay','subsistence','gift economy']},
+  {id:'s1p2',x:250,y:285,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.2',label:'THE GUILD\n& THE GIFT',name:'The Guild and the Gift',
+   desc:'Medieval trades, apprenticeships, and the original knowledge economy — when mastery was passed person to person, and skill was sacred.',
+   tags:['craft','guild','Werk','shokunin','Polanyi']},
+  {id:'s1p3',x:390,y:210,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.3',label:'DARK\nSATANIC\nMILLS',name:'The Dark Satanic Mills',
+   desc:'How the Industrial Revolution didn\'t just change what people did — it severed the relationship between expertise and dignity.',
+   tags:['industrial','Arendt','Franklin','Sennett']},
+  {id:'s1p4',x:520,y:200,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.4',label:'THE\nINVENTION\nOF WORKER',name:'The Invention of the Worker',
+   desc:'How "the employee" became an identity — the rise of labor movements, the 40-hour week, and the strange moment when selling your time became virtuous.',
+   tags:['labor movement','Weeks','Federici']},
+  {id:'s1p5',x:175,y:600,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.5',label:'REFORMATION\'S\nWAGES',name:'The Reformation\'s Wages',
+   desc:'Max Weber\'s Protestant ethic: capitalism was spiritually enabled by Calvinist notions of work as proof of election. The hustle gospel\'s deep root.',
+   tags:['Weber','Protestantism','vocation','Beruf']},
+  {id:'s1p6',x:145,y:760,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.6',label:'THE OFFICE\nAS A LIFE',name:'The Office as a Way of Life',
+   desc:'From the typing pool to the cubicle: how the 20th century built an entire culture around showing up.',
+   tags:['white collar','Sennett','Hochschild']},
+  {id:'s1p7',x:200,y:900,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.7',label:'GIG BEFORE\nGIG',name:'The Gig Before the Gig Economy',
+   desc:'Precarious, piecework, and contingent labor aren\'t new. A history of "flexible" work — and who it was always flexible for.',
+   tags:['precarity','Federici','race']},
+  {id:'s1p8',x:350,y:980,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.8',label:'FINANCIAL\nARCHITECTURE',name:'The Financial Architecture',
+   desc:'Lloyd\'s of London, the VOC, Wall Street\'s literal origins on a slave market. The plantation as proto-factory. Money\'s foundation.',
+   tags:['slavery','Robinson','capitalism','Hartman']},
+  {id:'s1p9',x:490,y:1020,r:15,kind:'post',series:'s1',color:S1,
+   num:'1.9',label:'MANY WORDS\nFOR WORK',name:'Many Words for Work',
+   desc:'Ayni, kammathāna, avodah, karma, gelassenheit — a survey of what English collapsed into a single noun. The 10-type taxonomy of work every community performs.',
+   tags:['language','Quechua','Hebrew','Sanskrit','Bateson']},
+
+  // ── SERIES II POSTS ─────────────────────────────────────────
+  {id:'s2p1',x:870,y:195,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.1',label:'THE JETSONS\nLIED',name:'The Jetsons Lied to Us',
+   desc:'Pushbutton living, robot maids, the one-hour workday: how mid-century optimism pictured a leisure society that never arrived.',
+   tags:['automation','leisure','Veblen','Gorz']},
+  {id:'s2p2',x:990,y:140,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.2',label:'CYBERSPACE\nSAVES US',name:'Cyberspace Was Going to Save Us',
+   desc:'The 80s and 90s promised that networked technology would flatten hierarchies, empower workers, dissolve the office. What happened instead.',
+   tags:['technology','Haraway','platform','Zuboff']},
+  {id:'s2p3',x:1110,y:120,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.3',label:'THE MANAGED\nHEART',name:'The Managed Heart',
+   desc:'Arlie Hochschild\'s emotional labor: the flight attendant, the nurse, the care worker managing their feelings as a condition of employment.',
+   tags:['Hochschild','care','service','emotional labor']},
+  {id:'s2p4',x:1260,y:110,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.4',label:'THE TIP\'S\nRACIAL ROOT',name:'The Tip\'s Racial Architecture',
+   desc:'How tipping was introduced in America to avoid paying formerly enslaved workers — and became a permanent feature of service economy exploitation.',
+   tags:['race','service work','Federici','Hartman']},
+  {id:'s2p5',x:1400,y:128,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.5',label:'SHARING\nECONOMY\nBROKEN',name:'The Sharing Economy\'s Broken Promise',
+   desc:'Uber, Airbnb, TaskRabbit: sold as liberation. How platform capitalism repackaged precarity as entrepreneurship.',
+   tags:['platform','Zuboff','Gorz','gig']},
+  {id:'s2p6',x:1500,y:185,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.6',label:'AGI &\nTHE LAST JOB',name:'AGI and the Last Job',
+   desc:'The current wave: trillion-dollar bets on machines that can do anything. How AGI rhetoric recycles every prior techno-utopian script with higher stakes.',
+   tags:['AI','automation','Haraway','Franklin']},
+  {id:'s2p7',x:1560,y:295,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.7',label:'EFFICIENCY\nAS VALUE',name:'When Efficiency Became the Only Value',
+   desc:'Tracing how "productivity" colonized the imagination and crowded out every other question worth asking about what work is for.',
+   tags:['productivity','Illich','Gorz','Weeks']},
+  {id:'s2p8',x:1570,y:420,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.8',label:'COMMODIFY\nTHE HUMAN',name:'The Commodification of the Human',
+   desc:'When the things that made us irreplaceable — care, creativity, relationship, judgment — became the next frontier to automate and monetize.',
+   tags:['emotional labor','Zuboff','Hochschild','attention']},
+  {id:'s2p9',x:1480,y:530,r:15,kind:'post',series:'s2',color:S2,
+   num:'2.9',label:'DYSTOPIA\nAS POLICY',name:'In Time, Elysium, Horizon Zero Dawn',
+   desc:'Dystopian futures as maps, not warnings. How speculative fiction is doing the policy work that economists won\'t.',
+   tags:['fiction','Le Guin','futures','Haraway']},
+
+  // ── SERIES III POSTS ─────────────────────────────────────────
+  {id:'s3p1',x:2050,y:485,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.1',label:'POSTMODERN\nWORKPLACE',name:'The Postmodern Workplace',
+   desc:'After grand narratives collapse, what do we actually have? The fractured, pluralized, contradictory landscape of work today.',
+   tags:['postmodernity','Arendt','plurality']},
+  {id:'s3p2',x:2145,y:560,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.2',label:'IDEOLOGY\nOF WORK',name:'The Ideology of Work',
+   desc:'Kathi Weeks: work is not just an economic fact but a moral obligation enforced by culture, policy, and identity. The refusal begins here.',
+   tags:['Weeks','ideology','anti-work','Hersey']},
+  {id:'s3p3',x:2185,y:660,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.3',label:'PLURAL\nFUTURES',name:'Plural Futures Are the Point',
+   desc:'There is no single "future of work." Insisting on one is a power move. The case for coexisting models.',
+   tags:['Bateson','Buen Vivir','plurality']},
+  {id:'s3p4',x:2145,y:760,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.4',label:'THE COOP\nDIFFERENCE',name:'The Cooperative Difference',
+   desc:'Worker-owned businesses aren\'t romantic throwbacks — they\'re live experiments in answering who should capture the gains.',
+   tags:['cooperatives','Graeber','Mondragon','post-growth']},
+  {id:'s3p5',x:2060,y:850,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.5',label:'ANTI-TECHNO\nFEUDALISM',name:'Anti-Technofeudalism as Practice',
+   desc:'Varoufakis named it. What does resisting technofeudalism look like on the ground — in contracts, organizing, and which platforms we feed?',
+   tags:['Varoufakis','platform','Polanyi','organizing']},
+  {id:'s3p6',x:1920,y:900,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.6',label:'CARE IS\nNOT A BUG',name:'Care Is Not a Bug',
+   desc:'The work that holds everything together — raising children, tending the sick, building community — resists commodification. That\'s a foundation, not a flaw.',
+   tags:['Federici','care','Hochschild','seva']},
+  {id:'s3p7',x:1790,y:920,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.7',label:'WHAT WE\nOWE EACH\nOTHER',name:'What We Owe Each Other',
+   desc:'If productivity no longer requires us, the question shifts from economics to ethics. Obligation, dignity, and what a good society distributes.',
+   tags:['Arendt','Gorz','Freire','UBI']},
+  {id:'s3p8',x:1680,y:880,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.8',label:'SMALL\nCOOPERATIVISM',name:'The Small Cooperativism',
+   desc:'Accessible entry points into cooperative structure. Not just Mondragon — timebanks, worker co-ops, platform co-ops, and commons governance right now.',
+   tags:['cooperatives','commons','Ostrom']},
+  {id:'s3p9',x:1610,y:810,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.9',label:'WHAT YOU\nCAN DO NOW',name:'What You Can Do Now',
+   desc:'A diagnostic framework using Arendt\'s labor/work/action categories as a personal audit. Not prescription — orientation.',
+   tags:['Arendt','practical','action']},
+  {id:'s3p10',x:1600,y:700,r:15,kind:'post',series:'s3',color:S3,
+   num:'3.10',label:'WORK IS\nA CHOICE',name:'The Present of Work Is a Choice',
+   desc:'The closing essay. No predictions. The argument that the moment before the patterns lock in is the one that matters most.',
+   tags:['choice','agency','language']},
+
+  // ── THEMES ───────────────────────────────────────────────────
+  {id:'t_prot',x:650,y:280,r:22,kind:'theme',color:TH,
+   label:'PROTESTANT\nETHIC',name:'The Protestant Work Ethic',
+   desc:'Weber\'s thesis: Calvinist notions of work as proof of election spiritually enabled capitalism. The hustle gospel — LinkedIn grind, 5am club — is this ethic secularized and algorithmically amplified.',
+   tags:['Weber','Weeks','Hersey','Beruf']},
+  {id:'t_anti',x:580,y:1050,r:20,kind:'theme',color:TH,
+   label:'ANTI-WORK\nHISTORY',name:'Anti-Work: A Continuous Tradition',
+   desc:'From Lafargue\'s Right to Be Lazy (1883) through Bertrand Russell, Kathi Weeks, to Tricia Hersey\'s Nap Ministry. Rest as political act. Refusal as a coherent position.',
+   tags:['Lafargue','Weeks','Hersey','leisure']},
+  {id:'t_care',x:1100,y:1050,r:24,kind:'theme',color:TH,
+   label:'CARE &\nREPRODUCTIVE\nLABOR',name:'Reproductive & Care Labor',
+   desc:'The substrate everything runs on. Always done primarily by women. Never fully compensated. Silvia Federici\'s foundational argument: primitive accumulation required the enclosure of women\'s bodies as well as common land.',
+   tags:['Federici','Hochschild','seva','Held']},
+  {id:'t_race',x:380,y:1100,r:22,kind:'theme',color:TH,
+   label:'RACE,\nSLAVERY\n& LABOR',name:'Race, Slavery & Labor',
+   desc:'Cedric Robinson: capitalism was always racialized, not accidentally. The plantation as proto-factory. The 13th Amendment\'s exception. Prison labor as a $14bn industry. Any history of American labor that omits this is incomplete.',
+   tags:['Robinson','Federici','Gilmore','Davis']},
+  {id:'t_nw',x:1200,y:1180,r:20,kind:'theme',color:TH,
+   label:'NON-WESTERN\nFRAMEWORKS',name:'Non-Western Frameworks',
+   desc:'Ayni, minka, karma, dharma, kammathāna, avodah, ubuntu, sumak kawsay — each one is evidence that English impoverished us by collapsing multiple distinct concepts into a single word.',
+   tags:['Quechua','Sanskrit','Hebrew','Japanese','Bateson']},
+  {id:'t_maslow',x:800,y:820,r:20,kind:'theme',color:TH,
+   label:'MASLOW /\nBLACKFOOT',name:'Maslow, Blackfoot & Esalen',
+   desc:'Maslow\'s hierarchy of needs was directly shaped by his 1938 fieldwork with the Siksika (Blackfoot) Nation — and then inverted. The Blackfoot model begins with self-actualization as given to every person. Maslow made it the peak. That inversion became corporate HR theory.',
+   tags:['Maslow','Blackfoot','Esalen','colonial']},
+  {id:'t_bat',x:1350,y:1080,r:22,kind:'theme',color:TH,
+   label:'BATESON:\nECOLOGY\nOF MIND',name:'Bateson: Ecology of Mind',
+   desc:'Gregory Bateson\'s systems grammar for the whole publication. The pattern that connects. Deutero-learning. The double bind. Ecology as the study of relationships — not nature "out there" but the pattern in which everything participates.',
+   tags:['Bateson','systems','Nora Bateson','double bind']},
+  {id:'t_wealth',x:850,y:1130,r:22,kind:'theme',color:TH,
+   label:'WEALTH &\nPOST-GROWTH',name:'Wealth Critique & Post-Growth',
+   desc:'Marx\'s M-C-M\' → Veblen → Piketty → degrowth → Doughnut Economics → Buen Vivir. Graeber & Wengrow\'s Dawn of Everything: the inevitability of accumulation is historically wrong.',
+   tags:['Marx','Piketty','Graeber','Buen Vivir','Doughnut']},
+  {id:'t_comm',x:530,y:820,r:20,kind:'theme',color:TH,
+   label:'COMMUNAL\nWORK',name:'Communal Work & Barn Raising',
+   desc:'The Amish barn raising as the most legible Western example of minka. What it produces is not just a barn — it is social cohesion. Gelassenheit as technology philosophy: accept only what strengthens community bonds.',
+   tags:['ayni','minka','Amish','mutual aid','Ostrom']},
+  {id:'t_leis',x:740,y:340,r:18,kind:'theme',color:TH,
+   label:'LEISURE &\nLUXURY',name:'Leisure, Luxury & Class',
+   desc:'Veblen\'s leisure class vs. Pieper\'s contemplative leisure vs. Benjamin\'s flâneur vs. Tokumitsu\'s "Do What You Love" critique. These four are in direct tension with each other — that tension is the argument.',
+   tags:['Veblen','Pieper','Benjamin','Tokumitsu']},
+
+  // ── THINKERS ─────────────────────────────────────────────────
+  {id:'f_arendt',  x:560,y:500,r:18,kind:'thinker',color:TK,
+   label:'ARENDT',name:'Hannah Arendt',
+   desc:'The Human Condition (1958). Labor / Work / Action — the most precise diagnostic for what the Industrial Revolution destroyed. Only Action (political) is irreducibly human and irreplaceable. The anchor for Series III.',
+   tags:['Labor','Work','Action','political life']},
+  {id:'f_federici', x:390,y:720,r:18,kind:'thinker',color:TK,
+   label:'FEDERICI',name:'Silvia Federici',
+   desc:'Caliban and the Witch (2004). Primitive accumulation required the enclosure of women\'s bodies as well as common land. Reproductive labor as the hidden foundation capitalism was built on. Load-bearing throughout all three series.',
+   tags:['reproductive labor','primitive accumulation','enclosure']},
+  {id:'f_weeks',   x:740,y:1020,r:17,kind:'thinker',color:TK,
+   label:'WEEKS',name:'Kathi Weeks',
+   desc:'The Problem with Work (2011). Work is not just economic but ideological — a moral obligation enforced through culture, policy, and identity. The refusal of work as a political stance, not just a personal preference.',
+   tags:['ideology','work ethic','refusal','autonomy']},
+  {id:'f_illich',  x:310,y:480,r:17,kind:'thinker',color:TK,
+   label:'ILLICH',name:'Ivan Illich',
+   desc:'Tools for Conviviality (1973), Shadow Work (1981). Counter-productivity: institutions that generate more of the problem they solve. Shadow work: the unpaid labor systems generate for their users. Conviviality as the alternative.',
+   tags:['shadow work','conviviality','counter-productivity','nouns']},
+  {id:'f_bateson', x:1350,y:950,r:17,kind:'thinker',color:TK,
+   label:'G. BATESON',name:'Gregory Bateson',
+   desc:'Steps to an Ecology of Mind (1972). The pattern that connects. The double bind. Deutero-learning. Ecology as the study of relationships, not things. The systems grammar the whole publication runs on.',
+   tags:['ecology of mind','double bind','pattern','systems']},
+  {id:'f_graeber', x:970,y:1080,r:17,kind:'thinker',color:TK,
+   label:'GRAEBER',name:'David Graeber',
+   desc:'Bullshit Jobs (2018), Debt (2011), The Dawn of Everything (2021). Bullshit jobs as moral injury. Debt as the original social contract. The inevitability of hierarchy is historically false.',
+   tags:['bullshit jobs','debt','hierarchy','commons']},
+  {id:'f_polanyi', x:480,y:320,r:16,kind:'thinker',color:TK,
+   label:'POLANYI',name:'Karl Polanyi',
+   desc:'The Great Transformation (1944). Markets expand, society pushes back — the double movement. The most useful historical frame for understanding labor organizing, welfare states, and the current backlash against platform capitalism.',
+   tags:['double movement','enclosure','market','society']},
+  {id:'f_sennett', x:620,y:195,r:16,kind:'thinker',color:TK,
+   label:'SENNETT',name:'Richard Sennett',
+   desc:'The Craftsman (2008), The Corrosion of Character (1998). Modern capitalism corrodes character by eliminating long-term commitment and craft mastery. Corrosion of character is a structural consequence, not a personal failure.',
+   tags:['craft','mastery','character','flexibility']},
+  {id:'f_hochschild',x:1060,y:370,r:16,kind:'thinker',color:TK,
+   label:'HOCHSCHILD',name:'Arlie Hochschild',
+   desc:'The Managed Heart (1983). Emotional labor: managing your own feelings to produce the right feelings in others is real work with real costs. The flight attendant as the archetype for modern service labor.',
+   tags:['emotional labor','service work','managed heart']},
+  {id:'f_haraway', x:1600,y:155,r:16,kind:'thinker',color:TK,
+   label:'HARAWAY',name:'Donna Haraway',
+   desc:'A Cyborg Manifesto (1985), Staying with the Trouble (2016). The entanglement of human/technology/nature. Refuses both techno-utopianism and techno-dystopianism. Makes kin, not children.',
+   tags:['cyborg','entanglement','species','technology']},
+  {id:'f_fanon',   x:220,y:820,r:16,kind:'thinker',color:TK,
+   label:'FANON',name:'Frantz Fanon',
+   desc:'The Wretched of the Earth (1961). Colonial labor, what colonialism does to the body and the psyche. Decolonization as a labor question. The Black radical tradition\'s entry point into work theory.',
+   tags:['colonialism','decolonization','Robinson','Gilmore']},
+];
+
+// Edges
+const EDGES=[
+  // Series to posts
+  {a:'h1',b:'s1p0',w:1.5},{a:'h1',b:'s1p1',w:1.5},{a:'h1',b:'s1p2',w:1.5},
+  {a:'h1',b:'s1p3',w:1.5},{a:'h1',b:'s1p4',w:1.5},{a:'h1',b:'s1p5',w:1.5},
+  {a:'h1',b:'s1p6',w:1.5},{a:'h1',b:'s1p7',w:1.5},{a:'h1',b:'s1p8',w:1.5},{a:'h1',b:'s1p9',w:1.5},
+  {a:'h2',b:'s2p1',w:1.5},{a:'h2',b:'s2p2',w:1.5},{a:'h2',b:'s2p3',w:1.5},
+  {a:'h2',b:'s2p4',w:1.5},{a:'h2',b:'s2p5',w:1.5},{a:'h2',b:'s2p6',w:1.5},
+  {a:'h2',b:'s2p7',w:1.5},{a:'h2',b:'s2p8',w:1.5},{a:'h2',b:'s2p9',w:1.5},
+  {a:'h3',b:'s3p1',w:1.5},{a:'h3',b:'s3p2',w:1.5},{a:'h3',b:'s3p3',w:1.5},
+  {a:'h3',b:'s3p4',w:1.5},{a:'h3',b:'s3p5',w:1.5},{a:'h3',b:'s3p6',w:1.5},
+  {a:'h3',b:'s3p7',w:1.5},{a:'h3',b:'s3p8',w:1.5},{a:'h3',b:'s3p9',w:1.5},{a:'h3',b:'s3p10',w:1.5},
+  // Theme connections
+  {a:'t_prot',b:'s1p5',w:.8,d:true},{a:'t_prot',b:'s2p7',w:.8,d:true},{a:'t_prot',b:'s3p2',w:.8,d:true},
+  {a:'t_anti',b:'s3p2',w:.8,d:true},{a:'t_anti',b:'s2p1',w:.8,d:true},
+  {a:'t_care',b:'s1p7',w:.8,d:true},{a:'t_care',b:'s2p3',w:.8,d:true},{a:'t_care',b:'s3p6',w:.8,d:true},
+  {a:'t_race',b:'s1p8',w:.8,d:true},{a:'t_race',b:'s2p4',w:.8,d:true},
+  {a:'t_nw',b:'s1p9',w:.8,d:true},{a:'t_nw',b:'s3p3',w:.8,d:true},
+  {a:'t_maslow',b:'s1p9',w:.8,d:true},{a:'t_maslow',b:'s3p2',w:.8,d:true},
+  {a:'t_bat',b:'s1p9',w:.8,d:true},{a:'t_bat',b:'s3p3',w:.8,d:true},
+  {a:'t_wealth',b:'s2p7',w:.8,d:true},{a:'t_wealth',b:'s3p4',w:.8,d:true},
+  {a:'t_comm',b:'s1p2',w:.8,d:true},{a:'t_comm',b:'s3p8',w:.8,d:true},
+  {a:'t_leis',b:'s2p1',w:.8,d:true},{a:'t_leis',b:'t_anti',w:.6,d:true},
+  // Thinker connections
+  {a:'f_arendt',b:'s1p3',w:.7,d:true},{a:'f_arendt',b:'s3p7',w:.7,d:true},{a:'f_arendt',b:'s3p9',w:.7,d:true},
+  {a:'f_federici',b:'s1p4',w:.7,d:true},{a:'f_federici',b:'s3p6',w:.7,d:true},{a:'f_federici',b:'t_care',w:.7,d:true},
+  {a:'f_weeks',b:'s3p2',w:.7,d:true},{a:'f_weeks',b:'t_prot',w:.7,d:true},{a:'f_weeks',b:'t_anti',w:.7,d:true},
+  {a:'f_illich',b:'s1p0',w:.7,d:true},{a:'f_illich',b:'s2p7',w:.7,d:true},
+  {a:'f_bateson',b:'t_bat',w:.7,d:true},{a:'f_bateson',b:'s3p3',w:.7,d:true},
+  {a:'f_graeber',b:'t_wealth',w:.7,d:true},{a:'f_graeber',b:'s3p4',w:.7,d:true},
+  {a:'f_polanyi',b:'s1p2',w:.7,d:true},{a:'f_polanyi',b:'s3p5',w:.7,d:true},
+  {a:'f_sennett',b:'s1p3',w:.7,d:true},{a:'f_sennett',b:'s1p2',w:.7,d:true},
+  {a:'f_hochschild',b:'s2p3',w:.7,d:true},{a:'f_hochschild',b:'t_care',w:.7,d:true},
+  {a:'f_haraway',b:'s2p6',w:.7,d:true},{a:'f_haraway',b:'s2p9',w:.7,d:true},
+  {a:'f_fanon',b:'t_race',w:.7,d:true},{a:'f_fanon',b:'s1p8',w:.7,d:true},
+  // Cross-series connections
+  {a:'s1p4',b:'s3p2',w:.5,d:true,cross:true},
+  {a:'s2p8',b:'s3p6',w:.5,d:true,cross:true},
+  {a:'s2p1',b:'s3p7',w:.5,d:true,cross:true},
+  {a:'s1p9',b:'t_nw',w:.5,d:true,cross:true},
+  {a:'t_maslow',b:'t_nw',w:.5,d:true,cross:true},
+];
+
+/* ── RENDER ───────────────────────────────────────────────────── */
+function polyPts(cx,cy,r,n,rot=0){
+  return Array.from({length:n},(_,i)=>{
+    const a=2*Math.PI*i/n+rot;
+    return `${(cx+r*Math.cos(a)).toFixed(1)},${(cy+r*Math.sin(a)).toFixed(1)}`;
+  }).join(' ');
+}
+function diamondPts(cx,cy,r){
+  return `${cx},${cy-r} ${cx+r*.65},${cy} ${cx},${cy+r} ${cx-r*.65},${cy}`;
+}
+function hexPts(cx,cy,r){return polyPts(cx,cy,r,6,Math.PI/6);}
+
+// Draw edges first
+const edgeGroup=NS('g');edgeGroup.id='edges';scene.appendChild(edgeGroup);
+EDGES.forEach(({a,b,w=1,d=false,cross=false})=>{
+  const n1=NODES.find(n=>n.id===a),n2=NODES.find(n=>n.id===b);
+  if(!n1||!n2) return;
+  const l=NS('line');
+  l.setAttribute('x1',n1.x);l.setAttribute('y1',n1.y);
+  l.setAttribute('x2',n2.x);l.setAttribute('y2',n2.y);
+  const opacity=cross?0.06:d?0.1:0.18;
+  l.setAttribute('stroke',`rgba(255,255,255,${opacity})`);
+  l.setAttribute('stroke-width',w);
+  if(d) l.setAttribute('stroke-dasharray','5,4');
+  l.setAttribute('data-a',a);l.setAttribute('data-b',b);
+  l.id=`e-${a}-${b}`;
+  edgeGroup.appendChild(l);
+});
+
+// Draw nodes
+const nodeGroup=NS('g');nodeGroup.id='nodes';scene.appendChild(nodeGroup);
+const nodeEls={};
+
+NODES.forEach(node=>{
+  const g=NS('g');g.style.cursor='pointer';
+  g.setAttribute('data-id',node.id);
+  g.setAttribute('data-kind',node.kind);
+  g.setAttribute('data-series',node.series||'');
+  const {x,y,r,kind,color}=node;
+
+  if(kind==='hub'){
+    // Glow rings
+    [r+30,r+18,r+8].forEach((hr,i)=>{
+      const h=NS('circle');h.setAttribute('cx',x);h.setAttribute('cy',y);h.setAttribute('r',hr);
+      h.setAttribute('fill','none');h.setAttribute('stroke',color);
+      h.setAttribute('stroke-width','1');h.setAttribute('opacity',String(.04+i*.02));
+      g.appendChild(h);
+    });
+    const c=NS('circle');
+    c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);
+    c.setAttribute('fill',color);c.setAttribute('stroke','none');
+    c.setAttribute('opacity','.9');g.appendChild(c);g._main=c;
+
+  } else if(kind==='post'){
+    const c=NS('circle');
+    c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',r);
+    c.setAttribute('fill',color);c.setAttribute('opacity','.25');
+    c.setAttribute('stroke',color);c.setAttribute('stroke-width','1.5');
+    g.appendChild(c);g._main=c;
+
+  } else if(kind==='theme'){
+    // Hexagon
+    const h=NS('polygon');
+    h.setAttribute('points',hexPts(x,y,r));
+    h.setAttribute('fill','rgba(80,55,10,.3)');
+    h.setAttribute('stroke',color);h.setAttribute('stroke-width','1.5');
+    g.appendChild(h);g._main=h;
+
+  } else if(kind==='thinker'){
+    // Diamond
+    const d2=NS('polygon');
+    d2.setAttribute('points',diamondPts(x,y,r));
+    d2.setAttribute('fill','rgba(60,40,10,.3)');
+    d2.setAttribute('stroke',color);d2.setAttribute('stroke-width','1.5');
+    g.appendChild(d2);g._main=d2;
+  }
+
+  // Label
+  const isHub=kind==='hub';
+  const lines=node.label.split('\n');
+  const lh=isHub?13:9.5;
+  const fs=isHub?11:kind==='theme'?6.8:6.5;
+  const totalH=lines.length*lh;
+  lines.forEach((ln,i)=>{
+    const t=NS('text');
+    t.setAttribute('x',x);t.setAttribute('y',y-totalH/2+i*lh+lh*.82);
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('fill',isHub?'rgba(255,255,255,0.95)':kind==='thinker'?'rgba(255,220,140,0.85)':'rgba(255,255,255,0.7)');
+    t.setAttribute('font-size',fs);t.setAttribute('font-family','Roboto Mono, monospace');
+    t.setAttribute('font-weight',isHub?'500':'400');t.setAttribute('letter-spacing','.05em');
+    t.style.pointerEvents='none';
+    t.textContent=ln;g.appendChild(t);
+  });
+
+  // Hover
+  g.addEventListener('mouseenter',()=>{
+    if(g._main){
+      g._main.setAttribute('opacity',kind==='post'?'.7':kind==='hub'?'1':'.6');
+      g._main.setAttribute('stroke-width',kind==='hub'?'0':'2.5');
+    }
+    // highlight connected edges
+    EDGES.forEach(({a,b})=>{
+      if(a===node.id||b===node.id){
+        const el=document.getElementById(`e-${a}-${b}`);
+        if(el){el.setAttribute('stroke','rgba(255,255,255,0.45)');el.setAttribute('stroke-width','1.5');}
+      }
+    });
+  });
+  g.addEventListener('mouseleave',()=>{
+    if(g._main){
+      g._main.setAttribute('opacity',kind==='post'?'.25':kind==='hub'?'.9':'.3');
+      g._main.setAttribute('stroke-width',kind==='hub'?'0':'1.5');
+    }
+    EDGES.forEach(({a,b})=>{
+      const el=document.getElementById(`e-${a}-${b}`);
+      const edge=EDGES.find(e=>e.a===a&&e.b===b);
+      if(el&&edge){
+        const op=edge.cross?0.06:edge.d?0.1:0.18;
+        el.setAttribute('stroke',`rgba(255,255,255,${op})`);
+        el.setAttribute('stroke-width',edge.w||1);
+      }
+    });
+  });
+  g.addEventListener('click',()=>openPanel(node));
+  nodeGroup.appendChild(g);
+  nodeEls[node.id]=g;
+});
+
+/* ── PAN / ZOOM ────────────────────────────────────────────────── */
+const canvas=document.getElementById('canvas');
+let zoom=0.55,panX=0,panY=0;
+let dragging=false,lastX=0,lastY=0;
+
+function applyTransform(){
+  scene.style.transform=`translate(${panX}px,${panY}px) scale(${zoom})`;
+}
+function fitToScreen(){
+  const cw=canvas.offsetWidth,ch=canvas.offsetHeight;
+  zoom=Math.min(cw/SVG_W,ch/SVG_H)*0.9;
+  panX=(cw-SVG_W*zoom)/2;panY=(ch-SVG_H*zoom)/2;
+  applyTransform();
+}
+fitToScreen();
+
+canvas.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const rect=canvas.getBoundingClientRect();
+  const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+  const delta=e.deltaY<0?1.12:1/1.12;
+  const nz=Math.min(Math.max(zoom*delta,.15),4);
+  panX=mx-(mx-panX)*nz/zoom;
+  panY=my-(my-panY)*nz/zoom;
+  zoom=nz;applyTransform();
+},{passive:false});
+
+canvas.addEventListener('mousedown',e=>{
+  dragging=true;lastX=e.clientX;lastY=e.clientY;
+  canvas.classList.add('dragging');
+});
+window.addEventListener('mousemove',e=>{
+  if(!dragging) return;
+  panX+=e.clientX-lastX;panY+=e.clientY-lastY;
+  lastX=e.clientX;lastY=e.clientY;applyTransform();
+});
+window.addEventListener('mouseup',()=>{dragging=false;canvas.classList.remove('dragging');});
+
+document.getElementById('zIn').addEventListener('click',()=>{
+  const cw=canvas.offsetWidth,ch=canvas.offsetHeight;
+  const nz=Math.min(zoom*1.25,4);
+  panX=(cw/2)-(cw/2-panX)*nz/zoom;
+  panY=(ch/2)-(ch/2-panY)*nz/zoom;
+  zoom=nz;applyTransform();
+});
+document.getElementById('zOut').addEventListener('click',()=>{
+  const cw=canvas.offsetWidth,ch=canvas.offsetHeight;
+  const nz=Math.max(zoom/1.25,.15);
+  panX=(cw/2)-(cw/2-panX)*nz/zoom;
+  panY=(ch/2)-(ch/2-panY)*nz/zoom;
+  zoom=nz;applyTransform();
+});
+document.getElementById('zReset').addEventListener('click',fitToScreen);
+
+/* ── FILTERS ───────────────────────────────────────────────────── */
+document.querySelectorAll('.fb').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    Object.values(nodeEls).forEach(g=>{
+      const kind=g.getAttribute('data-kind');
+      const series=g.getAttribute('data-series');
+      let show=true;
+      if(f==='s1') show=series==='s1';
+      else if(f==='s2') show=series==='s2';
+      else if(f==='s3') show=series==='s3';
+      else if(f==='themes') show=kind==='theme';
+      else if(f==='thinkers') show=kind==='thinker';
+      g.style.opacity=show?'1':'0.06';
+      g.style.pointerEvents=show?'auto':'none';
+    });
+    // Edge visibility
+    document.querySelectorAll('#edges line').forEach(l=>{
+      const a=l.getAttribute('data-a'),b=l.getAttribute('data-b');
+      const na=NODES.find(n=>n.id===a),nb=NODES.find(n=>n.id===b);
+      if(!na||!nb){l.style.opacity='0.06';return;}
+      let show=true;
+      if(f==='s1') show=na.series==='s1'||nb.series==='s1';
+      else if(f==='s2') show=na.series==='s2'||nb.series==='s2';
+      else if(f==='s3') show=na.series==='s3'||nb.series==='s3';
+      else if(f==='themes') show=na.kind==='theme'||nb.kind==='theme';
+      else if(f==='thinkers') show=na.kind==='thinker'||nb.kind==='thinker';
+      l.style.opacity=show?'1':'0.02';
+    });
+  });
+});
+
+/* ── DETAIL PANEL ──────────────────────────────────────────────── */
+const panel=document.getElementById('panel');
+const panelInner=document.getElementById('panelInner');
+document.getElementById('panelClose').addEventListener('click',()=>panel.classList.remove('open'));
+
+const seriesColors={'s1':S1,'s2':S2,'s3':S3};
+const seriesNames={'s1':'Series I · History','s2':'Series II · Futures','s3':'Series III · Present'};
+const kindLabels={hub:'Series hub',post:'Essay',theme:'Cross-cutting theme',thinker:'Key thinker'};
+
+function openPanel(node){
+  const c=seriesColors[node.series]||TH;
+  const sname=seriesNames[node.series]||'';
+  panelInner.innerHTML=`
+    ${sname?`<div class="p-series" style="color:${c}">${sname}</div>`:''}
+    ${node.num?`<div class="p-num">${node.num}</div>`:''}
+    <div class="p-name" style="color:${c}">${node.name}</div>
+    <div class="p-type">${kindLabels[node.kind]||''}</div>
+    <div class="p-body">${node.desc}</div>
+    ${node.question?`<div class="p-body" style="font-style:italic;border-left:3px solid ${c};padding-left:.75rem;color:rgba(255,255,255,.45)">${node.question}</div>`:''}
+    ${node.tags&&node.tags.length?`
+      <div class="p-key">Connected to</div>
+      <div class="p-tags">${node.tags.map(t=>`<span class="p-tag">${t}</span>`).join('')}</div>
+    `:''}
+  `;
+  panel.classList.add('open');
+}
+
+/* close panel on canvas click if not on node */
+canvas.addEventListener('click',e=>{
+  if(e.target===canvas||e.target===scene||e.target.tagName==='svg')
+    panel.classList.remove('open');
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')panel.classList.remove('open');});
+</script>
+
+<footer style="position:fixed;bottom:0;left:0;right:0;height:36px;background:rgba(8,8,8,.92);border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;font-family:'Roboto Mono',monospace;font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);z-index:700;pointer-events:none">
+  <span>The Present of Work · presentofwork.org</span>
+  <span style="pointer-events:auto"><a href="/donate.html" style="color:rgba(255,255,255,.2);transition:color .15s" onmouseover="this.style.color='rgba(255,255,255,.6)'" onmouseout="this.style.color='rgba(255,255,255,.2)'">Made in the commons</a></span>
+</footer>
+<style>
+/* nudge canvas above fixed footer */
+#canvas{bottom:36px}
+</style>
+</body>
+</html>

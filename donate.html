@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Present of Work">
+<meta property="og:title" content="Made in the Commons — The Present of Work">
+  <link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
+<meta property="og:description" content="This project is made in the commons. No ads. No investors. Here is what that means, and how to support it.">
+<meta property="og:url" content="https://presentofwork.org/donate.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Made in the Commons — The Present of Work">
+<meta name="twitter:description" content="This project is made in the commons. No ads. No investors. Here is what that means, and how to support it.">
+<title>Made in the Commons — The Present of Work</title>
+<meta name="description" content="This project is made in the commons. Here's what that means, and how to support it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--white:#FFFFFF;--off:#F6F2EB;--ink:#0D0D0D;--ink-mid:#444;--ink-lt:#888;--red:#C8341C;--red-dk:#A02912;--green:#1C4C24;--green-lt:#2D6E38;--mono:'Roboto Mono',monospace;--display:'Bebas Neue',sans-serif;--body:'Libre Baskerville',Georgia,serif;--nav-h:52px;--bg:var(--white);--surface:var(--off);--text:var(--ink);--text-mid:var(--ink-mid);--text-lt:var(--ink-lt);--border:#E0E0E0}
+[data-theme="dark"]{--bg:#0D0D0D;--surface:#141414;--text:#F0EDE8;--text-mid:#B0A898;--text-lt:#555;--border:#222;--off:#141414;--white:#0D0D0D;--ink:#F0EDE8;--ink-mid:#B0A898;--ink-lt:#555}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;transition:background .25s,color .25s}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;width:100%;height:var(--nav-h);background:var(--ink);z-index:1000;display:flex;align-items:stretch}
+[data-theme="dark"] nav{background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{font-family:var(--display);font-size:1.15rem;letter-spacing:.1em;color:#fff;padding:0 1.5rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.12);white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;align-items:stretch;list-style:none;flex:1}
+.nav-links li{display:flex;align-items:stretch}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:0 1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.08);transition:color .15s,background .15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav-right{display:flex;align-items:center;margin-left:auto;padding:0 1rem;border-left:1px solid rgba(255,255,255,.12)}
+.ctoggle{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .55rem;cursor:pointer;font-size:.75rem;line-height:1;transition:all .15s;border-radius:2px}
+.ctoggle:hover{color:#fff;border-color:#fff}
+.hbtn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .6rem;cursor:pointer;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;transition:all .15s;display:none}
+.hbtn:hover{color:#fff;border-color:#fff}
+.mnav{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--ink);z-index:999;flex-direction:column;border-top:1px solid rgba(255,255,255,.1)}
+.mnav.open{display:flex}
+.mnav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s}
+.mnav a:hover{color:#fff}
+
+/* HEADER */
+.ph{padding-top:var(--nav-h);background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--green)}
+.ph-inner{padding:5rem 3rem 4rem 5rem;max-width:960px;margin:0 auto}
+.ph-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem}
+.ph-h{font-family:var(--display);font-size:clamp(4rem,10vw,8rem);line-height:.88;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:1.5rem}
+.ph-sub{font-family:var(--body);font-size:clamp(1rem,1.7vw,1.15rem);color:rgba(255,255,255,.6);line-height:1.8;max-width:560px}
+
+/* BODY */
+.sec{padding:5rem 3rem 5rem 5rem;max-width:960px;margin:0 auto}
+.sec.off{background:var(--surface);max-width:100%}
+.sec-off-inner{max-width:960px;margin:0 auto;padding:5rem 3rem 5rem 5rem}
+.sec-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.sec-label::before{content:attr(data-n);border:1px solid currentColor;padding:.1rem .3rem;font-size:.46rem}
+h2.sec-h{font-family:var(--display);font-size:clamp(2.5rem,5vw,4.5rem);line-height:.9;letter-spacing:.03em;text-transform:uppercase;color:var(--text);margin-bottom:2rem}
+
+.prose p{font-size:clamp(.95rem,1.6vw,1.05rem);color:var(--text-mid);line-height:1.85;margin-bottom:1.25rem}
+.prose p strong{color:var(--text)}
+
+/* WHAT IS FUNDED */
+.funded-list{display:flex;flex-direction:column;border:1px solid var(--border);margin:2rem 0}
+.fl-row{display:grid;grid-template-columns:2rem 1fr;gap:1rem;padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);align-items:start}
+.fl-row:last-child{border-bottom:none}
+.fl-n{font-family:var(--display);font-size:1.8rem;color:var(--green);line-height:1}
+.fl-body{font-family:var(--body);font-size:.9rem;color:var(--text-mid);line-height:1.7}
+.fl-body strong{color:var(--text)}
+
+/* WAYS TO SUPPORT */
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--text);margin:2rem 0}
+.way{padding:2rem 1.5rem;border-right:2px solid var(--text)}
+.way:last-child{border-right:none}
+.way-label{font-family:var(--mono);font-size:.46rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.35rem}
+.way-h{font-family:var(--display);font-size:1.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin-bottom:.5rem}
+.way-body{font-family:var(--body);font-size:.85rem;color:var(--text-mid);line-height:1.65;margin-bottom:.75rem}
+.way-cta{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);transition:letter-spacing .15s;display:inline-block}
+.way-cta:hover{letter-spacing:.2em}
+
+/* COMMONS STATEMENT */
+.commons{background:var(--green);color:#fff;padding:3rem 3rem 3rem 5rem;margin-top:0}
+.commons-inner{max-width:960px;margin:0 auto}
+.commons blockquote{font-family:var(--body);font-style:italic;font-size:clamp(1rem,1.8vw,1.3rem);color:rgba(255,255,255,.9);line-height:1.6;max-width:620px;border-left:4px solid rgba(255,255,255,.3);padding-left:1.5rem}
+
+.btn{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:.75rem 1.75rem;cursor:pointer;display:inline-block;transition:all .15s;text-decoration:none;border:2px solid transparent}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green)}
+.btn-green:hover{background:var(--green-lt);border-color:var(--green-lt)}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--text)}
+.btn-outline:hover{background:var(--text);color:var(--bg)}
+
+footer{background:#0D0D0D;border-top:1px solid rgba(255,255,255,.1);padding:1.25rem 3rem 1.25rem 5rem;font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fi{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{color:rgba(255,255,255,.3);transition:color .15s}
+footer a:hover{color:rgba(255,255,255,.8)}
+.fll{display:flex;gap:1.5rem;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}
+
+@media(max-width:768px){.nav-links{display:none}.hbtn{display:block}.ways{grid-template-columns:1fr}.way{border-right:none;border-bottom:2px solid var(--text)}.way:last-child{border-bottom:none}.sec,.sec-off-inner{padding:3rem 1.5rem 3rem 2rem}.ph-inner{padding:4rem 1.5rem 3rem 2rem}.commons{padding:3rem 1.5rem 3rem 2rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Present of Work</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/publication.html">Publication</a></li>
+    <li><a href="/podcast.html">Podcast</a></li>
+    <li><a href="/concepts.html">Concepts</a></li>
+    <li><a href="/map.html">Map</a></li>
+    <li><a href="/ecosystem.html">The Web</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="ctoggle" id="cToggle">☀</button>
+    <button class="hbtn" id="hBtn">Menu</button>
+  </div>
+</nav>
+<div class="mnav" id="mNav">
+  <a href="/about.html">About</a><a href="/publication.html">Publication</a>
+  <a href="/podcast.html">Podcast</a><a href="/concepts.html">Concepts</a>
+  <a href="/map.html">Map</a><a href="/ecosystem.html">The Web</a>
+</div>
+
+<header class="ph">
+  <div class="ph-inner">
+    <div class="ph-label">Support · Made in the commons</div>
+    <h1 class="ph-h">This is<br>not a<br>product.</h1>
+    <p class="ph-sub">The Present of Work is produced in the commons. No ads. No sponsored content. No investors expecting a return. That's not an accident — it's the argument made material.</p>
+  </div>
+</header>
+
+<!-- WHAT THIS MEANS -->
+<section class="sec">
+  <div class="sec-label rv" data-n="01">What that means</div>
+  <h2 class="sec-h rv">The economics<br>of it.</h2>
+  <div class="prose rv d1">
+    <p>A publication that argues against the commodification of human beings should probably not be funded by commodifying its audience. So this project doesn't run ads, doesn't sell data, and doesn't take venture capital. The trade-off is obvious: it runs on contribution, not extraction.</p>
+    <p>There is no paywall. The publication is free to read. The podcast is free to listen. The knowledge map is free to explore. <strong>Everything produced here is a public good.</strong> If you find value in it, you can choose to support it. If you can't, that's fine too — come back and read.</p>
+  </div>
+  <div class="funded-list rv d2">
+    <div class="fl-row">
+      <div class="fl-n">1</div>
+      <div class="fl-body"><strong>Research and writing time.</strong> Each essay in the publication takes significant reading, thinking, and drafting. Contributors are paid for their work — because the argument that care work should be compensated applies here too.</div>
+    </div>
+    <div class="fl-row">
+      <div class="fl-n">2</div>
+      <div class="fl-body"><strong>Podcast production.</strong> Recording, editing, sound design, transcription — Field Notes is building a real production practice. That requires tools and time.</div>
+    </div>
+    <div class="fl-row">
+      <div class="fl-n">3</div>
+      <div class="fl-body"><strong>Infrastructure.</strong> Hosting, the knowledge map, the site. Built lean; still costs something.</div>
+    </div>
+    <div class="fl-row">
+      <div class="fl-n">4</div>
+      <div class="fl-body"><strong>Translation and accessibility.</strong> The goal is for this to be available in more than one language and genuinely accessible to people who use assistive technology.</div>
+    </div>
+    <div class="fl-row">
+      <div class="fl-n">5</div>
+      <div class="fl-body"><strong>The ecology itself.</strong> Some portion of support goes toward the broader web — other organisms in this archipelago that don't yet have their own funding.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WAYS TO SUPPORT -->
+<div style="background:var(--surface);padding:5rem 3rem 5rem 5rem">
+<div style="max-width:960px;margin:0 auto">
+  <div class="sec-label rv" data-n="02">How to support</div>
+  <h2 class="sec-h rv">Pick your<br>contribution.</h2>
+  <div class="ways rv d1">
+    <div class="way">
+      <div class="way-label">Financial</div>
+      <div class="way-h">Subscribe on Substack</div>
+      <div class="way-body">A paid Substack subscription goes directly to the writers and production. You get the same content either way — this is simply a way to make the work sustainable.</div>
+      <a href="https://presentofwork.substack.com" target="_blank" rel="noopener" class="way-cta">Subscribe →</a>
+    </div>
+    <div class="way">
+      <div class="way-label">Financial</div>
+      <div class="way-h">One-time contribution</div>
+      <div class="way-body">If recurring subscriptions don't suit you, a one-time contribution is equally welcome. Write to us and we'll tell you the most direct way to get it here.</div>
+      <a href="mailto:hello@presentofwork.org" class="way-cta">hello@presentofwork.org →</a>
+    </div>
+    <div class="way">
+      <div class="way-label">Non-financial</div>
+      <div class="way-h">Spread the work</div>
+      <div class="way-body">Share an essay with someone who needs to read it. Recommend the podcast. Put the map in front of a class or a team. This is a commons — spreading it is contributing to it.</div>
+      <a href="/publication.html" class="way-cta">Read first →</a>
+    </div>
+    <div class="way">
+      <div class="way-label">Institutional</div>
+      <div class="way-h">Foundation or fund?</div>
+      <div class="way-body">If your mandate includes knowledge commons, plural economies, labor history, care work, or post-growth — there may be a fit here. Let's talk before we assume.</div>
+      <a href="mailto:hello@presentofwork.org" class="way-cta">Start a conversation →</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- COMMONS STATEMENT -->
+<div class="commons">
+  <div class="commons-inner rv">
+    <blockquote>
+      "Making in the commons" is not a funding model. It is a political position: that some knowledge should not be owned, that some infrastructure should not extract value from the people it serves, and that the way a project is funded is itself a form of argument.
+    </blockquote>
+  </div>
+</div>
+
+<footer>
+  <div class="fi">
+    <span>The Present of Work · presentofwork.org</span>
+    <div class="fll">
+      <a href="/about.html">About</a><a href="/publication.html">Publication</a>
+      <a href="/podcast.html">Podcast</a><a href="/concepts.html">Concepts</a>
+      <a href="/map.html">Map</a><a href="/ecosystem.html">The Web</a>
+    </div>
+    <span><a href="/donate.html" style="color:rgba(255,255,255,.7)">Made in the commons</a></span>
+  </div>
+</footer>
+<script>
+document.getElementById('cToggle').addEventListener('click',function(){
+  const d=document.documentElement;const dark=d.getAttribute('data-theme')==='dark';
+  d.setAttribute('data-theme',dark?'light':'dark');this.textContent=dark?'☀':'☾';
+});
+document.getElementById('hBtn').addEventListener('click',()=>document.getElementById('mNav').classList.toggle('open'));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

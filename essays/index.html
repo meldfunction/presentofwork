@@ -1,0 +1,90 @@
+---
+layout: default
+title: "Essays"
+permalink: /essays/
+---
+<style>
+.essays-hero{padding-top:calc(var(--nav-h) + 4rem);padding-bottom:3rem;padding-left:5rem;padding-right:5rem;background:var(--ink);color:#fff;position:relative}
+.essays-hero::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--red)}
+.essays-hero h1{font-family:var(--display);font-size:clamp(3.5rem,8vw,8rem);line-height:.9;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:1rem}
+.essays-hero p{font-family:var(--body);font-size:clamp(.95rem,1.6vw,1.05rem);color:rgba(255,255,255,.55);max-width:600px;line-height:1.8}
+
+.essays-body{padding:4rem 5rem;background:var(--bg)}
+
+.series-block{margin-bottom:4rem}
+.series-label{font-family:var(--mono);font-size:.55rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem}
+.series-label::before{content:attr(data-n);font-family:var(--mono);font-size:.5rem;font-weight:500;border:1px solid currentColor;padding:.1rem .35rem}
+.series-q{font-family:var(--body);font-style:italic;font-size:.95rem;color:var(--text-lt);margin-bottom:1.5rem;padding-left:.5rem;border-left:3px solid var(--border)}
+
+.essay-list{border-top:2px solid var(--text)}
+.essay-row{display:grid;grid-template-columns:3rem 1fr auto;gap:1.5rem;align-items:baseline;padding:1.25rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:background .15s}
+.essay-row:hover{background:var(--surface);margin:0 -1rem;padding-left:1rem;padding-right:1rem}
+.essay-num{font-family:var(--mono);font-size:.52rem;font-weight:400;letter-spacing:.1em;color:var(--text-lt)}
+.essay-title{font-family:var(--body);font-size:clamp(.95rem,1.5vw,1.05rem);color:var(--text);line-height:1.4}
+.essay-arrow{font-family:var(--mono);font-size:.6rem;color:var(--text-lt);transition:color .15s,transform .15s;display:inline-block}
+.essay-row:hover .essay-arrow{color:var(--red);transform:translateX(4px)}
+
+@media(max-width:768px){
+  .essays-hero{padding:calc(var(--nav-h) + 3rem) 1.5rem 2.5rem}
+  .essays-body{padding:3rem 1.5rem}
+  .essay-row{grid-template-columns:2.5rem 1fr}
+  .essay-arrow{display:none}
+}
+</style>
+
+<header class="essays-hero">
+  <h1>Essays</h1>
+  <p>Twenty-nine essays on the history, futures, and present of human work. Read in any order.</p>
+</header>
+
+<div class="essays-body">
+
+  <!-- Series I -->
+  <div class="series-block rv">
+    <div class="series-label" data-n="I">The History of the Present</div>
+    <p class="series-q">"How did selling your time become the definition of a good life?"</p>
+    <div class="essay-list">
+      {% assign s1 = site.essays | where_exp: "e", "e.series_num contains '0.' or e.series_num contains '1.'" | sort: "series_num" %}
+      {% for essay in s1 %}
+      <a href="{{ essay.url }}" class="essay-row">
+        <span class="essay-num">{{ essay.series_num }}</span>
+        <span class="essay-title">{{ essay.title }}</span>
+        <span class="essay-arrow">→</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Series II -->
+  <div class="series-block rv d1">
+    <div class="series-label" data-n="II">The Future of the Present</div>
+    <p class="series-q">"Why do all our promised futures still need you to earn your place in them?"</p>
+    <div class="essay-list">
+      {% assign s2 = site.essays | where_exp: "e", "e.series_num contains '2.'" | sort: "series_num" %}
+      {% for essay in s2 %}
+      <a href="{{ essay.url }}" class="essay-row">
+        <span class="essay-num">{{ essay.series_num }}</span>
+        <span class="essay-title">{{ essay.title }}</span>
+        <span class="essay-arrow">→</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Series III -->
+  <div class="series-block rv d2">
+    <div class="series-label" data-n="III">The Present ∞</div>
+    <p class="series-q">"What if your worth was never up for negotiation?"</p>
+    <div class="essay-list">
+      {% assign s3 = site.essays | where_exp: "e", "e.series_num contains '3.'" | sort: "series_num" %}
+      {% for essay in s3 %}
+      <a href="{{ essay.url }}" class="essay-row">
+        <span class="essay-num">{{ essay.series_num }}</span>
+        <span class="essay-title">{{ essay.title }}</span>
+        <span class="essay-arrow">→</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>

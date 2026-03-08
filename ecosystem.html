@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◎</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Present of Work">
+<meta property="og:title" content="The Web — The Present of Work">
+  <link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
+<meta property="og:description" content="A directory of organisms in the same ecology — not subsidiaries, not a network. Islands in the same sea.">
+<meta property="og:url" content="https://presentofwork.org/ecosystem.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Web — The Present of Work">
+<meta name="twitter:description" content="A directory of organisms in the same ecology — not subsidiaries, not a network. Islands in the same sea.">
+<title>The Web — The Present of Work</title>
+<meta name="description" content="A directory of the organisms in this ecology. Not subsidiaries. Not a network. Islands in the same sea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--white:#FFFFFF;--off:#F6F2EB;--ink:#0D0D0D;--ink-mid:#444;--ink-lt:#888;--red:#C8341C;--red-dk:#A02912;--green:#1C4C24;--green-lt:#2D6E38;--mono:'Roboto Mono',monospace;--display:'Bebas Neue',sans-serif;--body:'Libre Baskerville',Georgia,serif;--nav-h:52px;--bg:var(--white);--surface:var(--off);--text:var(--ink);--text-mid:var(--ink-mid);--text-lt:var(--ink-lt);--border:#E0E0E0}
+[data-theme="dark"]{--bg:#0D0D0D;--surface:#141414;--text:#F0EDE8;--text-mid:#B0A898;--text-lt:#555;--border:#222;--off:#141414;--white:#0D0D0D;--ink:#F0EDE8;--ink-mid:#B0A898;--ink-lt:#555}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;transition:background .25s,color .25s}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;width:100%;height:var(--nav-h);background:var(--ink);z-index:1000;display:flex;align-items:stretch}
+[data-theme="dark"] nav{background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{font-family:var(--display);font-size:1.15rem;letter-spacing:.1em;color:#fff;padding:0 1.5rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.12);white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;align-items:stretch;list-style:none;flex:1}
+.nav-links li{display:flex;align-items:stretch}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);padding:0 1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.08);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.06)}
+.nav-right{display:flex;align-items:center;margin-left:auto;padding:0 1rem;border-left:1px solid rgba(255,255,255,.12)}
+.ctoggle{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .55rem;cursor:pointer;font-size:.75rem;line-height:1;transition:all .15s;border-radius:2px}
+.ctoggle:hover{color:#fff;border-color:#fff}
+.hbtn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:.3rem .6rem;cursor:pointer;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;transition:all .15s;display:none}
+.hbtn:hover{color:#fff;border-color:#fff}
+.mnav{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--ink);z-index:999;flex-direction:column;border-top:1px solid rgba(255,255,255,.1)}
+.mnav.open{display:flex}
+.mnav a{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);transition:color .15s}
+.mnav a:hover{color:#fff}
+
+/* PAGE HEADER */
+.ph{padding-top:var(--nav-h);background:var(--green);color:#fff;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:rgba(255,255,255,.25)}
+.ph-inner{padding:5rem 3rem 4rem 5rem;max-width:1200px;margin:0 auto}
+.ph-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.ph-h{font-family:var(--display);font-size:clamp(4rem,10vw,8rem);line-height:.88;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:1.5rem}
+.ph-sub{font-family:var(--body);font-size:clamp(.95rem,1.7vw,1.1rem);color:rgba(255,255,255,.7);line-height:1.8;max-width:580px}
+.ph-note{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:1.5rem}
+
+/* ECOTYPE LEGEND */
+.eco-legend{background:var(--ink);padding:1.25rem 3rem 1.25rem 5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.08)}
+.eco-legend-label{font-family:var(--mono);font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);flex-shrink:0}
+.eco-item{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);white-space:nowrap}
+.eco-sym{font-size:.9rem;line-height:1}
+
+/* DIRECTORY */
+.dir{padding:5rem 3rem 5rem 5rem;max-width:1200px;margin:0 auto}
+.dir-section{margin-bottom:4rem}
+.dir-section-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-lt);margin-bottom:1.5rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
+.dir-section-label::before{content:attr(data-n);border:1px solid currentColor;padding:.1rem .3rem;font-size:.46rem}
+
+/* NODE CARD */
+.node-card{display:grid;grid-template-columns:60px 1fr auto;gap:0;border:1px solid var(--border);margin-bottom:-1px;transition:background .15s;position:relative}
+.node-card:hover{background:var(--surface);z-index:1}
+.nc-left{padding:2rem 1.5rem;border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:.75rem}
+.nc-sym{font-size:1.6rem;line-height:1;color:var(--green)}
+.nc-status{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.nc-status.active{background:var(--green)}
+.nc-status.soon{background:rgba(200,80,50,.7);border-radius:0}
+.nc-status.open{background:none;border:1.5px dashed rgba(150,130,0,.7)}
+.nc-body{padding:2rem 2rem}
+.nc-ecotype{font-family:var(--mono);font-size:.44rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.3rem}
+.nc-name{font-family:var(--display);font-size:2.2rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text);line-height:.95;margin-bottom:.25rem}
+.nc-role{font-family:var(--mono);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.75rem}
+.nc-desc{font-family:var(--body);font-size:.88rem;color:var(--text-mid);line-height:1.7;max-width:580px;margin-bottom:.75rem}
+.nc-looking{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;color:var(--red);font-style:italic;margin-bottom:.5rem}
+.nc-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.nc-tag{font-family:var(--mono);font-size:.42rem;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .4rem;border:1px solid var(--border);color:var(--text-lt)}
+.nc-right{padding:2rem 1.5rem;border-left:1px solid var(--border);display:flex;flex-direction:column;gap:.4rem;min-width:160px;align-items:flex-end;justify-content:flex-start}
+.nc-link{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);transition:letter-spacing .15s;white-space:nowrap}
+.nc-link:hover{letter-spacing:.18em}
+.nc-link.ext::after{content:'↗';margin-left:.2em}
+.nc-link.mail::after{content:'→';margin-left:.2em}
+
+/* ADD CTA */
+.add-cta{border:2px dashed var(--border);padding:2.5rem 2rem;text-align:center;margin-top:2rem}
+.add-cta-h{font-family:var(--display);font-size:2rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.5rem}
+.add-cta-b{font-family:var(--body);font-size:.88rem;color:var(--text-lt);line-height:1.7;max-width:420px;margin:0 auto 1rem}
+
+.btn{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:.75rem 1.75rem;cursor:pointer;display:inline-block;transition:all .15s;text-decoration:none;border:2px solid transparent}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green)}
+.btn-green:hover{background:var(--green-lt);border-color:var(--green-lt)}
+
+footer{background:#0D0D0D;border-top:1px solid rgba(255,255,255,.1);padding:1.25rem 3rem 1.25rem 5rem;font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fi{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{color:rgba(255,255,255,.3);transition:color .15s}
+footer a:hover{color:rgba(255,255,255,.8)}
+.fl{display:flex;gap:1.5rem;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:900px){.dir{padding:3rem 1.5rem 3rem 2rem}.nc-right{min-width:auto}.ph-inner{padding:4rem 2rem 3rem 3rem}.eco-legend{padding:1rem 2rem}.node-card{grid-template-columns:50px 1fr}}
+@media(max-width:768px){.nav-links{display:none}.hbtn{display:block}.nc-right{display:none}.node-card{grid-template-columns:50px 1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Present of Work</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/publication.html">Publication</a></li>
+    <li><a href="/podcast.html">Podcast</a></li>
+    <li><a href="/concepts.html">Concepts</a></li>
+    <li><a href="/map.html">Map</a></li>
+    <li><a href="/ecosystem.html" class="active">The Web</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="ctoggle" id="cToggle">☀</button>
+    <button class="hbtn" id="hBtn">Menu</button>
+  </div>
+</nav>
+<div class="mnav" id="mNav">
+  <a href="/about.html">About</a><a href="/publication.html">Publication</a>
+  <a href="/podcast.html">Podcast</a><a href="/concepts.html">Concepts</a>
+  <a href="/map.html">Map</a><a href="/ecosystem.html">The Web</a>
+</div>
+
+<header class="ph">
+  <div class="ph-inner">
+    <div class="ph-label">The Web · Full directory</div>
+    <h1 class="ph-h">Islands<br>in the<br>same sea.</h1>
+    <p class="ph-sub">These are not subsidiaries. They are organisms in the same ecology — different functions, different scales, different relationships to light. No center. No hierarchy. What holds them together is shared geology: the same questions, the same refusals.</p>
+    <div class="ph-note">Explore visually → <a href="/map.html" style="color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:3px">map.html</a></div>
+  </div>
+</header>
+
+<!-- ECOTYPE LEGEND -->
+<div class="eco-legend">
+  <div class="eco-legend-label">Ecological role</div>
+  <div class="eco-item"><span class="eco-sym">◎</span> Canopy — visible from outside, generates light</div>
+  <div class="eco-item"><span class="eco-sym">◈</span> Edge — lives at boundaries, transforms terrain</div>
+  <div class="eco-item"><span class="eco-sym">◐</span> Recorder — documents the territory as it forms</div>
+  <div class="eco-item"><span class="eco-sym">⬡</span> Nursery — growth medium for emerging organisms</div>
+  <div class="eco-item"><span class="eco-sym">○</span> Understory — thrives in filtered light</div>
+  <div class="eco-item"><span class="eco-sym">∿</span> Mycelial — invisible connective intelligence</div>
+  <div class="eco-item"><span class="eco-sym">◦</span> Germinating — taking form beneath the surface</div>
+</div>
+
+<div class="dir">
+
+  <!-- ACTIVE -->
+  <div class="dir-section rv">
+    <div class="dir-section-label" data-n="Active">Organisms in formation</div>
+
+    <!-- The Present of Work -->
+    <div class="node-card">
+      <div class="nc-left">
+        <div class="nc-sym">◎</div>
+        <div class="nc-status active"></div>
+      </div>
+      <div class="nc-body">
+        <div class="nc-ecotype">Canopy</div>
+        <div class="nc-name">The Present of Work</div>
+        <div class="nc-role">Publication · Podcast · Map · Gathering place</div>
+        <div class="nc-desc">The publication, podcast, and knowledge map you're currently reading. A gathering place for all forms of work — not occupational employment, but the full range of human contribution. Generated from below; readable from above.</div>
+        <div class="nc-tags"><span class="nc-tag">publication</span><span class="nc-tag">podcast</span><span class="nc-tag">knowledge map</span><span class="nc-tag">commons</span></div>
+      </div>
+      <div class="nc-right">
+        <a href="/" class="nc-link">presentofwork.org</a>
+        <a href="mailto:hello@presentofwork.org" class="nc-link mail">hello@</a>
+      </div>
+    </div>
+
+    <!-- Limicelia -->
+    <div class="node-card">
+      <div class="nc-left">
+        <div class="nc-sym">◈</div>
+        <div class="nc-status active"></div>
+      </div>
+      <div class="nc-body">
+        <div class="nc-ecotype">Edge organism</div>
+        <div class="nc-name">Limicelia</div>
+        <div class="nc-role">Post-conventional consultancy</div>
+        <div class="nc-desc">Lives at the boundary between existing systems and what comes after. Accompanies organizations through structural passages — mergers, reinventions, the moment when the old model can no longer sustain itself. Rigorous presence. Not change management; genuine transformation.</div>
+        <div class="nc-tags"><span class="nc-tag">consultancy</span><span class="nc-tag">transformation</span><span class="nc-tag">regenerative</span><span class="nc-tag">organizational</span></div>
+      </div>
+      <div class="nc-right">
+        <a href="https://limicelia.org" target="_blank" rel="noopener" class="nc-link ext">limicelia.org</a>
+      </div>
+    </div>
+
+    <!-- Field Notes -->
+    <div class="node-card">
+      <div class="nc-left">
+        <div class="nc-sym">◐</div>
+        <div class="nc-status active"></div>
+      </div>
+      <div class="nc-body">
+        <div class="nc-ecotype">Recorder</div>
+        <div class="nc-name">Field Notes</div>
+        <div class="nc-role">Media · Podcast · Production</div>
+        <div class="nc-desc">Documents the territory as it forms. Produces the Present of Work podcast, supports the publication, and builds knowledge tools like the map. The media production arm of the ecology. Assumes its audience can handle complexity and doesn't need everything simplified.</div>
+        <div class="nc-looking">Looking for: producers, editors, visual collaborators</div>
+        <div class="nc-tags"><span class="nc-tag">podcast</span><span class="nc-tag">video</span><span class="nc-tag">production</span><span class="nc-tag">media</span></div>
+      </div>
+      <div class="nc-right">
+        <a href="/podcast.html" class="nc-link">Listen →</a>
+        <a href="mailto:hello@presentofwork.org" class="nc-link mail">hello@</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PARTNERS -->
+  <div class="dir-section rv d1">
+    <div class="dir-section-label" data-n="Partners">Aligned organisms</div>
+
+    <!-- Starter Cultures -->
+    <div class="node-card">
+      <div class="nc-left">
+        <div class="nc-sym">⬡</div>
+        <div class="nc-status active"></div>
+      </div>
+      <div class="nc-body">
+        <div class="nc-ecotype">Nursery</div>
+        <div class="nc-name">Starter Cultures</div>
+        <div class="nc-role">Incubation commons</div>
+        <div class="nc-desc">The growth medium. A commons-based nursery for emerging practice communities — where new projects develop before they graduate to their own structures. Not an accelerator. Not a fund. A place where ideas can develop at the right pace, in the right conditions.</div>
+        <div class="nc-tags"><span class="nc-tag">incubation</span><span class="nc-tag">commons</span><span class="nc-tag">practice communities</span></div>
+      </div>
+      <div class="nc-right">
+        <span style="font-family:var(--mono);font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-lt)">No public site yet</span>
+      </div>
+    </div>
+
+    <!-- Intentional Society -->
+    <div class="node-card">
+      <div class="nc-left">
+        <div class="nc-sym">○</div>
+        <div class="nc-status active"></div>
+      </div>
+      <div class="nc-body">
+        <div class="nc-ecotype">Understory</div>
+        <div class="nc-name">Intentional Society</div>
+        <div class="nc-role">Practice community</div>
+        <div class="nc-desc">Thrives in filtered light. A relational dojo creating containers for presence, honest reflection, and mutual support. The work of being in right relationship — with yourself, with others, with whatever you're building. Practices: circling, developmental workshops, honest conversation.</div>
+        <div class="nc-tags"><span class="nc-tag">practice</span><span class="nc-tag">presence</span><span class="nc-tag">community</span><span class="nc-tag">circling</span></div>
+      </div>
+      <div class="nc-right">
+        <a href="https://www.intentionalsociety.org" target="_blank" rel="noopener" class="nc-link ext">intentionalsociety.org</a>
+      </div>
+    </div>
+
+    <!-- Warm Data Labs -->
+    <div class="node-card">
+      <div class="nc-left">
+        <div class="nc-sym">∿</div>
+        <div class="nc-status active"></div>
+      </div>
+      <div class="nc-body">
+        <div class="nc-ecotype">Mycelial network</div>
+        <div class="nc-name">Warm Data Labs</div>
+        <div class="nc-role">Research · Practice · International</div>
+        <div class="nc-desc">The invisible connective intelligence. Nora Bateson's methodology for understanding complex living systems through relational, multi-contextual inquiry. Where Gregory Bateson's ecology of mind becomes a practice. Runs labs worldwide through the International Bateson Institute.</div>
+        <div class="nc-tags"><span class="nc-tag">Bateson</span><span class="nc-tag">systems</span><span class="nc-tag">warm data</span><span class="nc-tag">complexity</span><span class="nc-tag">IBI</span></div>
+      </div>
+      <div class="nc-right">
+        <a href="https://warmdata.life" target="_blank" rel="noopener" class="nc-link ext">warmdata.life</a>
+        <a href="https://www.eventbrite.com/o/the-international-bateson-institute-ibi-67905251533" target="_blank" rel="noopener" class="nc-link ext">IBI events</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COMING SOON -->
+  <div class="dir-section rv d2">
+    <div class="dir-section-label" data-n="Germinating">Taking form</div>
+
+    <!-- The Still -->
+    <div class="node-card" style="opacity:.75">
+      <div class="nc-left">
+        <div class="nc-sym">◦</div>
+        <div class="nc-status soon"></div>
+      </div>
+      <div class="nc-body">
+        <div class="nc-ecotype">Germinating</div>
+        <div class="nc-name">The Still</div>
+        <div class="nc-role">Contemplative practice community · Coming soon</div>
+        <div class="nc-desc">Taking form beneath the surface. Contemplative practice woven into livelihood — ceremonies, residencies, retreats. The sacred in ordinary work. Three meanings of its name: stillness as practice, distillation as process, the still point as reference. Looking for venue partners and practitioner hosts to shape its first form.</div>
+        <div class="nc-looking">Seeking: venue partners, practitioner hosts, retreat facilitators</div>
+        <div class="nc-tags"><span class="nc-tag">contemplative</span><span class="nc-tag">sacred</span><span class="nc-tag">retreat</span><span class="nc-tag">avodah</span></div>
+      </div>
+      <div class="nc-right">
+        <a href="mailto:hello@presentofwork.org" class="nc-link mail">hello@</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAP CROSS-LINK -->
+  <div class="rv d2" style="text-align:center;padding:3rem 0 1rem;border-top:1px solid var(--border);margin:0 3rem 0 5rem">
+    <div style="font-family:var(--mono);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-lt);margin-bottom:.75rem">See how they connect</div>
+    <a href="/map.html" style="font-family:var(--display);font-size:clamp(1.4rem,3vw,2.5rem);letter-spacing:.06em;text-transform:uppercase;color:var(--text);display:inline-block;margin-bottom:.5rem;transition:color .15s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">Explore the knowledge map →</a>
+    <p style="font-family:var(--body);font-size:.85rem;color:var(--text-lt);max-width:440px;margin:0 auto;line-height:1.7">47 nodes. Every organism, series, thinker, and cross-cutting theme. Pan, zoom, click to explore connections.</p>
+  </div>
+
+  <!-- ADD -->
+  <div class="rv d3">
+    <div class="add-cta">
+      <div class="add-cta-h">+ Add to the web</div>
+      <p class="add-cta-b">Building a practice community, cooperative, research initiative, or regenerative enterprise that belongs here? This ecology doesn't recruit — it recognizes. If the values align, we want to know.</p>
+      <a href="mailto:add@presentofwork.org" class="btn btn-green">add@presentofwork.org →</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="fi">
+    <span>The Present of Work · presentofwork.org</span>
+    <div class="fl">
+      <a href="/about.html">About</a><a href="/publication.html">Publication</a>
+      <a href="/podcast.html">Podcast</a><a href="/concepts.html">Concepts</a>
+      <a href="/map.html">Map</a>
+      <a href="/ecosystem.html" style="color:rgba(255,255,255,.8)">The Web</a>
+    </div>
+    <span><a href="/donate.html">Made in the commons</a></span>
+  </div>
+</footer>
+<script>
+document.getElementById('cToggle').addEventListener('click',function(){
+  const d=document.documentElement;const dark=d.getAttribute('data-theme')==='dark';
+  d.setAttribute('data-theme',dark?'light':'dark');this.textContent=dark?'☀':'☾';
+});
+document.getElementById('hBtn').addEventListener('click',()=>document.getElementById('mNav').classList.toggle('open'));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// Node modal
+const modal=document.getElementById('ncModal');
+const mClose=document.getElementById('mClose');
+if(mClose) mClose.addEventListener('click',()=>modal.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal)modal.classList.remove('open');});
+document.querySelectorAll('.nc').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const id=card.dataset.id;
+    const node=NODES.find(n=>n.id===id);
+    if(!node)return;
+    document.getElementById('mt').textContent=node.type||'';
+    document.getElementById('mn').textContent=node.name;
+    document.getElementById('ms').textContent=SL[node.status]||'';
+    document.getElementById('msd').className='sd '+node.status;
+    document.getElementById('md').textContent=node.desc;
+    const ml=document.getElementById('ml');
+    if(node.looking){ml.style.display='block';ml.textContent=node.looking;}else ml.style.display='none';
+    const mls=document.getElementById('mls');mls.innerHTML='';
+    [['url','urlLabel'],['url2','url2label']].forEach(([uk,lk])=>{
+      if(!node[uk]) return;
+      const isE=node[uk].startsWith('mailto:');
+      const a=document.createElement('a');
+      a.href=node[uk];a.textContent=node[lk]||node[uk];
+      a.className='ml-link';
+      if(!isE){a.target='_blank';a.rel='noopener';}
+      mls.appendChild(a);
+    });
+    modal.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
