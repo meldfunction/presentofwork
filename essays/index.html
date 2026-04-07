@@ -44,7 +44,9 @@ permalink: /essays/
     <div class="series-label" data-n="I">The History of the Present</div>
     <p class="series-q">"How did selling your time become the definition of a good life?"</p>
     <div class="essay-list">
-      {% assign s1 = site.essays | where_exp: "e", "e.series_num contains '0.' or e.series_num contains '1.'" | sort: "series_num" %}
+      {% assign s1a = site.essays | where_exp: "e", "e.series_num contains '0.'" %}
+      {% assign s1b = site.essays | where_exp: "e", "e.series_num contains '1.'" %}
+      {% assign s1 = s1a | concat: s1b | sort: "series_num" %}
       {% for essay in s1 %}
       <a href="{{ essay.url }}" class="essay-row">
         <span class="essay-num">{{ essay.series_num }}</span>
