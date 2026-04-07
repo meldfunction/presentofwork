@@ -13,6 +13,9 @@ collections:
   essays:
     output: true
     permalink: /essays/:name/
+  episodes:
+    output: true
+    permalink: /episodes/:name/
 
 defaults:
   - scope:

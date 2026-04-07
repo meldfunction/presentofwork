@@ -62,7 +62,8 @@ permalink: /essays/
     <div class="series-label" data-n="II">The Future of the Present</div>
     <p class="series-q">"Why do all our promised futures still need you to earn your place in them?"</p>
     <div class="essay-list">
-      {% assign s2 = site.essays | where_exp: "e", "e.series_num contains '2.'" | sort: "series_num" %}
+      {% assign s2 = site.essays | where_exp: "e", "e.series_num contains '2.'" %}
+      {% assign s2 = s2 | sort: "series_num" %}
       {% for essay in s2 %}
       <a href="{{ essay.url }}" class="essay-row">
         <span class="essay-num">{{ essay.series_num }}</span>
@@ -78,7 +79,8 @@ permalink: /essays/
     <div class="series-label" data-n="III">The Present ∞</div>
     <p class="series-q">"What if your worth was never up for negotiation?"</p>
     <div class="essay-list">
-      {% assign s3 = site.essays | where_exp: "e", "e.series_num contains '3.'" | sort: "series_num" %}
+      {% assign s3 = site.essays | where_exp: "e", "e.series_num contains '3.'" %}
+      {% assign s3 = s3 | sort: "series_num" %}
       {% for essay in s3 %}
       <a href="{{ essay.url }}" class="essay-row">
         <span class="essay-num">{{ essay.series_num }}</span>

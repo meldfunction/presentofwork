@@ -32,7 +32,8 @@ layout: null
       <link>{{ site.url }}</link>
     </image>
 
-    {% assign episodes = site.episodes | sort: 'date' | reverse %}
+    {% assign episodes_unsorted = site.episodes | where_exp: "e", "e.date" %}
+    {% assign episodes = episodes_unsorted | sort: 'date' | reverse %}
     {% for ep in episodes %}
     <item>
       <title>{{ ep.title | xml_escape }}</title>
