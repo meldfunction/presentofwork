@@ -998,48 +998,32 @@ const canopyG=nodeGroups.find(n=>n.node.ecotype==='canopy')?.g;
 function floatHub(){ft+=.013;if(canopyG)canopyG.setAttribute('transform',`translate(0,${Math.sin(ft)*2.5})`);requestAnimationFrame(floatHub);}
 floatHub();
 
+const modal=document.getElementById('gmo');
+
 function openModal(node){
   document.getElementById('mt').textContent=node.type||'';
   document.getElementById('mn').textContent=node.name;
   document.getElementById('ms').textContent=SL[node.status]||'';
-  document.getElementById('msd').className='sd '+node.status;
+  document.getElementById('msd').className='sd '+(node.status||'');
   document.getElementById('md').textContent=node.desc;
   const ml=document.getElementById('ml');
   if(node.looking){ml.style.display='block';ml.textContent=node.looking;}else ml.style.display='none';
   const mls=document.getElementById('mls');mls.innerHTML='';
   [['url','urlLabel'],['url2','url2label']].forEach(([uk,lk])=>{
     if(!node[uk]) return;
-    const isE=node[uk].startsWith('mailto:');    const a=document.createElement('a');
-      a.href=node[uk];a.textContent=node[lk]||node[uk];
-      a.className='ml-link';
-      if(!isE){a.target='_blank';a.rel='noopener';}
-      mls.appendChild(a);
-    });
-    modal.classList.add('open');
+    const isE=node[uk].startsWith('mailto:');
+    const a=document.createElement('a');
+    a.href=node[uk];a.textContent=node[lk]||node[uk];
+    a.className='ml-link';
+    if(!isE){a.target='_blank';a.rel='noopener';}
+    mls.appendChild(a);
   });
-};
-
-// Click handlers on graph nodes
-nodeGroups.forEach(({g,node})=>{
-  g.addEventListener('click',()=>openModal(node));
-  g.style.cursor='pointer';
-});
+  modal.classList.add('open');
+}
 
 // Close modal
-const mClose=document.getElementById('mClose');
-if(mClose) mClose.addEventListener('click',()=>document.getElementById('ncModal').classList.remove('open'));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('ncModal').classList.remove('open');});
-
-// Dark mode toggle
-document.getElementById('cToggle').addEventListener('click',function(){
-  const d=document.documentElement;const dark=d.getAttribute('data-theme')==='dark';
-  d.setAttribute('data-theme',dark?'light':'dark');this.textContent=dark?'☀':'☾';
-});
-document.getElementById('hBtn').addEventListener('click',()=>document.getElementById('mNav').classList.toggle('open'));
-
-// Scroll reveal
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.07});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+document.getElementById('gmc').addEventListener('click',()=>modal.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open');});
 </script>
 </body>
 </html>
