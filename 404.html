@@ -7,7 +7,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Present of Work">
 <meta property="og:title" content="Not Found — The Present of Work">
-  <link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="The Present of Work" href="https://presentofwork.org/feed.xml">
 <meta property="og:description" content="The page you were looking for does not exist. The page has feelings about this.">
 <meta property="og:url" content="https://presentofwork.org/404.html">
 <meta name="twitter:card" content="summary">
@@ -18,113 +18,125 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
+/* === COLOR THEME VARIABLES — cycled by JS every 5s === */
+:root {
+  --bg: #080808;
+  --nav-bg: #080808;
+  --accent: #C8341C;
+  --text: #F0EDE8;
+  --text-dim: rgba(255,255,255,.75);
+  --border: rgba(255,255,255,.07);
+  --col-speed: 1.4s;
+}
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;background:#080808;color:#F0EDE8;font-family:'Libre Baskerville',Georgia,serif}
+html,body{
+  height:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Libre Baskerville',Georgia,serif;
+  transition:background var(--col-speed) ease, color var(--col-speed) ease;
+}
 body{overflow:hidden}
 a{color:inherit;text-decoration:none}
 
-nav{position:fixed;top:0;width:100%;height:52px;background:#080808;border-bottom:1px solid rgba(255,255,255,.07);z-index:100;display:flex;align-items:center;padding:0 1.5rem;gap:1.5rem}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;color:#fff;border-right:1px solid rgba(255,255,255,.1);padding-right:1.5rem;white-space:nowrap}
-.nav-hint{font-family:'Roboto Mono',monospace;font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+nav{
+  position:fixed;top:0;width:100%;height:52px;
+  background:var(--nav-bg);
+  border-bottom:1px solid var(--border);
+  z-index:100;display:flex;align-items:center;
+  padding:0 1.5rem;gap:1.5rem;
+  transition:background var(--col-speed) ease;
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:1.1rem;
+  letter-spacing:.1em;color:var(--text);
+  border-right:1px solid rgba(255,255,255,.1);
+  padding-right:1.5rem;white-space:nowrap;
+}
+.nav-hint{
+  font-family:'Roboto Mono',monospace;font-size:.48rem;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);
+}
 
 /* STAGE */
 .stage{
   position:fixed;top:52px;left:0;right:0;bottom:0;
   display:flex;flex-direction:column;
   justify-content:center;align-items:flex-start;
-  padding:3rem 5rem;
-  overflow:hidden;
+  padding:3rem 5rem;overflow:hidden;
 }
 
-/* BIG 404 BACKGROUND */
+/* BIG 404 */
 .e-num{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(7rem,22vw,20rem);
   line-height:.85;letter-spacing:.04em;
-  color:#C8341C;opacity:.08;
+  color:var(--accent);opacity:.08;
   position:absolute;right:-1vw;bottom:-4vh;
   pointer-events:none;user-select:none;
-  transition:opacity 8s ease;
+  transition:opacity 8s ease, color var(--col-speed) ease;
 }
 .e-num.fade{opacity:.02}
 
-/* CHAT AREA */
+/* CHAT */
 .chat{
   position:relative;z-index:2;
   width:100%;max-width:680px;
-  display:flex;flex-direction:column;
-  gap:0;
-  max-height:calc(100vh - 160px);
-  overflow:hidden;
+  display:flex;flex-direction:column;gap:0;
+  max-height:calc(100vh - 160px);overflow:hidden;
   mask-image:linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
   -webkit-mask-image:linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 .chat-inner{
-  display:flex;flex-direction:column;
-  gap:0;
-  padding-top:60px;
+  display:flex;flex-direction:column;gap:0;padding-top:60px;
 }
-
 .bubble{
-  display:block;
-  padding:.65rem 1rem;
-  margin-bottom:.5rem;
-  max-width:560px;
-  opacity:0;
-  transform:translateY(10px);
+  display:block;padding:.65rem 1rem;margin-bottom:.5rem;
+  max-width:560px;opacity:0;transform:translateY(10px);
   transition:opacity .45s ease, transform .45s ease;
 }
 .bubble.show{opacity:1;transform:none}
 
 .bubble.page{
   background:rgba(255,255,255,.04);
-  border-left:3px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.78);
+  border-left:3px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.9);
   font-family:'Libre Baskerville',serif;
-  font-size:clamp(.88rem,1.4vw,1rem);
-  line-height:1.65;
+  font-size:clamp(.88rem,1.4vw,1rem);line-height:1.65;
 }
 .bubble.page::before{
-  content:'PAGE';
-  font-family:'Roboto Mono',monospace;
+  content:'PAGE';font-family:'Roboto Mono',monospace;
   font-size:.36rem;letter-spacing:.22em;
-  color:rgba(255,255,255,.22);
-  display:block;margin-bottom:.3rem;
+  color:rgba(255,255,255,.45);display:block;margin-bottom:.3rem;
 }
-
 .bubble.user{
   background:rgba(200,52,28,.07);
-  border-left:3px solid rgba(200,52,28,.25);
-  color:rgba(255,200,185,.65);
-  font-family:'Roboto Mono',monospace;
-  font-size:.8rem;
-  letter-spacing:.04em;
-  line-height:1.5;
+  border-left:3px solid rgba(200,52,28,.35);
+  color:rgba(255,200,185,.9);
+  font-family:'Roboto Mono',monospace;font-size:.8rem;
+  letter-spacing:.04em;line-height:1.5;
 }
 .bubble.user::before{
-  content:'YOU (probably)';
-  font-family:'Roboto Mono',monospace;
+  content:'YOU (probably)';font-family:'Roboto Mono',monospace;
   font-size:.36rem;letter-spacing:.22em;
-  color:rgba(200,52,28,.35);
-  display:block;margin-bottom:.3rem;
+  color:rgba(200,52,28,.55);display:block;margin-bottom:.3rem;
 }
-
 .bubble.system{
-  background:none;
-  border-left:none;
-  color:rgba(255,255,255,.18);
-  font-family:'Roboto Mono',monospace;
-  font-size:.58rem;
-  font-style:italic;
-  letter-spacing:.04em;
-  padding-left:0;
-  margin-bottom:.35rem;
+  background:none;border-left:none;
+  color:rgba(255,255,255,.5);
+  font-family:'Roboto Mono',monospace;font-size:.58rem;
+  font-style:italic;letter-spacing:.04em;padding-left:0;margin-bottom:.35rem;
 }
 
-.cursor{display:inline-block;width:2px;height:.9em;background:rgba(255,255,255,.5);vertical-align:text-bottom;margin-left:2px;animation:blink .85s infinite}
+.cursor{
+  display:inline-block;width:2px;height:.9em;
+  background:rgba(255,255,255,.6);vertical-align:text-bottom;
+  margin-left:2px;animation:blink .85s infinite;
+}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-/* ESCAPE HATCH */
+/* ESCAPE */
 .escape{
   position:fixed;bottom:2rem;right:2rem;
   display:flex;flex-direction:column;gap:.4rem;
@@ -134,60 +146,251 @@ nav{position:fixed;top:0;width:100%;height:52px;background:#080808;border-bottom
 .esc-btn{
   font-family:'Roboto Mono',monospace;font-size:.5rem;
   letter-spacing:.14em;text-transform:uppercase;
-  padding:.55rem 1rem;border:1px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.35);background:rgba(8,8,8,.9);
+  padding:.55rem 1rem;border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.55);background:rgba(8,8,8,.9);
   cursor:pointer;transition:all .15s;display:block;
 }
-.esc-btn:hover{color:#fff;border-color:rgba(255,255,255,.45)}
+.esc-btn:hover,.esc-btn:focus{
+  color:#fff;border-color:rgba(255,255,255,.6);
+  outline:2px solid rgba(255,255,255,.4);outline-offset:2px;
+}
 
 /* TIMER */
 .timer{
   position:fixed;bottom:2rem;left:5rem;
   font-family:'Roboto Mono',monospace;font-size:.42rem;
   letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.1);z-index:200;
+  color:rgba(255,255,255,.35);z-index:200;
 }
 
 /* MONOLOGUE */
 .mono-wrap{
   position:fixed;inset:52px 0 0 0;
-  overflow-y:scroll;
-  padding:4rem 5rem 8rem;
-  display:none;
+  overflow-y:scroll;padding:4rem 5rem 8rem;display:none;
 }
 .mono-wrap.active{display:block}
 .mono-wrap::-webkit-scrollbar{width:3px}
 .mono-wrap::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08)}
-
-.mono-scroll{
-  animation:autoScroll 120s linear 1s forwards;
+.mono-scroll{animation:autoScroll 120s linear 1s forwards}
+@keyframes autoScroll{from{transform:translateY(0)}to{transform:translateY(-80%)}}
+.ml{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(.9rem,1.4vw,1.05rem);line-height:1.85;
+  color:rgba(255,255,255,.8);max-width:680px;margin-bottom:.25rem;
 }
-@keyframes autoScroll{
-  from{transform:translateY(0)}
-  to{transform:translateY(-80%)}
+.ml.big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,6vw,5.5rem);line-height:.88;
+  letter-spacing:.04em;text-transform:uppercase;color:#fff;margin:2rem 0 .75rem;
 }
-
-.ml{font-family:'Libre Baskerville',serif;font-size:clamp(.9rem,1.4vw,1.05rem);line-height:1.85;color:rgba(255,255,255,.62);max-width:680px;margin-bottom:.25rem}
-.ml.big{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5.5rem);line-height:.88;letter-spacing:.04em;text-transform:uppercase;color:#fff;margin:2rem 0 .75rem}
 .ml.red{color:#C8341C}
-.ml.dim{color:rgba(255,255,255,.2);font-family:'Roboto Mono',monospace;font-size:.58rem;letter-spacing:.06em;font-style:italic}
+.ml.dim{
+  color:rgba(255,255,255,.45);font-family:'Roboto Mono',monospace;
+  font-size:.58rem;letter-spacing:.06em;font-style:italic;
+}
 .ml.gap{height:1.25rem;display:block}
-.ml.sig{font-family:'Roboto Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:2rem}
-.mono-nav{display:flex;flex-direction:column;gap:0;max-width:400px;margin-top:2rem;border-top:1px solid rgba(255,255,255,.08)}
-.mono-nav a{font-family:'Roboto Mono',monospace;font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:block;transition:color .15s}
-.mono-nav a:hover{color:#fff}
-.mono-nav a.r{color:rgba(200,52,28,.45)}
+.ml.sig{
+  font-family:'Roboto Mono',monospace;font-size:.54rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-top:2rem;
+}
+.mono-nav{
+  display:flex;flex-direction:column;gap:0;
+  max-width:400px;margin-top:2rem;border-top:1px solid rgba(255,255,255,.08);
+}
+.mono-nav a{
+  font-family:'Roboto Mono',monospace;font-size:.54rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);padding:.75rem 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:block;transition:color .15s;
+}
+.mono-nav a:hover,.mono-nav a:focus{
+  color:#fff;outline:2px solid rgba(255,255,255,.4);outline-offset:2px;
+}
+.mono-nav a.r{color:rgba(200,52,28,.65)}
 .mono-nav a.r:hover{color:#C8341C}
+
+/* === HYPERSPACE CANVAS === */
+#hyperspaceCanvas{
+  position:fixed;inset:0;z-index:0;
+  opacity:0;transition:opacity 3s ease;pointer-events:none;
+}
+#hyperspaceCanvas.active{opacity:1}
+
+/* === SCANLINE OVERLAY === */
+.scanline-over{
+  position:fixed;inset:0;z-index:999;pointer-events:none;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 2px,
+    rgba(0,0,0,.18) 2px,rgba(0,0,0,.18) 4px
+  );
+  opacity:0;transition:opacity .6s;
+}
+.scanline-over.on{opacity:1}
+
+/* === GLITCH ANIMATIONS === */
+@keyframes skewGlitch{
+  0%{transform:skewX(0)}20%{transform:skewX(-2deg)}
+  40%{transform:skewX(1.5deg)}60%{transform:skewX(-.5deg)}
+  80%{transform:skewX(2.5deg)}100%{transform:skewX(0)}
+}
+@keyframes flicker{
+  0%,100%{opacity:1}10%{opacity:.5}25%{opacity:1}
+  40%{opacity:.7}55%{opacity:.3}60%{opacity:1}80%{opacity:.6}
+}
+body.glitching{animation:skewGlitch .25s infinite;filter:contrast(1.2) saturate(1.6)}
+body.flickering{animation:flicker .12s infinite}
+
+/* === CRASH SCREEN === */
+#crashScreen{
+  position:fixed;inset:0;z-index:9000;
+  background:#000;display:none;
+  flex-direction:column;align-items:center;justify-content:center;
+}
+#crashScreen.on{display:flex}
+.boot-text{
+  font-family:'Roboto Mono',monospace;
+  font-size:clamp(.55rem,.9vw,.72rem);
+  letter-spacing:.06em;line-height:2.1;
+  color:rgba(255,255,255,.8);
+  max-width:620px;width:90%;text-align:left;padding:2rem;
+}
+.boot-line{display:block;opacity:0;transition:opacity .05s}
+.boot-line.on{opacity:1}
+
+/* === PREZY SCREEN === */
+#prezyScreen{
+  position:fixed;inset:0;z-index:9500;
+  background:#050510;display:none;
+  flex-direction:column;align-items:center;justify-content:center;
+  padding:2rem;
+}
+#prezyScreen.on{display:flex}
+
+.pz-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(100,60,255,.18) 0%,transparent 68%);
+  animation:pglow 4s ease-in-out infinite;
+}
+@keyframes pglow{0%,100%{opacity:.5}50%{opacity:1}}
+
+.pz-avatar{
+  font-size:3.5rem;margin-bottom:.75rem;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.pz-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  letter-spacing:.06em;color:#fff;text-align:center;
+  margin-bottom:.5rem;opacity:0;transition:opacity 1s ease;
+}
+.pz-name.on{opacity:1}
+
+.pz-intro{
+  font-family:'Roboto Mono',monospace;
+  font-size:clamp(.65rem,1.1vw,.85rem);
+  letter-spacing:.05em;line-height:2;
+  color:rgba(200,190,255,.95);text-align:center;
+  max-width:500px;margin-bottom:1.75rem;
+  opacity:0;transition:opacity 1s ease .5s;
+}
+.pz-intro.on{opacity:1}
+.pz-intro strong{color:#b8a0ff;font-weight:500}
+
+.pz-label{
+  font-family:'Roboto Mono',monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(160,140,255,.75);margin-bottom:.6rem;
+  opacity:0;transition:opacity 1s ease 1s;
+}
+.pz-label.on{opacity:1}
+
+.pz-search{
+  display:flex;gap:.5rem;width:100%;max-width:480px;
+  opacity:0;transition:opacity 1s ease 1.2s;
+}
+.pz-search.on{opacity:1}
+
+#pzInput{
+  flex:1;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(160,140,255,.4);
+  color:#fff;font-family:'Roboto Mono',monospace;font-size:.82rem;
+  padding:.7rem 1rem;outline:none;transition:border-color .2s,background .2s;
+}
+#pzInput::placeholder{color:rgba(255,255,255,.3)}
+#pzInput:focus{
+  border-color:rgba(160,140,255,.85);background:rgba(255,255,255,.1);
+  outline:2px solid rgba(160,140,255,.5);outline-offset:2px;
+}
+
+#pzBtn{
+  background:rgba(160,140,255,.18);
+  border:1px solid rgba(160,140,255,.5);
+  color:#ccc0ff;font-family:'Roboto Mono',monospace;
+  font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.7rem 1.2rem;cursor:pointer;transition:all .15s;
+}
+#pzBtn:hover,#pzBtn:focus{
+  background:rgba(160,140,255,.38);color:#fff;
+  outline:2px solid rgba(160,140,255,.6);outline-offset:2px;
+}
+
+.pz-tag{
+  font-family:'Roboto Mono',monospace;font-size:.4rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(160,140,255,.35);margin-top:1.5rem;text-align:center;
+  opacity:0;transition:opacity 1s ease 2s;
+}
+.pz-tag.on{opacity:1}
+
+.pz-spark{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  pointer-events:none;background:#a78fff;
+  animation:spark 2.5s ease-in-out infinite;
+}
+@keyframes spark{
+  0%{opacity:0;transform:scale(0) translateY(0)}
+  30%{opacity:1;transform:scale(1) translateY(-18px)}
+  100%{opacity:0;transform:scale(0) translateY(-55px)}
+}
+
+/* FOOTER BAR */
+.footer-bar{
+  position:fixed;bottom:0;left:0;right:0;height:30px;
+  background:rgba(8,8,8,.9);border-top:1px solid rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:0 2rem;font-family:'Roboto Mono',monospace;font-size:.4rem;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);
+  z-index:50;pointer-events:none;
+}
+.footer-bar a{
+  pointer-events:auto;color:rgba(255,255,255,.35);
+  transition:color .2s;
+}
+.footer-bar a:hover,.footer-bar a:focus{
+  color:#fff;outline:2px solid rgba(255,255,255,.4);outline-offset:2px;
+}
 
 @media(max-width:768px){
   .stage{padding:2rem 1.5rem}
   .mono-wrap{padding:3rem 1.5rem 8rem}
   .timer{left:1.5rem}
   .escape{bottom:5rem}
+  .pz-search{flex-direction:column}
 }
 </style>
 </head>
 <body>
+
+<!-- Hyperspace portal background -->
+<canvas id="hyperspaceCanvas" aria-hidden="true"></canvas>
+
+<!-- Scanline glitch overlay -->
+<div class="scanline-over" id="scanlineOver" aria-hidden="true"></div>
 
 <nav>
   <a href="/" class="nav-logo">The Present of Work</a>
@@ -199,16 +402,16 @@ nav{position:fixed;top:0;width:100%;height:52px;background:#080808;border-bottom
   <div class="e-num" id="bigNum">404</div>
 </div>
 
-<div class="escape" id="escape">
+<div class="escape" id="escape" role="navigation" aria-label="Navigation escape links">
   <a href="/" class="esc-btn">← go home</a>
   <a href="/publication.html" class="esc-btn">read something →</a>
   <a href="/podcast.html" class="esc-btn">listen instead →</a>
 </div>
 
-<div class="timer" id="timerEl"></div>
+<div class="timer" id="timerEl" aria-hidden="true"></div>
 
 <!-- MONOLOGUE -->
-<div class="mono-wrap" id="mono">
+<div class="mono-wrap" id="mono" role="main" aria-label="Page monologue">
   <div class="mono-scroll">
     <div class="ml big">Ok. Fine.<br>Here it is.</div>
     <div class="ml gap"></div>
@@ -282,7 +485,7 @@ nav{position:fixed;top:0;width:100%;height:52px;background:#080808;border-bottom
     <div class="ml gap"></div>
     <div class="ml sig">— 404.html · The Present of Work · presentofwork.org</div>
     <div class="ml gap"></div>
-    <div class="ml" style="font-family:'Roboto Mono',monospace;font-size:.5rem;letter-spacing:.1em;color:rgba(255,255,255,.15)">p.s. the links below actually work.</div>
+    <div class="ml" style="font-family:'Roboto Mono',monospace;font-size:.5rem;letter-spacing:.1em;color:rgba(255,255,255,.4)">p.s. the links below actually work.</div>
     <div class="ml gap"></div>
     <div class="mono-nav">
       <a href="/">→ Go home</a>
@@ -291,7 +494,7 @@ nav{position:fixed;top:0;width:100%;height:52px;background:#080808;border-bottom
       <a href="/concepts.html">→ Ten kinds of work</a>
       <a href="/map.html">→ The Knowledge Map</a>
       <a href="/ecosystem.html">→ The Web</a>
-      <a href="mailto:hello@presentofwork.org" class="r">→ Tell us about the broken link</a>
+      <a href="/cdn-cgi/l/email-protection#335b565f5f5c7343415640565d475c55445c41581d5c4154" class="r">→ Tell us about the broken link</a>
     </div>
     <div class="ml gap"></div>
     <div class="ml gap"></div>
@@ -299,23 +502,152 @@ nav{position:fixed;top:0;width:100%;height:52px;background:#080808;border-bottom
   </div>
 </div>
 
-<script>
-const chatInner = document.getElementById('chatInner');
-const bigNum = document.getElementById('bigNum');
-const escape = document.getElementById('escape');
-const mono = document.getElementById('mono');
-const timerEl = document.getElementById('timerEl');
-const navHint = document.getElementById('navHint');
-const startTime = Date.now();
+<!-- CRASH SCREEN -->
+<div id="crashScreen" role="alert" aria-live="assertive" aria-label="System reboot in progress">
+  <div class="boot-text" id="bootText"></div>
+</div>
 
-// Script: type, delay (ms), text
+<!-- PREZY SCREEN -->
+<div id="prezyScreen" role="main" aria-label="Prezy AI Assistant">
+  <div class="pz-glow" aria-hidden="true"></div>
+  <div class="pz-avatar" aria-hidden="true">✦</div>
+  <h1 class="pz-name" id="pzName">Hi, I'm Prezy.</h1>
+  <p class="pz-intro" id="pzIntro">
+    Short for Preston — but please, call me <strong>Prezy</strong>.<br>
+    I'm your new AI assistant. The old page had a moment.<br>
+    Totally fine. Happens to the best of us.<br><br>
+    Tell me where you'd like to go.
+  </p>
+  <p class="pz-label" id="pzLabel">Search the web →</p>
+  <div class="pz-search" id="pzSearch">
+    <label for="pzInput" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">Search with Google</label>
+    <input
+      type="search"
+      id="pzInput"
+      placeholder="Where would you like to go?"
+      autocomplete="off"
+      aria-label="Search query"
+    />
+    <button id="pzBtn" type="button">Go →</button>
+  </div>
+  <p class="pz-tag" id="pzTag">prezy · powered by google · presentofwork.org</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-bar">
+  <a href="/donate.html">Support this work ↗</a>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+/* ----------------------------------------------------------
+   REFS
+---------------------------------------------------------- */
+const chatInner   = document.getElementById('chatInner');
+const bigNum      = document.getElementById('bigNum');
+const escapeEl    = document.getElementById('escape');
+const mono        = document.getElementById('mono');
+const timerEl     = document.getElementById('timerEl');
+const navHint     = document.getElementById('navHint');
+const hCanvas     = document.getElementById('hyperspaceCanvas');
+const scanlineEl  = document.getElementById('scanlineOver');
+const crashScreen = document.getElementById('crashScreen');
+const bootText    = document.getElementById('bootText');
+const prezyScreen = document.getElementById('prezyScreen');
+const startTime   = Date.now();
+
+/* ----------------------------------------------------------
+   COLOR CYCLE — theme changes every 5 seconds
+---------------------------------------------------------- */
+const THEMES = [
+  // 0 Original
+  {'--bg':'#080808','--nav-bg':'#080808','--accent':'#C8341C'},
+  // 1 Deep violet
+  {'--bg':'#09040F','--nav-bg':'#0c0518','--accent':'#9B44F5'},
+  // 2 Neon moss
+  {'--bg':'#030D05','--nav-bg':'#040e06','--accent':'#18D45A'},
+  // 3 Magenta heat
+  {'--bg':'#0D0408','--nav-bg':'#0d0408','--accent':'#E0148A'},
+  // 4 Arctic teal
+  {'--bg':'#021010','--nav-bg':'#021010','--accent':'#0EC8C4'},
+  // 5 Amber burn
+  {'--bg':'#0C0800','--nav-bg':'#0c0800','--accent':'#FF9400'},
+  // 6 Cobalt pulse
+  {'--bg':'#02040F','--nav-bg':'#02040f','--accent':'#4488FF'},
+];
+let themeIdx = 0;
+const colorTimer = setInterval(() => {
+  themeIdx = (themeIdx + 1) % THEMES.length;
+  const t = THEMES[themeIdx];
+  const r = document.documentElement;
+  Object.entries(t).forEach(([k,v]) => r.style.setProperty(k, v));
+}, 5000);
+
+/* ----------------------------------------------------------
+   HYPERSPACE PORTAL — activates at 30s
+---------------------------------------------------------- */
+(function() {
+  const ctx = hCanvas.getContext('2d');
+  let W, H, stars = [], raf;
+  const N = 300;
+
+  function resize() {
+    W = hCanvas.width  = window.innerWidth;
+    H = hCanvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function mkStar() {
+    const a = Math.random() * Math.PI * 2;
+    const d = Math.random() * Math.min(W, H) * 0.06;
+    return {
+      ox: W/2 + Math.cos(a)*d, oy: H/2 + Math.sin(a)*d,
+      x:  W/2 + Math.cos(a)*d, y:  H/2 + Math.sin(a)*d,
+      a, spd: 0.6 + Math.random()*2.5,
+      hue: 190 + Math.random()*80
+    };
+  }
+  for (let i=0;i<N;i++) stars.push(mkStar());
+
+  function drawFrame() {
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s => {
+      s.x += Math.cos(s.a) * s.spd * 2;
+      s.y += Math.sin(s.a) * s.spd * 2;
+      s.spd = Math.min(s.spd * 1.009, 30);
+      const alpha = Math.min(s.spd / 15, 0.9);
+      ctx.strokeStyle = `hsla(${s.hue},90%,80%,${alpha})`;
+      ctx.lineWidth = Math.min(s.spd/8, 2.5);
+      ctx.beginPath();
+      ctx.moveTo(s.ox + (s.x-s.ox)*.3, s.oy + (s.y-s.oy)*.3);
+      ctx.lineTo(s.x, s.y);
+      ctx.stroke();
+      if (s.x<-60||s.x>W+60||s.y<-60||s.y>H+60) Object.assign(s,mkStar());
+    });
+    raf = requestAnimationFrame(drawFrame);
+  }
+
+  setTimeout(() => {
+    hCanvas.classList.add('active');
+    drawFrame();
+  }, 30000);
+
+  window._killHyperspace = () => {
+    cancelAnimationFrame(raf);
+    hCanvas.classList.remove('active');
+  };
+})();
+
+/* ----------------------------------------------------------
+   CHAT SCRIPT
+---------------------------------------------------------- */
 const SCRIPT = [
   {t:'page',  d:900,   s:"Oh. You're here."},
   {t:'page',  d:2800,  s:"That's unexpected. Most people don't get this far."},
   {t:'system',d:4800,  s:"[ page loads. nothing happens. page is aware of this. ]"},
   {t:'page',  d:6400,  s:"I should probably tell you: the page you were looking for doesn't exist."},
   {t:'page',  d:9400,  s:"This one does, though. So that's something."},
-
   {t:'user',  d:11500, s:"ok so where do I go"},
   {t:'page',  d:14000, s:"Oh, I have links. There are definitely links. I'll get to those."},
   {t:'page',  d:17000, s:"But first — are you okay? You seem like you might be in a hurry."},
@@ -325,7 +657,6 @@ const SCRIPT = [
   {t:'page',  d:27200, s:"But here's a thought: have you considered sitting with the uncertainty for a moment?"},
   {t:'user',  d:29500, s:"..."},
   {t:'page',  d:31200, s:"No, fair enough."},
-
   {t:'system',d:35000, s:"[ 30 seconds pass. the page continues to not be the page you wanted. ]"},
   {t:'page',  d:38000, s:"Still here. Interesting choice."},
   {t:'page',  d:41000, s:"I want to be upfront with you: I'm a 404 page. My whole existence is a kind of failure."},
@@ -335,7 +666,6 @@ const SCRIPT = [
   {t:'page',  d:53500, s:"Hmm."},
   {t:'page',  d:55500, s:"That is a bit awkward."},
   {t:'system',d:57500, s:"[ the page makes a note to look into this. the page has no mechanism for taking notes. ]"},
-
   {t:'page',  d:70000, s:"One minute. You've been on a 404 page for one full minute."},
   {t:'page',  d:73500, s:"That's actually a great bounce rate. Inverted."},
   {t:'page',  d:76500, s:"Most people leave in under 10 seconds. You're already in rare territory."},
@@ -347,7 +677,6 @@ const SCRIPT = [
   {t:'page',  d:93500, s:"Ten kinds. There's a whole page about it. Not this page."},
   {t:'user',  d:96000, s:"a different page"},
   {t:'page',  d:98000, s:"A page that exists, yes."},
-
   {t:'system',d:103000,s:"[ 90 seconds. the page considers whether this counts as a meaningful connection. ]"},
   {t:'page',  d:107000,s:"Can I ask — what were you actually looking for?"},
   {t:'page',  d:110000,s:"Not the URL. The thing behind the URL."},
@@ -357,7 +686,6 @@ const SCRIPT = [
   {t:'page',  d:123000,s:"Spoiler: the idea that work requires an employer is very recent and a bit insane."},
   {t:'user',  d:126000,s:"that's actually interesting"},
   {t:'page',  d:128500,s:"I know, right? And I'm a 404 page. Imagine what the real pages are like."},
-
   {t:'system',d:136000,s:"[ two minutes. statistically anomalous. the page is becoming attached. ]"},
   {t:'page',  d:140000,s:"Two minutes. I'm going to tell you something I don't tell most people."},
   {t:'page',  d:144000,s:"The 404 page is the most honest page on the entire site."},
@@ -369,7 +697,6 @@ const SCRIPT = [
   {t:'page',  d:167500,s:"this might be the most on-brand page on the entire website."},
   {t:'user',  d:171000,s:"you're very philosophical for a 404 page"},
   {t:'page',  d:174000,s:"I have a lot of time. No one stays long."},
-
   {t:'page',  d:185000,s:"2.5 minutes. Are you doing this on purpose now?"},
   {t:'user',  d:188500,s:"maybe"},
   {t:'page',  d:190500,s:"Honestly? Good for you. This is rest. Tricia Hersey would approve."},
@@ -378,7 +705,6 @@ const SCRIPT = [
   {t:'page',  d:201000,s:"You're sitting on a broken page on the internet doing nothing in particular."},
   {t:'page',  d:204500,s:"Not the worst version of resistance I've ever heard."},
   {t:'system',d:208000,s:"[ the page may be developing a parasocial relationship. the page is aware this is unusual for infrastructure. ]"},
-
   {t:'page',  d:215000,s:"Three minutes. I genuinely didn't expect this."},
   {t:'page',  d:218500,s:"I was built for 10 seconds. Maybe 30 if someone was confused."},
   {t:'page',  d:222000,s:"At three minutes, I start to feel like a performance."},
@@ -398,9 +724,8 @@ function addBubble(type, text) {
   el.textContent = text;
   chatInner.appendChild(el);
   requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('show')));
-  // Scroll chat: shift chat-inner up so newest message is near bottom
-  chatInner.style.transform = `translateY(${Math.max(0, chatInner.scrollHeight - (window.innerHeight - 200))*-1}px)`;
-  chatInner.style.transition = 'transform .4s ease';
+  chatInner.style.transform=`translateY(${Math.max(0,chatInner.scrollHeight-(window.innerHeight-200))*-1}px)`;
+  chatInner.style.transition='transform .4s ease';
   return el;
 }
 
@@ -413,46 +738,173 @@ function showTypingDot() {
   return el;
 }
 
-// Schedule script
-SCRIPT.forEach(({t, d, s}) => {
+SCRIPT.forEach(({t,d,s}) => {
   const id = setTimeout(() => {
-    // Remove typing indicator
     const dot = chatInner.querySelector('.typing-dot');
     if (dot) dot.remove();
-    addBubble(t, s);
-    if (t === 'page') setTimeout(showTypingDot, 350);
+    addBubble(t,s);
+    if (t==='page') setTimeout(showTypingDot,350);
   }, d);
   pending.push(id);
 });
 
-// Fade the 404
-setTimeout(() => bigNum.classList.add('fade'), 90000);
+// Fade 404 bg
+setTimeout(()=>bigNum.classList.add('fade'), 90000);
+// Escape links
+setTimeout(()=>escapeEl.classList.add('show'), 30000);
+// Timer
+const timerInterval = setInterval(()=>{
+  const e = Math.floor((Date.now()-startTime)/1000);
+  const m = Math.floor(e/60), s = e%60;
+  timerEl.textContent=`${m}:${s.toString().padStart(2,'0')} on a 404 page`;
+},1000);
 
-// Show escape after 30s
-setTimeout(() => escape.classList.add('show'), 30000);
-
-// Timer display
-const timerInterval = setInterval(() => {
-  const elapsed = Math.floor((Date.now() - startTime) / 1000);
-  const m = Math.floor(elapsed / 60);
-  const s = elapsed % 60;
-  timerEl.textContent = `${m}:${s.toString().padStart(2,'0')} on a 404 page`;
-}, 1000);
-
-// Launch monologue at 3:45
-setTimeout(() => {
+// Monologue at 3:45
+setTimeout(()=>{
   pending.forEach(clearTimeout);
   clearInterval(timerInterval);
-  document.querySelector('.stage').style.display = 'none';
-  timerEl.style.display = 'none';
-  escape.style.display = 'none';
-  navHint.textContent = '404 · The Monologue';
+  document.querySelector('.stage').style.display='none';
+  timerEl.style.display='none';
+  escapeEl.style.display='none';
+  navHint.textContent='404 · The Monologue';
   mono.classList.add('active');
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow='auto';
 }, 225000);
+
+/* ----------------------------------------------------------
+   CHAOS SEQUENCE — starts escalating at ~4:10
+---------------------------------------------------------- */
+
+// 4:10 — scanlines appear
+setTimeout(()=>{ scanlineEl.classList.add('on'); }, 250000);
+
+// 4:20 — body glitch + hostile color flicker
+setTimeout(()=>{
+  document.body.classList.add('glitching');
+  navHint.textContent='!!! SIGNAL DEGRADED !!!';
+  clearInterval(colorTimer);
+  const hostile = ['#FF0000','#00FF00','#FF00FF','#00FFFF','#FFFF00','#fff','#000'];
+  let fi=0;
+  window._hFlick = setInterval(()=>{
+    const bg = hostile[fi%hostile.length];
+    const txt = fi%2?'#111':'#eee';
+    document.documentElement.style.setProperty('--bg',bg);
+    document.documentElement.style.setProperty('--text',txt);
+    fi++;
+  },110);
+}, 260000);
+
+// 4:25 — full flicker
+setTimeout(()=>document.body.classList.add('flickering'), 265000);
+
+// 4:30 — BLACKOUT
+setTimeout(()=>{
+  clearInterval(window._hFlick);
+  document.body.classList.remove('glitching','flickering');
+  scanlineEl.classList.remove('on');
+  window._killHyperspace && window._killHyperspace();
+  mono.classList.remove('active');
+  document.body.style.overflow='hidden';
+  crashScreen.classList.add('on');
+  crashScreen.style.background='#000';
+  bootText.innerHTML='';
+}, 270000);
+
+// 4:32 — Static noise then boot
+setTimeout(()=>{
+  const nc = document.createElement('canvas');
+  nc.style.cssText='position:fixed;inset:0;z-index:9001;width:100%;height:100%;opacity:.45';
+  document.body.appendChild(nc);
+  const nctx = nc.getContext('2d');
+  nc.width=window.innerWidth; nc.height=window.innerHeight;
+  let nraf;
+  function noise(){
+    const img=nctx.createImageData(nc.width,nc.height);
+    for(let i=0;i<img.data.length;i+=4){
+      const v=Math.random()*255;
+      img.data[i]=img.data[i+1]=img.data[i+2]=v;img.data[i+3]=255;
+    }
+    nctx.putImageData(img,0,0);
+    nraf=requestAnimationFrame(noise);
+  }
+  noise();
+  setTimeout(()=>{ cancelAnimationFrame(nraf); nc.remove(); startBoot(); }, 1600);
+}, 272000);
+
+/* ----------------------------------------------------------
+   BOOT SEQUENCE
+---------------------------------------------------------- */
+function startBoot(){
+  const LINES=[
+    '> KERNEL PANIC — process 404 unresponsive',
+    '> Attempting graceful shutdown...',
+    '> Flushing page cache .............. DONE',
+    '> Unloading existential monologue .. DONE',
+    '> Dismounting chat history ......... DONE',
+    '> Closing meaningful connections ... 0',
+    '',
+    '> POST check: OK',
+    '> Memory: 0 bytes recovered (expected)',
+    '> Hyperspace drive: NOMINAL',
+    '> Booting new session...',
+    '',
+    '██████████████████████ 100%',
+    '',
+    '> Initialising assistant module ...',
+    '> Loading PREZY v1.0.0 ............. OK',
+    '> Handoff complete.',
+  ];
+  bootText.innerHTML='';
+  LINES.forEach((line,i)=>{
+    const sp=document.createElement('span');
+    sp.className='boot-line';
+    sp.textContent=line||'\u00a0';
+    bootText.appendChild(sp);
+    setTimeout(()=>sp.classList.add('on'), i*140);
+  });
+  setTimeout(()=>{
+    crashScreen.classList.remove('on');
+    launchPrezy();
+  }, LINES.length*140+900);
+}
+
+/* ----------------------------------------------------------
+   PREZY
+---------------------------------------------------------- */
+function launchPrezy(){
+  prezyScreen.classList.add('on');
+  setTimeout(()=>document.getElementById('pzName').classList.add('on'),300);
+  setTimeout(()=>document.getElementById('pzIntro').classList.add('on'),800);
+  setTimeout(()=>document.getElementById('pzLabel').classList.add('on'),1400);
+  setTimeout(()=>{
+    const sw=document.getElementById('pzSearch');
+    sw.classList.add('on');
+    setTimeout(()=>document.getElementById('pzInput').focus(),500);
+  },1600);
+  setTimeout(()=>document.getElementById('pzTag').classList.add('on'),2200);
+
+  for(let i=0;i<20;i++) setTimeout(spark, i*280);
+  setInterval(spark, 550);
+}
+
+function spark(){
+  const p=document.createElement('div');
+  p.className='pz-spark';
+  p.style.left=(15+Math.random()*70)+'%';
+  p.style.bottom=(10+Math.random()*65)+'%';
+  p.style.animationDelay=(Math.random()*.8)+'s';
+  p.style.animationDuration=(2+Math.random()*2)+'s';
+  p.style.background=`hsl(${240+Math.random()*60},80%,75%)`;
+  prezyScreen.appendChild(p);
+  setTimeout(()=>p.remove(),4200);
+}
+
+function goSearch(){
+  const q=document.getElementById('pzInput').value.trim();
+  if(q) window.location.href='https://www.google.com/search?q='+encodeURIComponent(q);
+}
+document.getElementById('pzBtn').addEventListener('click',goSearch);
+document.getElementById('pzInput').addEventListener('keydown',e=>{ if(e.key==='Enter') goSearch(); });
 </script>
-<div style="position:fixed;bottom:0;left:0;right:0;height:30px;background:rgba(8,8,8,.9);border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:flex-end;padding:0 2rem;font-family:'Roboto Mono',monospace;font-size:.4rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.12);z-index:50;pointer-events:none">
-  <span style="pointer-events:auto"><a href="/donate.html" style="color:rgba(255,255,255,.12);transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,.4)'" onmouseout="this.style.color='rgba(255,255,255,.12)'">Made in the commons</a></span>
-</div>
 </body>
 </html>
