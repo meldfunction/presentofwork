@@ -617,15 +617,6 @@ footer a:hover{color:rgba(255,255,255,.8)}
       <div class="p-list">
         <div class="p-row">
           <div class="p-row-l">
-            <div class="p-type">Post-conventional consultancy</div>
-            <div class="p-name">Limicelia</div>
-          </div>
-          <div class="p-row-r">
-            <a href="https://limicelia.org" target="_blank" rel="noopener" class="p-link">limicelia.org ↗</a>
-          </div>
-        </div>
-        <div class="p-row">
-          <div class="p-row-l">
             <div class="p-type">Media · Podcast · Publication</div>
             <div class="p-name">Field Notes</div>
           </div>
@@ -662,15 +653,6 @@ footer a:hover{color:rgba(255,255,255,.8)}
             <div class="p-name">Starter Cultures</div>
           </div>
           <div class="p-row-r"></div>
-        </div>
-        <div class="p-row">
-          <div class="p-row-l">
-            <div class="p-type">Practice community</div>
-            <div class="p-name">Intentional Society</div>
-          </div>
-          <div class="p-row-r">
-            <a href="https://www.intentionalsociety.org" target="_blank" rel="noopener" class="p-link">intentionalsociety.org ↗</a>
-          </div>
         </div>
         <div class="p-row">
           <div class="p-row-l">
@@ -760,10 +742,6 @@ const NODES=[
    type:'Movement hub',name:'The Present of Work',
    desc:'A publication, a podcast, a map, and a gathering place for all forms of work. Not about jobs. About being alive.',
    url:'https://presentofwork.org',urlLabel:'presentofwork.org'},
-  {id:'lim',  ecotype:'edge',       x:195,y:115,r:24, label:'LIMICELIA',
-   type:'Post-conventional consultancy',name:'Limicelia',
-   desc:'Lives at the boundary between systems. Transforms terrain for what comes after — accompanies organizations through structural passages with rigorous presence.',
-   url:'https://limicelia.org',urlLabel:'limicelia.org'},
   {id:'fn',   ecotype:'recorder',   x:695,y:108,r:23, label:'FIELD\nNOTES',
    type:'Media · Podcast · Publication',name:'Field Notes',
    desc:'Documents the territory as it forms. Produces the Present of Work podcast, publication, and knowledge tools.',
@@ -771,10 +749,6 @@ const NODES=[
   {id:'sc',   ecotype:'nursery',    x:175,y:385,r:20, label:'STARTER\nCULTURES',
    type:'Incubation commons',name:'Starter Cultures',
    desc:'The growth medium. Commons-based nursery for emerging practice communities — where new projects develop before graduating to their own structures.'},
-  {id:'is',   ecotype:'understory', x:365,y:448,r:19, label:'INTENTIONAL\nSOCIETY',
-   type:'Practice community',name:'Intentional Society',
-   desc:'Thrives in filtered light. A relational dojo creating containers for presence, honest reflection, and mutual support.',
-   url:'https://www.intentionalsociety.org',urlLabel:'intentionalsociety.org'},
   {id:'wdl',  ecotype:'mycelial',   x:730,y:385,r:22, label:'WARM\nDATA LABS',
    type:'Research · Practice',name:'Warm Data Labs',
    desc:'The invisible connective intelligence. Nora Bateson\'s methodology for understanding complex living systems through relational, multi-contextual inquiry.',
@@ -791,10 +765,10 @@ const NODES=[
 ];
 
 const EDGES=[
-  {a:'pow',b:'lim',w:2.5},{a:'pow',b:'fn',w:2.5},
-  {a:'pow',b:'sc',w:1.8},{a:'pow',b:'is',w:1.8},{a:'pow',b:'wdl',w:1.8},
+  {a:'pow',b:'fn',w:2.5},
+  {a:'pow',b:'sc',w:1.8},{a:'pow',b:'wdl',w:1.8},
   {a:'pow',b:'still',w:1.2,d:true},
-  {a:'lim',b:'sc',w:1.2},{a:'sc',b:'is',w:1.2},{a:'fn',b:'wdl',w:1},
+  {a:'fn',b:'wdl',w:1},
   {a:'wdl',b:'still',w:1},
 ];
 
