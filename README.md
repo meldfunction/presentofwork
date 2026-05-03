@@ -1,28 +1,96 @@
-# Present of Work
-A website exploring the intersection of work, technology, and society.
+# The Present of Work
 
-The Present of Work is a digital platform that hosts a collection of essays, articles, and other written works that delve into the complexities of modern worklife. The site aims to provide a space for critical reflection and discussion on the changing nature of work and its impact on individuals and society. Through its content, the Present of Work seeks to challenge conventional wisdom and encourage readers to think differently about the role of work in their lives.
+A publication, podcast, map, and gathering place for all forms of work — not occupational employment, but the full range of human contribution.
 
-## Key Features
-* A library of essays and articles on topics related to work, technology, and society
-* A simple, easy-to-navigate design that allows readers to focus on the content
+## What This Is
 
-## Installation/Setup
-No installation or setup required, as this is a static website.
+The Present of Work is an independent publication exploring what work actually is, how it came to be organised the way it is, and what we might choose instead. It asks a deceptively simple question: *what is work — really?*
 
-## Usage
-1. Clone or download the repository.
-2. Open `index.html` in a web browser to view the site.
+The site hosts three interlocking essay series, a podcast, a conceptual map of ideas, and a living directory of organisations and communities doing things differently. Everything is produced in the commons and free to read.
+
+## The Publication
+
+Twenty-nine essays organised into three series:
+
+**Series I — The History of the Present**
+How did selling your time become the definition of a good life? Traces the genealogy of wage labour from pre-enclosure commons through the industrial revolution to the 20th-century office.
+
+**Series II — The Future of the Present**
+Why do all our promised futures still need you to earn your place in them? A reckoning with techno-utopian promises from the Jetsons to AGI.
+
+**Series III — The Present ∞**
+What if your worth was never up for negotiation? Plural economies, practices of resistance, new structures — ever-growing, no grand theory.
+
+Essays are readable in any order. Start anywhere.
+
+## The Site
+
+| Page | Purpose |
+|------|---------|
+| `/` | Homepage |
+| `/publication.html` | All three essay series with full essay index |
+| `/essays/` | Essay browser by series |
+| `/essays/{slug}/` | Individual essay pages |
+| `/podcast.html` | Field Notes podcast |
+| `/concepts.html` | Conceptual map |
+| `/map.html` | Geographic/relational map |
+| `/ecosystem.html` | Directory of aligned organisations |
 
 ## Tech Stack
-* HTML 
-* No frameworks or libraries used.
+
+Built with [Jekyll](https://jekyllrb.com/) and hosted on GitHub Pages. No JavaScript framework, no build pipeline beyond Jekyll's standard processing.
+
+- **Templating:** Liquid (Jekyll)
+- **Markdown:** Kramdown with Rouge syntax highlighting
+- **Fonts:** Bebas Neue, Roboto Mono, Libre Baskerville (Google Fonts)
+- **Styling:** CSS custom properties with light/dark mode toggle
+
+## Running Locally
+
+```bash
+# Install dependencies
+bundle install
+
+# Serve with live reload
+bundle exec jekyll serve
+
+# Open in browser
+open http://localhost:4000
+```
 
 ## Repository Structure
-The repository contains the following main files and directories:
-* `index.html`: The homepage of the website.
-* `essays/index.html`: The index page for the essays section.
-* `_essays/`: A directory containing markdown files for individual essays.
-* `_episodes/`: A directory containing markdown files for episode transcripts.
-* `_layouts/`: A directory containing HTML layout templates.
-* `audio/`: A directory containing audio files and a README.
+
+```
+_essays/          # 29 essay markdown files (numbered 0.1 – 3.10)
+_episodes/        # Podcast episode transcripts
+_layouts/
+  default.html    # Site-wide nav, footer, scripts
+  post.html       # Individual essay template
+essays/
+  index.html      # Essay browser (Liquid template, uses _essays collection)
+publication.html  # Full publication page with series index
+index.html        # Homepage
+about.html
+podcast.html
+concepts.html
+map.html
+ecosystem.html
+```
+
+## Contributing
+
+Essays are markdown files in `_essays/` with YAML front matter:
+
+```yaml
+---
+title: "Essay Title"
+series: "Series I: The History of the Present"
+series_num: "1.1"
+layout: post
+excerpt: "Opening paragraph text..."
+---
+```
+
+The filename determines the URL: `_essays/1-1-my-essay.md` → `/essays/1-1-my-essay/`.
+
+Contact: [hello@presentofwork.org](mailto:hello@presentofwork.org)
